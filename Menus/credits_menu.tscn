@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpbpd0105ksyl"]
+
+[ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_01b4m"]
+[ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_sxkhi"]
+[ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_m6iv0"]
+[ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6o3rq"]
+[ext_resource type="Script" path="res://assets/returnButton.gd" id="5_68nrn"]
+
+[node name="CreditsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.411765, 0.0352941, 1)
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_01b4m")
+
+[node name="mainLayoutCredits" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutCredits"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="ButtonLogo" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("2_sxkhi")]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="mainLayoutCredits/Heading Seperator/ButtonLogo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -253.5
+offset_top = -279.0
+offset_right = 253.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_m6iv0")
+stretch_mode = 5
+
+[node name="RulesHeading" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("2_sxkhi")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainLayoutCredits/Heading Seperator/RulesHeading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -37.5
+offset_right = 53.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_6o3rq")
+theme_override_font_sizes/font_size = 80
+text = "Credits"
+
+[node name="CreditsInfoBox" type="VBoxContainer" parent="mainLayoutCredits"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Credits Toggle" parent="mainLayoutCredits/CreditsInfoBox" instance=ExtResource("2_sxkhi")]
+custom_minimum_size = Vector2(0, 600)
+layout_mode = 2
+
+[node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
+offset_top = -3.0
+offset_bottom = 3.0
+
+[node name="Label" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0208333
+anchor_top = 0.126667
+anchor_right = 0.979167
+anchor_bottom = 0.88
+offset_left = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 45
+text = "Idea Developed By Edwin Romano and Yavuz Yurtseven.
+
+Programming, Art, and Music By Yavuz Yurtseven"
+autowrap_mode = 2
+
+[node name="Return" parent="." instance=ExtResource("2_sxkhi")]
+layout_mode = 1
+offset_top = -6.0
+script = ExtResource("5_68nrn")
+
+[node name="Label2" type="Label" parent="Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -37.5
+offset_right = 266.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_6o3rq")
+theme_override_font_sizes/font_size = 60
+text = "Return To Main Menu"
+
+[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]
+
+[editable path="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]

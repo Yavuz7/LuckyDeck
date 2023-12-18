@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://brkyelj36ne10"]
+
+[ext_resource type="FontFile" uid="uid://dnf3d1ikoi8ye" path="res://assets/Fonts/AbhayaLibre-Medium.ttf" id="1_makcl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m2oqa"]
+bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.94902, 0.733333, 0.0196078, 1)
+corner_detail = 5
+shadow_color = Color(0.145098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eo3dd"]
+bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.94902, 0.733333, 0.0196078, 1)
+corner_detail = 5
+shadow_color = Color(0.145098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi3op"]
+bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.94902, 0.733333, 0.0196078, 1)
+corner_detail = 5
+shadow_color = Color(0.145098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jbi0"]
+bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.94902, 0.733333, 0.0196078, 1)
+corner_detail = 5
+shadow_color = Color(0.145098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_784cy"]
+bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.94902, 0.733333, 0.0196078, 1)
+corner_detail = 5
+shadow_color = Color(0.145098, 0, 0, 1)
+
+[resource]
+default_font = ExtResource("1_makcl")
+default_font_size = 60
+Button/font_sizes/font_size = 60
+Button/styles/disabled = SubResource("StyleBoxFlat_m2oqa")
+Button/styles/focus = SubResource("StyleBoxFlat_eo3dd")
+Button/styles/hover = SubResource("StyleBoxFlat_qi3op")
+Button/styles/normal = SubResource("StyleBoxFlat_4jbi0")
+Button/styles/pressed = SubResource("StyleBoxFlat_784cy")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5

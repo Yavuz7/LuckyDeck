@@ -1,0 +1,154 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkmq07x8ri8vp"]
+
+[ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_vqpnr"]
+[ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_p5lnu"]
+[ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_4hchn"]
+[ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_ue3t1"]
+[ext_resource type="Script" path="res://assets/returnButton.gd" id="5_a7173"]
+
+[node name="SettingsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.411765, 0.0352941, 1)
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vqpnr")
+
+[node name="mainLayoutSettings" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+
+[node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutSettings"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="ButtonLogo" parent="mainLayoutSettings/Heading Seperator" instance=ExtResource("2_p5lnu")]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="mainLayoutSettings/Heading Seperator/ButtonLogo"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -253.5
+offset_top = -279.0
+offset_right = 253.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_4hchn")
+stretch_mode = 5
+
+[node name="SettingsHeading" parent="mainLayoutSettings/Heading Seperator" instance=ExtResource("2_p5lnu")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="mainLayoutSettings/Heading Seperator/SettingsHeading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -37.5
+offset_right = 53.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ue3t1")
+theme_override_font_sizes/font_size = 80
+text = "Settings"
+
+[node name="SettingsSeperator" type="VBoxContainer" parent="mainLayoutSettings"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Music Toggle" parent="mainLayoutSettings/SettingsSeperator" instance=ExtResource("2_p5lnu")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="mainLayoutSettings/SettingsSeperator/Music Toggle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="CheckButton" type="CheckButton" parent="mainLayoutSettings/SettingsSeperator/Music Toggle/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_ue3t1")
+text = "Music"
+icon_alignment = 2
+expand_icon = true
+
+[node name="VFX Toggle" parent="mainLayoutSettings/SettingsSeperator" instance=ExtResource("2_p5lnu")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="mainLayoutSettings/SettingsSeperator/VFX Toggle"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="CheckButton" type="CheckButton" parent="mainLayoutSettings/SettingsSeperator/VFX Toggle/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("4_ue3t1")
+text = "VFX
+"
+icon_alignment = 2
+expand_icon = true
+
+[node name="Return" parent="." instance=ExtResource("2_p5lnu")]
+layout_mode = 1
+offset_top = -6.0
+script = ExtResource("5_a7173")
+
+[node name="Label2" type="Label" parent="Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -37.5
+offset_right = 266.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ue3t1")
+theme_override_font_sizes/font_size = 60
+text = "Return To Main Menu"
+
+[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]
