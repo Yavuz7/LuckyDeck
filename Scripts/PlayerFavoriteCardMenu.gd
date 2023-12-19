@@ -2,6 +2,7 @@ extends Panel
 
 @onready var playerDisplay = $mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/PlayerDisplay
 @export var suitSelect: ButtonGroup
+@export var valueSelect: ButtonGroup
 
 var currentPlayers
 var playerIndex = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6xmhbbm5cx4n"]
+[gd_scene load_steps=25 format=3 uid="uid://c6xmhbbm5cx4n"]
 
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="1_xqq6a"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_ydy77"]
@@ -9,10 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://dd6xoy4hk75l0" path="res://assets/Images/CardFronts/cards1-2.png" id="6_eux68"]
 [ext_resource type="ButtonGroup" uid="uid://beososyiu12nc" path="res://Scripts/suitSelection.tres" id="7_dmpvh"]
 [ext_resource type="Texture2D" uid="uid://skqe0wti1hj4" path="res://assets/Images/CardFronts/cards1-1.png" id="7_eh48p"]
+[ext_resource type="ButtonGroup" uid="uid://br7v4nidvvlp4" path="res://Scripts/valueSelection.tres" id="8_rt17g"]
 [ext_resource type="Texture2D" uid="uid://dyqua4h061bdt" path="res://assets/Images/CardFronts/cards2-2.png" id="10_lddih"]
 [ext_resource type="Texture2D" uid="uid://djp50bkf568lt" path="res://assets/Images/CardFronts/cards3-2.png" id="11_cekfv"]
 [ext_resource type="Texture2D" uid="uid://bblli8752c24p" path="res://assets/Images/CardFronts/cards4-2.png" id="12_8imka"]
 [ext_resource type="Texture2D" uid="uid://dsyec6g04gdst" path="res://assets/Images/Buttons/buttonhighlights.svg" id="13_f0wp0"]
+[ext_resource type="StyleBox" uid="uid://c2ji6gf4rscq" path="res://assets/style/buttonSelectBox.tres" id="14_ugqp5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oongi"]
 
@@ -23,6 +25,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exmt0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ce6er"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ysnj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tupff"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bjwkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0egs"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -175,6 +185,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_3crqy")
 suitSelect = ExtResource("7_dmpvh")
+valueSelect = ExtResource("8_rt17g")
 
 [node name="background" type="ColorRect" parent="PlayerFavoriteCardMenu"]
 layout_mode = 1
@@ -313,11 +324,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Suit Selection" type="MarginContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
@@ -355,9 +367,192 @@ button_group = ExtResource("7_dmpvh")
 texture_normal = ExtResource("12_8imka")
 texture_pressed = ExtResource("7_eh48p")
 
-[node name="GridContainer2" type="GridContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="values" type="GridContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 columns = 7
+
+[node name="1" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "A"
+
+[node name="2" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "2"
+
+[node name="3" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "3"
+
+[node name="4" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "4"
+
+[node name="5" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "5"
+
+[node name="6" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "6"
+
+[node name="7" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "7"
+
+[node name="8" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "8"
+
+[node name="9" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "9"
+
+[node name="10" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "10"
+
+[node name="Control" type="Control" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+layout_mode = 2
+
+[node name="11" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "J"
+
+[node name="12" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "Q"
+
+[node name="13" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
+custom_minimum_size = Vector2(100, 90)
+layout_mode = 2
+theme_override_font_sizes/font_size = 85
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7ysnj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tupff")
+theme_override_styles/pressed = ExtResource("14_ugqp5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bjwkc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_h0egs")
+toggle_mode = true
+button_group = ExtResource("8_rt17g")
+text = "K"
 
 [node name="Start Game" type="Button" parent="PlayerFavoriteCardMenu"]
 custom_minimum_size = Vector2(0, 100)
