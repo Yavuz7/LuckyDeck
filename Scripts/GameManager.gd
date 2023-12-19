@@ -23,6 +23,7 @@ var numOfPlayers = 4
 var currentPlayer = 0
 var Players = Array()
 var playerCardTextures = {}
+var playerFavoriteCards = {}
 var outPlayers = Array()
 
 # Called when the node enters the scene tree for the first time.

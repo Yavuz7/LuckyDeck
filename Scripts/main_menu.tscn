@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6xmhbbm5cx4n"]
+[gd_scene load_steps=19 format=3 uid="uid://c6xmhbbm5cx4n"]
 
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="1_xqq6a"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_ydy77"]
@@ -13,6 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://djp50bkf568lt" path="res://assets/Images/CardFronts/cards3-2.png" id="11_cekfv"]
 [ext_resource type="Texture2D" uid="uid://bblli8752c24p" path="res://assets/Images/CardFronts/cards4-2.png" id="12_8imka"]
 [ext_resource type="Texture2D" uid="uid://dsyec6g04gdst" path="res://assets/Images/Buttons/buttonhighlights.svg" id="13_f0wp0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oongi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xf4a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4prhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exmt0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ce6er"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -243,7 +253,49 @@ theme_override_constants/separation = 40
 
 [node name="PlayerHeading" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox" instance=ExtResource("1_xqq6a")]
 layout_mode = 2
+mouse_filter = 1
+
+[node name="PlayerChange" type="HBoxContainer" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="BackButton" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oongi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7xf4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4prhw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_exmt0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ce6er")
+text = "<<"
+
+[node name="PlayerDisplay" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oongi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7xf4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4prhw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_exmt0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ce6er")
 text = "Player 1"
+
+[node name="ForwardButton" type="Button" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oongi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7xf4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4prhw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_exmt0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ce6er")
+text = ">>"
 
 [node name="cardSelection" parent="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox" instance=ExtResource("1_xqq6a")]
 custom_minimum_size = Vector2(0, 500)
@@ -343,6 +395,8 @@ expand_mode = 1
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Rules" to="." method="_on_rules_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/BackButton" to="PlayerFavoriteCardMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/ForwardButton" to="PlayerFavoriteCardMenu" method="_on_forward_button_pressed"]
 [connection signal="pressed" from="PlayerFavoriteCardMenu/Start Game" to="PlayerFavoriteCardMenu" method="_on_start_game_pressed"]
 
 [editable path="PlayerFavoriteCardMenu/mainLayoutCredits/SelectionBox/cardSelection"]
