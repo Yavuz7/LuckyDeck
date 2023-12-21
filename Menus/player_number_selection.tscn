@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkcjnca5vy83d"]
+[gd_scene load_steps=13 format=3 uid="uid://dkcjnca5vy83d"]
 
 [ext_resource type="Script" path="res://Menus/player_number_selection.gd" id="1_0y32y"]
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_gpqbf"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_sly2o"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_u1d0b"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_by2kf"]
-[ext_resource type="Script" path="res://assets/continue1.gd" id="5_qbt6r"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7xfou"]
 size = Vector2(0, 0)
@@ -200,12 +199,11 @@ text = "+"
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[node name="Return" parent="." instance=ExtResource("2_pldgd")]
+[node name="Continue" parent="." instance=ExtResource("2_pldgd")]
 layout_mode = 1
 offset_top = -6.0
-script = ExtResource("5_qbt6r")
 
-[node name="Label2" type="Label" parent="Return"]
+[node name="Label2" type="Label" parent="Continue"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -256,7 +254,7 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="mainLayoutCredits/playerButtons/Minus" to="." method="_on_minus_pressed"]
 [connection signal="pressed" from="mainLayoutCredits/playerButtons/Plus" to="." method="_on_plus_pressed"]
-[connection signal="pressed" from="Return" to="Return" method="_on_pressed" flags=18]
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Return2" to="Return2" method="_on_pressed" flags=18]
 
 [editable path="mainLayoutCredits/playerButtons"]
