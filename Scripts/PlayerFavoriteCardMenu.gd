@@ -27,7 +27,6 @@ func saveSelection(i):
 	if(!playerFavoriteCards[i]):
 		playerFavoriteCards[i].append(suitValues.get(suitSelect.get_pressed_button().name))
 		playerFavoriteCards[i].append(valueSelect.get_pressed_button().name.to_int())	
-		print(playerFavoriteCards[i])
 	else:
 		playerFavoriteCards[i].clear()
 		playerFavoriteCards[i].append(suitValues.get(suitSelect.get_pressed_button().name))
@@ -45,6 +44,10 @@ func loadSelection(i):
 
 func _on_start_game_pressed():
 	saveSelection(playerIndex)
+	sendToGameManager()
+	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
+	self.queue_free()
+	
 
 
 func _on_back_button_pressed():
@@ -52,7 +55,6 @@ func _on_back_button_pressed():
 		saveSelection(playerIndex)
 		playerIndex-= 1
 		playerDisplay.text = "Player " + str(playerIndex + 1) + "\'s"
-		print("Player Index:" + str(playerIndex))
 		loadSelection(playerIndex)
 
 
@@ -60,8 +62,7 @@ func _on_forward_button_pressed():
 	if((playerIndex + 1) < currentPlayers):
 		saveSelection(playerIndex)
 		playerIndex+= 1
-		playerDisplay.text = "Player " + str(playerIndex + 1) + "\'s"
-		print("Player Index:" + str(playerIndex))		
+		playerDisplay.text = "Player " + str(playerIndex + 1) + "\'s"	
 		loadSelection(playerIndex)
 		
 
@@ -78,3 +79,12 @@ func _on_return_double_check_pressed():
 		get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
 		self.queue_free()
 	
+func sendToGameManager():
+	fillPlayerArray()
+	GameManager.playerFavoriteCards = playerFavoriteCards
+	pass
+
+func fillPlayerArray():
+	for card in playerFavoriteCards:
+		if(playerFavoriteCards[card].size() == 0):
+			playerFavoriteCards[card] = [1,1]

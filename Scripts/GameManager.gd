@@ -30,12 +30,6 @@ var outPlayers = Array()
 func _ready():
 	pass
 
-func setUpGame():
-	Game = get_node('/root/Game/')
-	previewCard = get_node('/root/Game/drawnCard/')
-	card_animator = previewCard.get_node("cardAnimator")
-	playerDisplay = get_node('/root/Game/gameHeader/TopGui/HSplitContainer/HBoxContainer/CurrentPlayerName')
-
 
 func fillPlayerArray():
 	var i = 0
@@ -53,16 +47,15 @@ func gameTurn():
 	cardHandler()
 	changeCurrentPlayer()
 
-
 func cardHandler():
 	var randomIndex = numberGenerator.randi_range(0,Deck.size() - 1)
 	
 	showCard(randomIndex)
 	addCardToPlayer(randomIndex)
-	if(Players[currentPlayer].size() >= 1):
-		if(checkVictory()):			
-			return	
+	if(checkVictory()):			
+		return	
 	checkDefeat(randomIndex)
+	print(Players[currentPlayer].back())
 	Deck.remove_at(randomIndex)
 	
 func showCard(randomIndex):
@@ -78,11 +71,8 @@ func showCard(randomIndex):
 	card_animator.seek(0,true)
 	card_animator.play("make_card_disappear")
 func addCardToPlayer(i):
-	if ((Deck[i][cardValues.value] == 1) || Deck[i][cardValues.suit] == 5):
-		return
-	else:
-		Players[currentPlayer].append(Deck[i])
-		print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(Players[currentPlayer]))
+	Players[currentPlayer].append(Deck[i])
+	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(Players[currentPlayer]))
 	
 func changeCurrentPlayer():	
 	currentPlayer += 1
@@ -107,10 +97,19 @@ func checkDefeat(i):
 			print("Victory By Default!(Last Player Standing)")
 			return
 func checkVictory():
-	var victoryMessage = checkVictoryHands()
+	var victoryMessage
+	if(Players[currentPlayer].size() >= 1):
+		victoryMessage = checkVictoryHands()
+	if(victoryMessage == null):
+		victoryMessage = checkFavoriteCardVictory()	
 	if( victoryMessage != null):
 		print(victoryMessage + " By Player " + str(currentPlayer + 1))
 		return true
+
+		
+func checkFavoriteCardVictory():
+	if(Players[currentPlayer].back() == playerFavoriteCards[currentPlayer]):
+		return "Favorite Card Drawn!"
 func checkVictoryHands():
 	var completeArrayValue = Array()
 	var completeArraySuit = Array()

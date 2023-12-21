@@ -1,6 +1,6 @@
 extends TextureButton
 
-@onready var settings = get_node("/root/Game/SettingsMenu")
+@onready var settings = $"../../../../SettingsMenu"
 var paused = false;
 
 # Called when the node enters the scene tree for the first time.
