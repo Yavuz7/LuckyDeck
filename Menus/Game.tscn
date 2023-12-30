@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ifsdtp307ptu"]
+[gd_scene load_steps=12 format=3 uid="uid://ifsdtp307ptu"]
 
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_52tlx"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="2_1h2br"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dcltp31ptq1ky" path="res://assets/Images/Buttons/pauseButtonLarge.svg" id="5_mfxsg"]
 [ext_resource type="Script" path="res://Scripts/pauseButton.gd" id="6_tm85r"]
 [ext_resource type="Texture2D" uid="uid://c52wtn1j2dqrg" path="res://assets/Images/CardFronts/cards3-11.png" id="7_d5qrn"]
+[ext_resource type="Texture2D" uid="uid://dsyec6g04gdst" path="res://assets/Images/Buttons/buttonhighlights.svg" id="8_vr5v7"]
+[ext_resource type="Texture2D" uid="uid://dtbej557ikw1a" path="res://assets/Images/boxshadow.svg" id="9_imb1g"]
 
 [sub_resource type="Animation" id="Animation_lbo3g"]
 resource_name = "make_card_disappear"
@@ -187,6 +189,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="SettingsMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,3 +266,124 @@ theme_override_font_sizes/font_size = 60
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="VictoryScreen" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartGame" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00138889
+anchor_top = 0.812
+anchor_bottom = 0.890625
+offset_top = 0.639771
+offset_right = -0.999207
+grow_horizontal = 1
+grow_vertical = 1
+text = "Play Another Game!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Winner" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00138889
+anchor_top = -0.00403125
+anchor_right = 0.998999
+anchor_bottom = 0.123438
+offset_top = 0.159996
+offset_right = -0.279236
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_font_sizes/font_size = 80
+text = "Player 1 Wins!"
+metadata/_edit_use_anchors_ = true
+
+[node name="VictoryPopup" type="Button" parent="VictoryScreen"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00138889
+anchor_top = 0.236312
+anchor_right = 0.998999
+anchor_bottom = 0.702344
+offset_top = 0.52002
+offset_right = -0.279236
+theme = ExtResource("1_52tlx")
+icon_alignment = 1
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VictoryScreen/VictoryPopup"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.001
+anchor_top = 0.01
+anchor_right = 0.999
+anchor_bottom = 0.99
+offset_left = 1.28
+offset_top = -2.96
+offset_right = 1.71997
+offset_bottom = -2.03998
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_vr5v7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VictoryScreen/VictoryPopup"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_imb1g")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/VictoryPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 45
+
+[node name="Label" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Victory By:"
+horizontal_alignment = 1
+
+[node name="VictoryType" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
+layout_mode = 2
+text = "4 In A Row"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="PlayerCards" type="HBoxContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnToMainMenu" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.922
+offset_top = 93.84
+text = "Return To Main Menu"
+metadata/_edit_use_anchors_ = true
