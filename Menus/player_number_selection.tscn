@@ -201,7 +201,11 @@ vertical_alignment = 3
 
 [node name="Continue" parent="." instance=ExtResource("2_pldgd")]
 layout_mode = 1
-offset_top = -6.0
+anchors_preset = -1
+anchor_top = 0.9
+anchor_bottom = 0.978
+offset_top = 0.0
+offset_bottom = 0.159912
 
 [node name="Label2" type="Label" parent="Continue"]
 layout_mode = 1
@@ -226,10 +230,12 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00138889
-anchor_top = 0.826563
-anchor_right = 1.00139
-anchor_bottom = 0.9
-offset_top = -6.0
+anchor_top = 0.798
+anchor_right = 1.001
+anchor_bottom = 0.877
+offset_top = 0.559937
+offset_right = 0.280762
+offset_bottom = -0.560059
 script = ExtResource("5_by2kf")
 metadata/_edit_use_anchors_ = true
 

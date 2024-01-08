@@ -69,7 +69,7 @@ anchor_bottom = 1.0
 offset_top = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 40
 
 [node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutCredits"]
 layout_mode = 2
@@ -126,6 +126,7 @@ text = "<<"
 [node name="VBoxContainer" type="VBoxContainer" parent="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange"]
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_constants/separation = -12
 
 [node name="PlayerDisplay" type="Button" parent="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/VBoxContainer"]
 layout_mode = 2
@@ -414,11 +415,12 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -78.0
+offset_top = -128.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("13_oxe6j")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 60
 text = "Start Game"
 icon_alignment = 1
 expand_icon = true
@@ -443,9 +445,10 @@ expand_mode = 1
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.818
-anchor_right = 1.0
-anchor_bottom = 0.897656
+anchor_left = 0.00138889
+anchor_top = 0.800813
+anchor_right = 1.00139
+anchor_bottom = 0.880469
 offset_top = -0.0400391
 grow_horizontal = 2
 grow_vertical = 0
@@ -471,6 +474,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("14_0v47k")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/ForwardButton" to="." method="_on_forward_button_pressed"]

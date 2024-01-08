@@ -49,7 +49,7 @@ theme_override_constants/separation = 35
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="mainLayoutCredits/Heading Seperator/ButtonLogo"]
+[node name="TextureRect3" type="TextureRect" parent="mainLayoutCredits/Heading Seperator/ButtonLogo"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -114,8 +114,15 @@ autowrap_mode = 2
 
 [node name="Return" parent="." instance=ExtResource("2_sxkhi")]
 layout_mode = 1
-offset_top = -6.0
+anchors_preset = -1
+anchor_left = 0.00138889
+anchor_top = 0.825906
+anchor_right = 1.00139
+anchor_bottom = 0.977344
+offset_top = 94.84
+offset_bottom = 1.0
 script = ExtResource("5_68nrn")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Return"]
 layout_mode = 1

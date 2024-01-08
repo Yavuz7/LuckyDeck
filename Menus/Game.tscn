@@ -275,12 +275,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.411765, 0.0352941, 1)
+
 [node name="RestartGame" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.00138889
-anchor_top = 0.812
-anchor_bottom = 0.890625
+anchor_top = 0.778406
+anchor_bottom = 0.857031
 offset_top = 0.639771
 offset_right = -0.999207
 grow_horizontal = 1
@@ -292,11 +301,12 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.00138889
-anchor_top = -0.00403125
-anchor_right = 0.998999
-anchor_bottom = 0.123438
-offset_top = 0.159996
-offset_right = -0.279236
+anchor_top = 0.025
+anchor_right = 0.999
+anchor_bottom = 0.152
+offset_top = 0.0
+offset_right = -0.279968
+offset_bottom = 0.440628
 grow_horizontal = 1
 grow_vertical = 1
 theme_override_font_sizes/font_size = 80
@@ -383,7 +393,8 @@ alignment = 1
 [node name="ReturnToMainMenu" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.922
-offset_top = 93.84
+anchor_top = 0.9
+anchor_bottom = 0.978125
+offset_top = 0.0
 text = "Return To Main Menu"
 metadata/_edit_use_anchors_ = true
