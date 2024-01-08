@@ -8,7 +8,6 @@ func _ready():
 	add_child(deckDealer)
 	GameManager.fillPlayerArray()
 	setUpGame()
-	pass # Replace with function body.
 
 func setUpGame():
 	GameManager.Game = $"."

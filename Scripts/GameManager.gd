@@ -21,9 +21,11 @@ var Deck = Array()
 
 var numOfPlayers = 4
 var currentPlayer = 0
-var Players = Array()
-var playerCardTextures = {}
+
+var gamePlayers = Array()
+
 var playerFavoriteCards = {}
+
 var outPlayers = Array()
 
 # Called when the node enters the scene tree for the first time.
@@ -34,11 +36,9 @@ func _ready():
 func fillPlayerArray():
 	var i = 0
 	while (i < numOfPlayers):
-		Players.append([])
-		playerCardTextures[i] = []
-		print(playerCardTextures)
+		gamePlayers.append(Player.new(playerFavoriteCards[i]))
 		i+= 1
-
+		
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -55,7 +55,7 @@ func cardHandler():
 	if(checkVictory()):			
 		return	
 	checkDefeat(randomIndex)
-	print(Players[currentPlayer].back())
+#	print(gamePlayers[currentPlayer].cards.back())
 	Deck.remove_at(randomIndex)
 	
 func showCard(randomIndex):
@@ -64,15 +64,20 @@ func showCard(randomIndex):
 	var v = randomCard[cardValues.value] 
 	
 	var texture = load("res://assets/Images/CardFronts/cards"+str(s)+"-"+str(v)+".png")
-	playerCardTextures[currentPlayer].append(texture)
+	gamePlayers[currentPlayer].cardTextures.append(texture)
 	previewCard.set_texture(texture)
 	
 
 	card_animator.seek(0,true)
 	card_animator.play("make_card_disappear")
 func addCardToPlayer(i):
-	Players[currentPlayer].append(Deck[i])
-	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(Players[currentPlayer]))
+	var lastCard = Deck[i]
+	gamePlayers[currentPlayer].cards.append(lastCard)
+	gamePlayers[currentPlayer].arrayOfCardValues.append(lastCard[cardValues.value])
+	gamePlayers[currentPlayer].arrayOfSuitValues.append(lastCard[cardValues.suit])
+	
+#	print(gamePlayers[currentPlayer].arrayOfCardValues)
+	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
 	
 func changeCurrentPlayer():	
 	currentPlayer += 1
@@ -90,15 +95,18 @@ func changeCurrentPlayer():
 	
 	
 func checkDefeat(i):
+	return
 	if ((Deck[i][cardValues.value] == 1) || Deck[i][cardValues.suit] == 5):
 		outPlayers.append(currentPlayer)
 		print("Player " +str(currentPlayer + 1) + " Is Out!")
 		if(outPlayers.size() == (numOfPlayers -1)):
 			print("Victory By Default!(Last Player Standing)")
 			return
+			
+			
 func checkVictory():
 	var victoryMessage
-	if(Players[currentPlayer].size() >= 1):
+	if(gamePlayers[currentPlayer].cards.size() >= 1):
 		victoryMessage = checkVictoryHands()
 	if(victoryMessage == null):
 		victoryMessage = checkFavoriteCardVictory()	
@@ -108,46 +116,28 @@ func checkVictory():
 
 		
 func checkFavoriteCardVictory():
-	if(Players[currentPlayer].back() == playerFavoriteCards[currentPlayer]):
+	if(gamePlayers[currentPlayer].cards.back() == gamePlayers[currentPlayer].favoriteCard):
 		return "Favorite Card Drawn!"
 func checkVictoryHands():
-	var completeArrayValue = Array()
-	var completeArraySuit = Array()
-	var tempCardValue = Array()
-	var tempCardSuit = Array()
 	var i = 0
-	for card in Players[currentPlayer]:
-		tempCardValue = Players[currentPlayer][i].duplicate()
-		tempCardSuit = tempCardValue.duplicate()
-		
-		tempCardSuit.remove_at(cardValues.value)
-		tempCardValue.remove_at(cardValues.suit)
-		
-		completeArraySuit += tempCardSuit
-		completeArrayValue += tempCardValue
-		i+= 1
-	i = 0
 	while i <= 13:
-		if(completeArrayValue.count(i) == numberNeededFor4OfAKind):
-			print("Card Values: " + str(completeArrayValue))
+		if(gamePlayers[currentPlayer].arrayOfCardValues.count(i) == numberNeededFor4OfAKind):
 			return "Victory By 4 Of A Kind!"	
-		i+= 1		
-#	print("Card Values: " + str(completeArrayValue))
-	i = 0
+		i+= 1	
+					
+	i = 0		
 	while i <= 4:
-		if(completeArraySuit.count(i) == numberNeededForFlush):
-			print("Card Suits: " +str(completeArraySuit))
+		if(gamePlayers[currentPlayer].arrayOfSuitValues.count(i) == numberNeededForFlush):
 			return "Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!"
-		i+= 1		
-#	print("Card Suits: " +str(completeArraySuit))
+		i+= 1			
+	return checkStraightVictory()
 	
-	return checkStraightVictory(completeArrayValue)
-func checkStraightVictory(valuesArray):
-	if(valuesArray.size() < numberNeededForStraight):
+func checkStraightVictory():
+	if(gamePlayers[currentPlayer].arrayOfCardValues.size() < numberNeededForStraight):
 		return null
-	valuesArray.sort()
+	gamePlayers[currentPlayer].arrayOfCardValues.sort()
 	var uniqueArray = Array()
-	for value in valuesArray:
+	for value in gamePlayers[currentPlayer].arrayOfCardValues:
 		if (!uniqueArray.has(value)):
 			uniqueArray.append(value)
 	var i = 0 
@@ -163,6 +153,7 @@ func checkStraightVictory(valuesArray):
 				return null
 			i+= 1
 		if(inARowCount + 1 == numberNeededForStraight):
+			print(uniqueArray)
 			return "Victory By Straight!"
 	return null
 			

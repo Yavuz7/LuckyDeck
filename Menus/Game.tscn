@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ifsdtp307ptu"]
+[gd_scene load_steps=13 format=3 uid="uid://ifsdtp307ptu"]
 
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_52tlx"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="2_1h2br"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcltp31ptq1ky" path="res://assets/Images/Buttons/pauseButtonLarge.svg" id="5_mfxsg"]
 [ext_resource type="Script" path="res://Scripts/pauseButton.gd" id="6_tm85r"]
 [ext_resource type="Texture2D" uid="uid://c52wtn1j2dqrg" path="res://assets/Images/CardFronts/cards3-11.png" id="7_d5qrn"]
+[ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="8_uppyh"]
 [ext_resource type="Texture2D" uid="uid://dsyec6g04gdst" path="res://assets/Images/Buttons/buttonhighlights.svg" id="8_vr5v7"]
 [ext_resource type="Texture2D" uid="uid://dtbej557ikw1a" path="res://assets/Images/boxshadow.svg" id="9_imb1g"]
 
@@ -268,6 +269,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VictoryScreen" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -283,6 +285,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0901961, 0.411765, 0.0352941, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VictoryScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uppyh")
 
 [node name="RestartGame" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
 layout_mode = 1
