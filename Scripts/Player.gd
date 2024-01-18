@@ -3,8 +3,8 @@ extends Node
 class_name Player
 
 var index
-#var playerName:String
-var favoriteCard = Array()
+#var playerName:Strin
+var favoriteCard;
 var cards = Array()
 var cardTextures = Array()
 
@@ -14,7 +14,7 @@ var arrayOfCardValues = Array()
 var arrayOfSuitValues = Array()
 
 func _init(favCard):
-	favoriteCard = favCard
+	favoriteCard = load("res://assets/Images/CardFronts/cards"+str(favCard[0])+"-"+str(favCard[1])+".png")
 	cards = []
 	cardTextures = []
 	

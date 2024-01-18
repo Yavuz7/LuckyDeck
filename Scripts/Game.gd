@@ -8,10 +8,11 @@ func _ready():
 	add_child(deckDealer)
 	GameManager.fillPlayerArray()
 	setUpGame()
-
+	GameManager.setStart()
 func setUpGame():
 	GameManager.Game = $"."
 	GameManager.previewCard = $drawnCard
 	GameManager.card_animator = $drawnCard/cardAnimator
 	GameManager.playerDisplay = $gameHeader/TopGui/HSplitContainer/HBoxContainer/CurrentPlayerName
-
+	GameManager.turnPlayerFavoriteCard = $gameHeader/TopGui/HSplitContainer/HBoxContainer/turnPlayerFavoriteCard
+	

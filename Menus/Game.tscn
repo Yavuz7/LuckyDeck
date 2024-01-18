@@ -142,7 +142,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 25
 
-[node name="TextureRect" type="TextureRect" parent="gameHeader/TopGui/HSplitContainer/HBoxContainer"]
+[node name="turnPlayerFavoriteCard" type="TextureRect" parent="gameHeader/TopGui/HSplitContainer/HBoxContainer"]
 custom_minimum_size = Vector2(65, 80)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -164,7 +164,7 @@ theme = ExtResource("1_52tlx")
 [node name="ButtonSceneFooter" parent="." instance=ExtResource("4_pd6m8")]
 layout_mode = 1
 
-[node name="TopGui" type="MarginContainer" parent="ButtonSceneFooter"]
+[node name="BottomGui" type="MarginContainer" parent="ButtonSceneFooter"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 1
 anchors_preset = 15
@@ -180,14 +180,14 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="ButtonSceneFooter/TopGui"]
-custom_minimum_size = Vector2(58.79, 80)
+[node name="ScrollContainer" type="ScrollContainer" parent="ButtonSceneFooter/BottomGui"]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-texture = ExtResource("7_d5qrn")
-expand_mode = 1
-stretch_mode = 5
+follow_focus = true
+vertical_scroll_mode = 0
+scroll_deadzone = 4
+
+[node name="currentPlayerCards" type="HBoxContainer" parent="ButtonSceneFooter/BottomGui/ScrollContainer"]
+layout_mode = 2
 
 [node name="SettingsMenu" type="Control" parent="."]
 visible = false

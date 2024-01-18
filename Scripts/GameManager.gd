@@ -6,10 +6,11 @@ var previewCard
 var card_animator
 var playerDisplay
 var footerDisplay
+var turnPlayerFavoriteCard
 
 var pauseButton = preload("res://assets/Images/Buttons/pauseButtonLarge.svg")
 var closeButton = preload("res://assets/Images/Buttons/closeButtonNew.svg")
-var cardBack = preload("res://assets/Images/cardbacknew2.png")
+var cardBack = preload("res://assets/Images/cardbackplus1.png")
 var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}
 
@@ -32,13 +33,17 @@ var outPlayers = Array()
 func _ready():
 	pass
 
-
 func fillPlayerArray():
 	var i = 0
 	while (i < numOfPlayers):
 		gamePlayers.append(Player.new(playerFavoriteCards[i]))
 		i+= 1
-		
+
+#This Function Handles Stuff That Needs To Happen before player input
+#But After Everything Is Created
+func setStart():
+	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)	
+	
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -70,6 +75,7 @@ func showCard(randomIndex):
 
 	card_animator.seek(0,true)
 	card_animator.play("make_card_disappear")
+	
 func addCardToPlayer(i):
 	var lastCard = Deck[i]
 	gamePlayers[currentPlayer].cards.append(lastCard)
@@ -92,18 +98,17 @@ func changeCurrentPlayer():
 #		print("Current Player After OutPlayers Loop: " + str( currentPlayer + 1))	
 	
 	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
-	
-	
+	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
+		
 func checkDefeat(i):
-	return
+#	return
 	if ((Deck[i][cardValues.value] == 1) || Deck[i][cardValues.suit] == 5):
 		outPlayers.append(currentPlayer)
 		print("Player " +str(currentPlayer + 1) + " Is Out!")
 		if(outPlayers.size() == (numOfPlayers -1)):
 			print("Victory By Default!(Last Player Standing)")
 			return
-			
-			
+						
 func checkVictory():
 	var victoryMessage
 	if(gamePlayers[currentPlayer].cards.size() >= 1):
@@ -113,11 +118,11 @@ func checkVictory():
 	if( victoryMessage != null):
 		print(victoryMessage + " By Player " + str(currentPlayer + 1))
 		return true
-
 		
 func checkFavoriteCardVictory():
-	if(gamePlayers[currentPlayer].cards.back() == gamePlayers[currentPlayer].favoriteCard):
+	if(gamePlayers[currentPlayer].cards.back() == playerFavoriteCards[currentPlayer]):
 		return "Favorite Card Drawn!"
+		
 func checkVictoryHands():
 	var i = 0
 	while i <= 13:
@@ -157,4 +162,5 @@ func checkStraightVictory():
 			return "Victory By Straight!"
 	return null
 			
-	
+func victoryHandler():
+	pass	
