@@ -15,14 +15,17 @@ func _pressed():
 
 func flip():
 	GameManager.gameTurn()
-	if(GameManager.Deck.size() > 55):
-		self.queue_free()
-	else:
-		self.disabled = true
-		self.modulate.a = 0
-		self.mouse_filter =Control.MOUSE_FILTER_IGNORE
+#	if(GameManager.Deck.size() > 55):
+#	self.queue_free()
+#	else:
+	self.disabled = true
+	self.modulate.a = 0
+	self.mouse_filter =Control.MOUSE_FILTER_IGNORE
 	pass
 
+func deleteSelf():
+	if(self.modulate.a == 0):
+		self.queue_free()
 func _ready():
 	set_h_size_flags(3)
 	set_v_size_flags(2)

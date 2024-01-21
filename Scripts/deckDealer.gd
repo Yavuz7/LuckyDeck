@@ -17,7 +17,6 @@ func _ready():
 	dealDeck()
 	GameManager.setDeck(Deck)
 	GameManager.grid = grid
-	GameManager.gridCards = gridCards
 	self.queue_free()
 	
 func _init(players):
