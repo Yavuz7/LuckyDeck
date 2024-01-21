@@ -55,21 +55,24 @@ color = Color(0.0901961, 0.411765, 0.0352941, 1)
 
 [node name="gridMargin" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.0976563
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 125.0
-offset_bottom = -102.0
+anchor_bottom = 0.921875
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="grid" type="GridContainer" parent="gridMargin"]
+[node name="grida" type="GridContainer" parent="gridMargin"]
+visible = false
 layout_mode = 2
 columns = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="grid" type="FlowContainer" parent="gridMargin"]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
 
 [node name="drawnCard" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)

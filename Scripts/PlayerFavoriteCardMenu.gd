@@ -1,7 +1,7 @@
 extends Panel
 
 @onready var playerDisplay = $mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/VBoxContainer/PlayerDisplay
-@onready var returnButton = $ReturnDoubleCheck
+@onready var returnButton = $ReturnDoubleCheck/Label
 @export var suitSelect: ButtonGroup
 @export var valueSelect: ButtonGroup
 

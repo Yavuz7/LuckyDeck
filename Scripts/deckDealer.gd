@@ -8,12 +8,16 @@ var gridCards = Array()
 var numOfPlayers
 var favoriteCards = GameManager.playerFavoriteCards
 var favoriteCardsSuitsUsed = Array()
+var grid
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	grid = Game.get_node('gridMargin/grid/')
 	generateDeck()
 	dealDeck()
 	GameManager.setDeck(Deck)
+	GameManager.grid = grid
+	GameManager.gridCards = gridCards
 	self.queue_free()
 	
 func _init(players):
@@ -43,33 +47,23 @@ func generateDeck():
 			gridCards.append(Card.new())
 			print(favoriteCardsSuitsUsed)
 
+#Needs to be tested later, but should be dynamic row size
+func figureOutSize():
+	#Increase in Size calculated, so new size over original gives us ratio, ratios might be different for x and y
+	var changeInSizeH = grid.get_parent().size[0] / 710
+	var changeInSizeV = grid.get_parent().size[1] / 1044
+	var hsize = grid.get_parent().size[0]/ (96 * changeInSizeH) 
+#Then we get the number of cards remaining if you have hsize number of cards
+	var numberOfRows = gridCards.size()/hsize
+#	var totalExtraSpace = grid.get_parent().size[1]  - (numberOfRows* 128)
+	return((grid.get_parent().size[1]  - (numberOfRows* 128 * changeInSizeV))/(numberOfRows))
+
 func dealDeck():
+	grid.add_theme_constant_override("v_separation", figureOutSize())
+#	if(gridCards.size() < 55):
+#	grid.set_v_size_flags(4)
 	var c = 0
-	if(numOfPlayers <= 4 && favoriteCardsSuitsUsed.size() == 0):
-		while c < 47:		
-			Game.get_node('gridMargin/grid/').add_child(gridCards[c])		
-			c+= 1
-		
-		while c < gridCards.size():
-			Game.get_node('gridMargin/grid/').add_child(gridCards[c])
-			if (c != 49):
-				Game.get_node('gridMargin/grid/').add_child(Container.new())
-			c+=1
-	elif(gridCards.size() < 55) :
-		while c < 47:		
-			Game.get_node('gridMargin/grid/').add_child(gridCards[c])		
-			c+= 1
-		
-		while c < gridCards.size():
-			Game.get_node('gridMargin/grid/').add_child(gridCards[c])
-			if (c == 50):
-				Game.get_node('gridMargin/grid/').add_child(Container.new())
-				Game.get_node('gridMargin/grid/').add_child(Container.new())
-				if(gridCards.size() == 53):
-					Game.get_node('gridMargin/grid/').add_child(Container.new())
-					
-			c+=1
-	else:
-		while c < gridCards.size():		
-			Game.get_node('gridMargin/grid/').add_child(gridCards[c])		
-			c+= 1
+	while c < gridCards.size():
+		grid.add_child(gridCards[c])
+		c+=1
+

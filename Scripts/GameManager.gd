@@ -7,10 +7,12 @@ var card_animator
 var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
+var grid
+var gridCards
 
 var pauseButton = preload("res://assets/Images/Buttons/pauseButtonLarge.svg")
 var closeButton = preload("res://assets/Images/Buttons/closeButtonNew.svg")
-var cardBack = preload("res://assets/Images/cardbackplus1.png")
+var cardBack = preload("res://assets/Images/cardback1.png")
 var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}
 
@@ -62,6 +64,9 @@ func cardHandler():
 	checkDefeat(randomIndex)
 #	print(gamePlayers[currentPlayer].cards.back())
 	Deck.remove_at(randomIndex)
+	if(Deck.size() == 56):
+		print("RESIZE")
+		reSizeGrid()
 	
 func showCard(randomIndex):
 	var randomCard = Deck[randomIndex]
@@ -164,3 +169,14 @@ func checkStraightVictory():
 			
 func victoryHandler():
 	pass	
+
+func reSizeGrid():
+	#Increase in Size calculated, so new size over original gives us ratio, ratios might be different for x and y
+	var changeInSizeH = grid.get_parent().size[0] / 710
+	var changeInSizeV = grid.get_parent().size[1] / 1044
+	var hsize = grid.get_parent().size[0]/ (96 * changeInSizeH) 
+#Then we get the number of cards remaining if you have hsize number of cards
+	var numberOfRows = 56/hsize
+#	var totalExtraSpace = grid.get_parent().size[1]  - (numberOfRows* 128)
+	var newSize = (grid.get_parent().size[1]  - (numberOfRows* 128 * changeInSizeV))/(numberOfRows)
+	grid.add_theme_constant_override("v_separation", newSize)

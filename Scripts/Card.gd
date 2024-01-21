@@ -20,6 +20,7 @@ func flip():
 	else:
 		self.disabled = true
 		self.modulate.a = 0
+		self.mouse_filter =Control.MOUSE_FILTER_IGNORE
 	pass
 
 func _ready():
