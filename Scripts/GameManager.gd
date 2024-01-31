@@ -30,6 +30,7 @@ var playerFavoriteCards = {}
 
 var outPlayers = Array()
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -102,6 +103,22 @@ func changeCurrentPlayer():
 	
 	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
+	displayCurrentPlayerCards()
+
+func displayCurrentPlayerCards():
+	var cardsToDisplay = gamePlayers[currentPlayer].cardTextures;
+	if(footerDisplay.get_children().size() < cardsToDisplay.size()):
+		while (footerDisplay.get_children().size() < cardsToDisplay.size()):
+			var newCardPreview = TextureRect.new()
+			newCardPreview.set_stretch_mode(5)
+			newCardPreview.set_expand_mode(1)
+			newCardPreview.set_custom_minimum_size(Vector2(60,90))
+			footerDisplay.add_child(newCardPreview)
+	var i = 0
+	for cardPreview in footerDisplay.get_children():		
+		cardPreview.set_texture(cardsToDisplay[i])
+		i+= 1
+	pass
 		
 func checkDefeat(i):
 #	return

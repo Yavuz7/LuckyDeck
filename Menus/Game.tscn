@@ -192,6 +192,7 @@ scroll_deadzone = 4
 
 [node name="currentPlayerCards" type="HBoxContainer" parent="ButtonSceneFooter/BottomGui/ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 15
 
 [node name="SettingsMenu" type="Control" parent="."]
 visible = false
