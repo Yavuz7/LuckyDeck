@@ -9,8 +9,7 @@ var footerDisplay
 var turnPlayerFavoriteCard
 var grid
 
-var pauseButton = preload("res://assets/Images/Buttons/pauseButtonLarge.svg")
-var closeButton = preload("res://assets/Images/Buttons/closeButtonNew.svg")
+
 var cardBack = preload("res://assets/Images/cardback1.png")
 var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}

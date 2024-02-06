@@ -248,9 +248,13 @@ anchor_bottom = 1.0
 offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 0
 
 [node name="Players" type="VBoxContainer" parent="SettingsMenu/Settings/PlayerScores"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 100
 
 [node name="Settings2" parent="SettingsMenu/Settings" instance=ExtResource("4_pd6m8")]
 layout_mode = 1
@@ -414,3 +418,5 @@ anchor_bottom = 0.978125
 offset_top = 0.0
 text = "Return To Main Menu"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
