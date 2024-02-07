@@ -72,9 +72,11 @@ func showCard(randomIndex):
 	var v = randomCard[cardValues.value] 
 	
 	var texture = load("res://assets/Images/CardFronts/cards"+str(s)+"-"+str(v)+".png")
-	gamePlayers[currentPlayer].cardTextures.append(texture)
+	gamePlayers[currentPlayer].cardTextures.append(texture)	
 	previewCard.set_texture(texture)
 	
+	gamePlayers[currentPlayer].addToArray(gamePlayers[currentPlayer].cardTexturesSortedValues,v,texture)
+	gamePlayers[currentPlayer].addToArray(gamePlayers[currentPlayer].cardTexturesSortedSuits,s,texture)
 
 	card_animator.seek(0,true)
 	card_animator.play("make_card_disappear")
@@ -82,9 +84,6 @@ func showCard(randomIndex):
 func addCardToPlayer(i):
 	var lastCard = Deck[i]
 	gamePlayers[currentPlayer].cards.append(lastCard)
-	gamePlayers[currentPlayer].arrayOfCardValues.append(lastCard[cardValues.value])
-	gamePlayers[currentPlayer].arrayOfSuitValues.append(lastCard[cardValues.suit])
-	
 #	print(gamePlayers[currentPlayer].arrayOfCardValues)
 	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
 	
@@ -102,10 +101,10 @@ func changeCurrentPlayer():
 	
 	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
-	displayCurrentPlayerCards()
+	displayCurrentPlayerCards(gamePlayers[currentPlayer].cardTexturesSortedSuits)
 
-func displayCurrentPlayerCards():
-	var cardsToDisplay = gamePlayers[currentPlayer].cardTextures;
+func displayCurrentPlayerCards(targetArray):
+	var cardsToDisplay = targetArray.map(func(pair): return pair[1]);
 	if(footerDisplay.get_children().size() < cardsToDisplay.size()):
 		while (footerDisplay.get_children().size() < cardsToDisplay.size()):
 			var newCardPreview = TextureRect.new()
@@ -143,27 +142,30 @@ func checkFavoriteCardVictory():
 		return "Favorite Card Drawn!"
 		
 func checkVictoryHands():
+	var arrayOfValues = gamePlayers[currentPlayer].cardTexturesSortedValues.map(func(pair): return pair[0]);
+	var arrayOfSuits = gamePlayers[currentPlayer].cardTexturesSortedSuits.map(func(pair): return pair[0]);
 	var i = 0
 	while i <= 13:
-		if(gamePlayers[currentPlayer].arrayOfCardValues.count(i) == numberNeededFor4OfAKind):
+		if(arrayOfValues.count(i) == numberNeededFor4OfAKind):
 			return "Victory By 4 Of A Kind!"	
 		i+= 1	
 					
 	i = 0		
 	while i <= 4:
-		if(gamePlayers[currentPlayer].arrayOfSuitValues.count(i) == numberNeededForFlush):
+		if(arrayOfSuits.count(i) == numberNeededForFlush):
 			return "Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!"
 		i+= 1			
-	return checkStraightVictory()
+	return checkStraightVictory(arrayOfValues)
 	
-func checkStraightVictory():
-	if(gamePlayers[currentPlayer].arrayOfCardValues.size() < numberNeededForStraight):
+func checkStraightVictory(targetArray):
+	if(targetArray.size() < numberNeededForStraight):
 		return null
-	gamePlayers[currentPlayer].arrayOfCardValues.sort()
+	targetArray.sort()
 	var uniqueArray = Array()
-	for value in gamePlayers[currentPlayer].arrayOfCardValues:
+	for value in targetArray:
 		if (!uniqueArray.has(value)):
 			uniqueArray.append(value)
+	print(uniqueArray)
 	var i = 0 
 	var inARowCount = 0
 	while (i < uniqueArray.size() - 1):
