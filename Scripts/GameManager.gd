@@ -8,6 +8,7 @@ var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
 var grid
+var victoryScreen
 
 
 var cardBack = preload("res://assets/Images/cardback1.png")
@@ -84,7 +85,6 @@ func showCard(randomIndex):
 func addCardToPlayer(i):
 	var lastCard = Deck[i]
 	gamePlayers[currentPlayer].cards.append(lastCard)
-#	print(gamePlayers[currentPlayer].arrayOfCardValues)
 	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
 	
 func changeCurrentPlayer():	
@@ -101,10 +101,18 @@ func changeCurrentPlayer():
 	
 	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
-	displayCurrentPlayerCards(gamePlayers[currentPlayer].cardTexturesSortedSuits)
+	displayCurrentPlayerCards(false)
 
-func displayCurrentPlayerCards(targetArray):
-	var cardsToDisplay = targetArray.map(func(pair): return pair[1]);
+var toggleArray = true;
+func displayCurrentPlayerCards(toggle):
+	var cardsToDisplay = Array()
+	if(toggle):
+		toggleArray = !toggleArray
+	if(toggleArray):
+		cardsToDisplay = gamePlayers[currentPlayer].cardTexturesSortedSuits.map(func(pair): return pair[1]);
+	else:
+		cardsToDisplay = gamePlayers[currentPlayer].cardTexturesSortedValues.map(func(pair): return pair[1]);	
+
 	if(footerDisplay.get_children().size() < cardsToDisplay.size()):
 		while (footerDisplay.get_children().size() < cardsToDisplay.size()):
 			var newCardPreview = TextureRect.new()
@@ -129,7 +137,7 @@ func checkDefeat(i):
 						
 func checkVictory():
 	var victoryMessage
-	if(gamePlayers[currentPlayer].cards.size() >= 1):
+	if(gamePlayers[currentPlayer].cards.size() > 4):
 		victoryMessage = checkVictoryHands()
 	if(victoryMessage == null):
 		victoryMessage = checkFavoriteCardVictory()	
@@ -147,6 +155,8 @@ func checkVictoryHands():
 	var i = 0
 	while i <= 13:
 		if(arrayOfValues.count(i) == numberNeededFor4OfAKind):
+			var cards = gamePlayers[currentPlayer].cards.map()
+			victoryHandler("Victory By 4 of A Kind!", i)
 			return "Victory By 4 Of A Kind!"	
 		i+= 1	
 					
@@ -183,7 +193,9 @@ func checkStraightVictory(targetArray):
 			return "Victory By Straight!"
 	return null
 			
-func victoryHandler():
+func victoryHandler(victoryMessage, victoryCards):
+	#Get Victory Message
+	#Display cards related to victory
 	pass	
 
 func reSizeGrid():
@@ -200,3 +212,4 @@ func reSizeGrid():
 #	var totalExtraSpace = grid.get_parent().size[1]  - (numberOfRows* 128)
 	var newSize = (grid.get_parent().size[1]  - (numberOfRows* 128 * changeInSizeV))/(numberOfRows)
 	grid.add_theme_constant_override("v_separation", newSize)
+
