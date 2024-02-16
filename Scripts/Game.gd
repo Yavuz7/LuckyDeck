@@ -17,7 +17,6 @@ func setUpGame():
 	GameManager.turnPlayerFavoriteCard = $gameHeader/TopGui/HSplitContainer/HBoxContainer/turnPlayerFavoriteCard
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
-
 func _on_button_scene_footer_pressed():
 	GameManager.displayCurrentPlayerCards(true)
 	pass # Replace with function body.

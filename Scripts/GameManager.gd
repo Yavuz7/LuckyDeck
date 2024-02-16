@@ -16,8 +16,8 @@ var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}
 
 const numberNeededFor4OfAKind = 4
-const numberNeededForFlush = 7
-const numberNeededForStraight = 7
+const numberNeededForFlush = 5
+const numberNeededForStraight = 6
 
 var Deck = Array()
 
@@ -45,7 +45,6 @@ func fillPlayerArray():
 #But After Everything Is Created
 func setStart():
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)	
-	
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -88,6 +87,17 @@ func addCardToPlayer(i):
 	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
 	
 func changeCurrentPlayer():	
+
+	loopThroughPlayers()
+#		print("Current Player After OutPlayers Loop: " + str( currentPlayer + 1))	
+	
+	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
+	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
+	displayCurrentPlayerCards(false)
+
+var toggleArray = true;
+
+func loopThroughPlayers():
 	currentPlayer += 1
 	if(currentPlayer == numOfPlayers):
 			currentPlayer = 0
@@ -96,14 +106,8 @@ func changeCurrentPlayer():
 		while (outPlayers.find(currentPlayer) != -1):
 			currentPlayer += 1
 			if (currentPlayer == numOfPlayers):
-				currentPlayer = 0	
-#		print("Current Player After OutPlayers Loop: " + str( currentPlayer + 1))	
-	
-	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
-	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
-	displayCurrentPlayerCards(false)
+				currentPlayer = 0
 
-var toggleArray = true;
 func displayCurrentPlayerCards(toggle):
 	var cardsToDisplay = Array()
 	if(toggle):
@@ -132,7 +136,9 @@ func checkDefeat(i):
 		outPlayers.append(currentPlayer)
 		print("Player " +str(currentPlayer + 1) + " Is Out!")
 		if(outPlayers.size() == (numOfPlayers -1)):
-			print("Victory By Default!(Last Player Standing)")
+#We need to loop through the players to get to the player that is still standing
+			loopThroughPlayers()
+			victoryHandler("Victory By Default!(Last Player Standing)",null)
 			return
 						
 func checkVictory():
@@ -154,15 +160,17 @@ func checkVictoryHands():
 	var arrayOfSuits = gamePlayers[currentPlayer].cardTexturesSortedSuits.map(func(pair): return pair[0]);
 	var i = 0
 	while i <= 13:
-		if(arrayOfValues.count(i) == numberNeededFor4OfAKind):
-			var cards = gamePlayers[currentPlayer].cards.map()
-			victoryHandler("Victory By 4 of A Kind!", i)
+		if(arrayOfValues.count(i) == numberNeededFor4OfAKind):			
+			var winningCards = gamePlayers[currentPlayer].getValues(i)
+			victoryHandler("Victory By 4 of A Kind!", winningCards)
 			return "Victory By 4 Of A Kind!"	
 		i+= 1	
 					
 	i = 0		
 	while i <= 4:
 		if(arrayOfSuits.count(i) == numberNeededForFlush):
+			var winningCards = gamePlayers[currentPlayer].getSuits(i)
+			victoryHandler("Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!", winningCards)
 			return "Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!"
 		i+= 1			
 	return checkStraightVictory(arrayOfValues)
@@ -178,8 +186,7 @@ func checkStraightVictory(targetArray):
 	print(uniqueArray)
 	var i = 0 
 	var inARowCount = 0
-	while (i < uniqueArray.size() - 1):
-		
+	while (i < uniqueArray.size() - 1):	
 		if((uniqueArray[i]) == (uniqueArray[i + 1] - 1)):
 			i+= 1
 			inARowCount+= 1
@@ -190,13 +197,23 @@ func checkStraightVictory(targetArray):
 			i+= 1
 		if(inARowCount + 1 == numberNeededForStraight):
 			print(uniqueArray)
+			var winningCards = gamePlayers[currentPlayer].cardTexturesSortedValues
+			victoryHandler("Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!", winningCards)
 			return "Victory By Straight!"
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
-	#Get Victory Message
+	victoryScreen.visible = true
+	#Set Victory Message
+	print("Player " + str(currentPlayer + 1) + " Wins!")
+	victoryScreen.get_node("Winner/Label").text = "Player " + str(currentPlayer + 1) + " Wins!"
+	victoryScreen.get_node("VictoryPopup/VBoxContainer/VictoryType").text = victoryMessage
+	#Display Cards Player Won With
+	print(victoryCards);
 	#Display cards related to victory
-	pass	
+
+func restart():
+	pass
 
 func reSizeGrid():
 	grid.get_children().map(func(card): card.deleteSelf())

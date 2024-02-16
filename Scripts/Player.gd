@@ -30,3 +30,13 @@ func addToArray(targetArray, cardValue, textureReference):
 				return
 	else:
 		targetArray.append([cardValue,textureReference])
+
+func getValues(val):
+	return cardTexturesSortedValues.filter(func (pair): return pair[0] == val );
+	
+func getSuits(val):
+	return cardTexturesSortedSuits.filter(func (pair): return pair[0] == val );
+
+func getStraight(val):
+	return cardTexturesSortedValues.filter(func (pair): return pair[0] == val );
+	

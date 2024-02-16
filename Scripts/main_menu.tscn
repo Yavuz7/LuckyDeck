@@ -113,7 +113,7 @@ theme_override_constants/separation = 80
 [node name="Play" parent="mainMenuButtons/VBoxContainer" instance=ExtResource("1_xqq6a")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainMenuButtons/VBoxContainer/Play"]
+[node name="Label2" type="Label" parent="mainMenuButtons/VBoxContainer/Play"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
