@@ -56,5 +56,21 @@ func _on_restart_game_pressed():
 
 
 func _on_return_to_main_menu_pressed():
+
 	
+	var buttonText = $VictoryScreen/ReturnToMainMenu/Label
+	if(buttonText.text == "Return To Main Menu"):
+		buttonText.text = "You really want to return?"
+		await get_tree().create_timer(5).timeout
+		buttonText.text = "Return To Main Menu"
+	elif(buttonText.text == "You really want to return?"):
+		buttonText.text = "Really really want to return??"
+	elif(buttonText.text == "Really really want to return??"):
+		for player in GameManager.gamePlayers:
+			player.deleteSelf();
+	
+		GameManager.gamePlayers.clear()
+		
+		GameManager.outPlayers = []
+		self.queue_free()
 	pass # Replace with function body.

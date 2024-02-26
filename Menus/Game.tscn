@@ -458,17 +458,66 @@ layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="ReturnToMainMenu" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
+[node name="ReturnToMainMenu" type="Button" parent="VictoryScreen"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.9
+anchor_right = 1.0
 anchor_bottom = 0.978125
-offset_top = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_52tlx")
 text = "Return To Main Menu"
+icon_alignment = 1
+expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" parent="VictoryScreen/ReturnToMainMenu" index="3"]
+[node name="Texturedtexture" type="TextureRect" parent="VictoryScreen/ReturnToMainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ebtit")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="VictoryScreen/ReturnToMainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_vr5v7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="VictoryScreen/ReturnToMainMenu"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_imb1g")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VictoryScreen/ReturnToMainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Return To Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="ButtonSceneFooter" to="." method="_on_button_scene_footer_pressed"]
 [connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
@@ -476,4 +525,3 @@ text = "Return To Main Menu"
 [connection signal="pressed" from="VictoryScreen/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
 
 [editable path="VictoryScreen/RestartGame"]
-[editable path="VictoryScreen/ReturnToMainMenu"]
