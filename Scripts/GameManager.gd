@@ -16,8 +16,8 @@ var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}
 
 const numberNeededFor4OfAKind = 4
-const numberNeededForFlush = 6
-const numberNeededForStraight = 7
+const numberNeededForFlush = 5
+const numberNeededForStraight = 6
 
 var Deck = Array()
 
@@ -60,7 +60,7 @@ func cardHandler():
 	addCardToPlayer(randomIndex)
 	if(checkVictory()):			
 		return	
-#	checkDefeat(randomIndex)
+	checkDefeat(randomIndex)
 #	print(gamePlayers[currentPlayer].cards.back())
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
@@ -138,7 +138,7 @@ func checkDefeat(i):
 		if(outPlayers.size() == (numOfPlayers -1)):
 #We need to loop through the players to get to the player that is still standing
 			loopThroughPlayers()
-			victoryHandler("Victory By Default!(Last Player Standing)",null)
+			victoryHandler("Victory By Default!\n(Last Player Standing)",null)
 			return
 						
 func checkVictory():
@@ -153,6 +153,8 @@ func checkVictory():
 		
 func checkFavoriteCardVictory():
 	if(gamePlayers[currentPlayer].cards.back() == playerFavoriteCards[currentPlayer]):
+		var winningCard = [[0,gamePlayers[currentPlayer].favoriteCard]]
+		victoryHandler("Victory By Favorite Card Drawn!", winningCard)
 		return "Favorite Card Drawn!"
 		
 func checkVictoryHands():
