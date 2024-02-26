@@ -37,6 +37,13 @@ func getValues(val):
 func getSuits(val):
 	return cardTexturesSortedSuits.filter(func (pair): return pair[0] == val );
 
-func getStraight(val):
-	return cardTexturesSortedValues.filter(func (pair): return pair[0] == val );
+func getStraight(uniqueArray):
+	var iteratedArray = uniqueArray;
+	return cardTexturesSortedValues.filter(func (pair): 
+		var cardIndex = iteratedArray.find(pair[0])
+		if(cardIndex != -1):
+			iteratedArray.remove_at(cardIndex)
+			return true
+		else:	
+			return false );
 	

@@ -16,8 +16,8 @@ var numberGenerator = RandomNumberGenerator.new()
 enum cardValues {suit,value}
 
 const numberNeededFor4OfAKind = 4
-const numberNeededForFlush = 5
-const numberNeededForStraight = 6
+const numberNeededForFlush = 6
+const numberNeededForStraight = 7
 
 var Deck = Array()
 
@@ -60,7 +60,7 @@ func cardHandler():
 	addCardToPlayer(randomIndex)
 	if(checkVictory()):			
 		return	
-	checkDefeat(randomIndex)
+#	checkDefeat(randomIndex)
 #	print(gamePlayers[currentPlayer].cards.back())
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
@@ -197,8 +197,10 @@ func checkStraightVictory(targetArray):
 			i+= 1
 		if(inARowCount + 1 == numberNeededForStraight):
 			print(uniqueArray)
-			var winningCards = gamePlayers[currentPlayer].cardTexturesSortedValues
-			victoryHandler("Victory By " + str(numberNeededForFlush) + " Cards of The Same Suit!", winningCards)
+			var slicedArray = uniqueArray.slice(i-numberNeededForStraight + 1, i + 1)
+			print("Sliced Array", slicedArray)
+			var winningCards = gamePlayers[currentPlayer].getStraight(slicedArray)
+			victoryHandler("Victory By " + str(numberNeededForStraight) + " cards in a row!", winningCards)
 			return "Victory By Straight!"
 	return null
 			
@@ -208,6 +210,23 @@ func victoryHandler(victoryMessage, victoryCards):
 	print("Player " + str(currentPlayer + 1) + " Wins!")
 	victoryScreen.get_node("Winner/Label").text = "Player " + str(currentPlayer + 1) + " Wins!"
 	victoryScreen.get_node("VictoryPopup/VBoxContainer/VictoryType").text = victoryMessage
+	var victoryScreenCardDisplay = victoryScreen.get_node("VictoryPopup/VBoxContainer/FlowContainer/PlayerCards");
+	
+#Code Pasted Over From Other Thing, maybe make a function for it idk
+	if(victoryCards):
+		var cardTexturesToDisplay = victoryCards.map(func(pair): return pair[1]);		
+		if(victoryScreenCardDisplay.get_children().size() < cardTexturesToDisplay.size()):
+			while (victoryScreenCardDisplay.get_children().size() < cardTexturesToDisplay.size()):
+				var newCardPreview = TextureRect.new()
+				newCardPreview.set_stretch_mode(5)
+				newCardPreview.set_expand_mode(0)
+				newCardPreview.set_custom_minimum_size(Vector2(70,100))
+				victoryScreenCardDisplay.add_child(newCardPreview)
+		var i = 0
+		for cardPreview in victoryScreenCardDisplay.get_children():		
+			cardPreview.set_texture(cardTexturesToDisplay[i])
+			i+= 1
+	
 	#Display Cards Player Won With
 	print(victoryCards);
 	#Display cards related to victory

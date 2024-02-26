@@ -433,11 +433,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 50
 
 [node name="MarginContainer" type="MarginContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_bottom = 45
+theme_override_constants/margin_top = 65
+theme_override_constants/margin_bottom = -20
 
 [node name="Label" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -451,12 +452,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
+[node name="FlowContainer" type="FlowContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
 layout_mode = 2
-vertical_scroll_mode = 0
+alignment = 1
 
-[node name="PlayerCards" type="HBoxContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer/ScrollContainer"]
+[node name="PlayerCards" type="HBoxContainer" parent="VictoryScreen/VictoryPopup/VBoxContainer/FlowContainer"]
 layout_mode = 2
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="ReturnToMainMenu" parent="VictoryScreen" instance=ExtResource("4_pd6m8")]
