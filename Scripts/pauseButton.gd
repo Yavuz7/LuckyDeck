@@ -43,8 +43,8 @@ func loadCardsFromPlayers():
 		if(templateDisplay.get_children().size() < cardsToDisplay.size()):
 			while (templateDisplay.get_children().size() < cardsToDisplay.size()):
 				var newCardPreview = TextureRect.new()
-				newCardPreview.set_stretch_mode(5)
-				newCardPreview.set_expand_mode(1)
+				newCardPreview.set_stretch_mode(TextureRect.STRETCH_KEEP_ASPECT_CENTERED)
+				newCardPreview.set_expand_mode(TextureRect.EXPAND_IGNORE_SIZE)
 				newCardPreview.set_custom_minimum_size(Vector2(60,90))
 				templateDisplay.add_child(newCardPreview)
 		var i = 0

@@ -84,6 +84,7 @@ func sendToGameManager():
 	GameManager.playerFavoriteCards = playerFavoriteCards
 	pass
 
+#Different than the one found in Game Manager
 func fillPlayerArray():
 	for card in playerFavoriteCards:
 		if(playerFavoriteCards[card].size() == 0):

@@ -46,4 +46,6 @@ func getStraight(uniqueArray):
 			return true
 		else:	
 			return false );
-	
+
+func deleteSelf():
+	self.queue_free()

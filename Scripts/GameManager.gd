@@ -7,13 +7,13 @@ var card_animator
 var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
+#Grid used for resizing after cards are picked
 var grid
 var victoryScreen
 
 
 var cardBack = preload("res://assets/Images/cardback1.png")
 var numberGenerator = RandomNumberGenerator.new()
-enum cardValues {suit,value}
 
 const numberNeededFor4OfAKind = 4
 const numberNeededForFlush = 5
@@ -43,8 +43,10 @@ func fillPlayerArray():
 
 #This Function Handles Stuff That Needs To Happen before player input
 #But After Everything Is Created
-func setStart():
-	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)	
+func setStart(startingPlayer):
+	currentPlayer = startingPlayer
+	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
+	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"	
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -68,8 +70,8 @@ func cardHandler():
 	
 func showCard(randomIndex):
 	var randomCard = Deck[randomIndex]
-	var s = randomCard[cardValues.suit]
-	var v = randomCard[cardValues.value] 
+	var s = randomCard[0]
+	var v = randomCard[1] 
 	
 	var texture = load("res://assets/Images/CardFronts/cards"+str(s)+"-"+str(v)+".png")
 	gamePlayers[currentPlayer].cardTextures.append(texture)	
@@ -120,8 +122,8 @@ func displayCurrentPlayerCards(toggle):
 	if(footerDisplay.get_children().size() < cardsToDisplay.size()):
 		while (footerDisplay.get_children().size() < cardsToDisplay.size()):
 			var newCardPreview = TextureRect.new()
-			newCardPreview.set_stretch_mode(5)
-			newCardPreview.set_expand_mode(1)
+			newCardPreview.set_stretch_mode(TextureRect.STRETCH_KEEP_ASPECT_CENTERED)
+			newCardPreview.set_expand_mode(TextureRect.EXPAND_IGNORE_SIZE)
 			newCardPreview.set_custom_minimum_size(Vector2(60,90))
 			footerDisplay.add_child(newCardPreview)
 	var i = 0
@@ -132,7 +134,7 @@ func displayCurrentPlayerCards(toggle):
 		
 func checkDefeat(i):
 #	return
-	if ((Deck[i][cardValues.value] == 1) || Deck[i][cardValues.suit] == 5):
+	if ((Deck[i][1] == 1) || Deck[i][0] == 5):
 		outPlayers.append(currentPlayer)
 		print("Player " +str(currentPlayer + 1) + " Is Out!")
 		if(outPlayers.size() == (numOfPlayers -1)):
@@ -207,21 +209,25 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
+	
+#Initalize Stuff
 	victoryScreen.visible = true
-	#Set Victory Message
-	print("Player " + str(currentPlayer + 1) + " Wins!")
 	victoryScreen.get_node("Winner/Label").text = "Player " + str(currentPlayer + 1) + " Wins!"
 	victoryScreen.get_node("VictoryPopup/VBoxContainer/VictoryType").text = victoryMessage
 	var victoryScreenCardDisplay = victoryScreen.get_node("VictoryPopup/VBoxContainer/FlowContainer/PlayerCards");
-	
-#Code Pasted Over From Other Thing, maybe make a function for it idk
+
+#Clear Victory Cards If Any	
+	for n in victoryScreenCardDisplay.get_children():
+		victoryScreenCardDisplay.remove_child(n)
+		n.queue_free()
+#Display Victory Cards
 	if(victoryCards):
 		var cardTexturesToDisplay = victoryCards.map(func(pair): return pair[1]);		
 		if(victoryScreenCardDisplay.get_children().size() < cardTexturesToDisplay.size()):
 			while (victoryScreenCardDisplay.get_children().size() < cardTexturesToDisplay.size()):
 				var newCardPreview = TextureRect.new()
-				newCardPreview.set_stretch_mode(5)
-				newCardPreview.set_expand_mode(0)
+				newCardPreview.set_stretch_mode(TextureRect.STRETCH_KEEP_ASPECT_CENTERED)
+				newCardPreview.set_expand_mode(TextureRect.EXPAND_KEEP_SIZE)
 				newCardPreview.set_custom_minimum_size(Vector2(70,100))
 				victoryScreenCardDisplay.add_child(newCardPreview)
 		var i = 0
@@ -229,9 +235,6 @@ func victoryHandler(victoryMessage, victoryCards):
 			cardPreview.set_texture(cardTexturesToDisplay[i])
 			i+= 1
 	
-	#Display Cards Player Won With
-	print(victoryCards);
-	#Display cards related to victory
 
 func restart():
 	pass

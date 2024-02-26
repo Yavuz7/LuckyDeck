@@ -65,12 +65,6 @@ grow_vertical = 2
 theme_override_constants/margin_top = 25
 metadata/_edit_use_anchors_ = true
 
-[node name="grida" type="GridContainer" parent="gridMargin"]
-visible = false
-layout_mode = 2
-columns = 8
-metadata/_edit_use_anchors_ = true
-
 [node name="grid" type="FlowContainer" parent="gridMargin"]
 layout_mode = 2
 size_flags_vertical = 4
@@ -320,6 +314,9 @@ grow_horizontal = 1
 grow_vertical = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Label" parent="VictoryScreen/RestartGame" index="3"]
+text = "Restart Game"
+
 [node name="Winner" type="Button" parent="VictoryScreen"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
@@ -470,5 +467,13 @@ offset_top = 0.0
 text = "Return To Main Menu"
 metadata/_edit_use_anchors_ = true
 
+[node name="Label" parent="VictoryScreen/ReturnToMainMenu" index="3"]
+text = "Return To Main Menu"
+
 [connection signal="pressed" from="ButtonSceneFooter" to="." method="_on_button_scene_footer_pressed"]
 [connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
+[connection signal="pressed" from="VictoryScreen/RestartGame" to="." method="_on_restart_game_pressed"]
+[connection signal="pressed" from="VictoryScreen/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
+
+[editable path="VictoryScreen/RestartGame"]
+[editable path="VictoryScreen/ReturnToMainMenu"]
