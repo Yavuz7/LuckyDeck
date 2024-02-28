@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlpj0vqd7jg6e"]
+[gd_scene load_steps=7 format=3 uid="uid://dlpj0vqd7jg6e"]
 
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_wfdqy"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_ptkh5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
+[ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="5_8paeo"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_dj7v1"]
 
 [node name="RulesMenu" type="Panel"]
@@ -67,7 +68,7 @@ stretch_mode = 5
 [node name="RulesHeading" parent="mainLayoutRules/Heading Seperator" instance=ExtResource("2_ptkh5")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainLayoutRules/Heading Seperator/RulesHeading"]
+[node name="Label2" type="Label" parent="mainLayoutRules/Heading Seperator/RulesHeading"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,7 +93,10 @@ theme_override_constants/separation = 40
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
-[node name="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="0"]
+[node name="Texturedtexture" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="0"]
+texture = ExtResource("5_8paeo")
+
+[node name="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="1"]
 offset_top = -3.0
 offset_bottom = 3.0
 metadata/_edit_use_anchors_ = true

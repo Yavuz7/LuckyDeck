@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://pgbttetrhhp6"]
+[gd_scene load_steps=26 format=3 uid="uid://pgbttetrhhp6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerFavoriteCardMenu.gd" id="1_f3qfo"]
 [ext_resource type="ButtonGroup" uid="uid://beososyiu12nc" path="res://Scripts/suitSelection.tres" id="2_7fcjv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="4_1ausm"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="5_ih1l5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="6_8r48o"]
+[ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="7_eqpu7"]
 [ext_resource type="Texture2D" uid="uid://dd6xoy4hk75l0" path="res://assets/Images/CardFronts/cards1-2.png" id="7_qqvy6"]
 [ext_resource type="Texture2D" uid="uid://skqe0wti1hj4" path="res://assets/Images/CardFronts/cards1-1.png" id="8_ev2v0"]
 [ext_resource type="Texture2D" uid="uid://dyqua4h061bdt" path="res://assets/Images/CardFronts/cards2-2.png" id="9_6kjnu"]
@@ -165,9 +166,11 @@ custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 mouse_filter = 1
 
+[node name="Texturedtexture" parent="mainLayoutCredits/SelectionBox/cardSelection" index="0"]
+texture = ExtResource("7_eqpu7")
+
 [node name="TextureRect" parent="mainLayoutCredits/SelectionBox/cardSelection" index="1"]
-offset_top = -3.0
-offset_bottom = 3.0
+offset_bottom = 5.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainLayoutCredits/SelectionBox/cardSelection"]
 layout_mode = 1
@@ -175,7 +178,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -12.0
+offset_top = 2.0
 offset_right = 12.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1

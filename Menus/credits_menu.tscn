@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpbpd0105ksyl"]
+[gd_scene load_steps=7 format=3 uid="uid://bpbpd0105ksyl"]
 
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_01b4m"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_sxkhi"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_m6iv0"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6o3rq"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_68nrn"]
+[ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="5_85oia"]
 
 [node name="CreditsMenu" type="Panel"]
 anchors_preset = 15
@@ -67,7 +68,7 @@ stretch_mode = 5
 [node name="RulesHeading" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("2_sxkhi")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainLayoutCredits/Heading Seperator/RulesHeading"]
+[node name="Label2" type="Label" parent="mainLayoutCredits/Heading Seperator/RulesHeading"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -92,11 +93,14 @@ theme_override_constants/separation = 40
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
-[node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
+[node name="Texturedtexture" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
+texture = ExtResource("5_85oia")
+
+[node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="1"]
 offset_top = -3.0
 offset_bottom = 3.0
 
-[node name="Label" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
+[node name="Label2" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0208333

@@ -67,7 +67,7 @@ stretch_mode = 5
 [node name="SettingsHeading" parent="mainLayoutSettings/Heading Seperator" instance=ExtResource("2_p5lnu")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainLayoutSettings/Heading Seperator/SettingsHeading"]
+[node name="Label2" type="Label" parent="mainLayoutSettings/Heading Seperator/SettingsHeading"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
