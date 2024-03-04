@@ -241,13 +241,15 @@ grow_vertical = 2
 
 [node name="PlayerScores" type="ScrollContainer" parent="SettingsMenu/Settings"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.0277778
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -130.0
+anchor_bottom = 0.871
+offset_bottom = -0.226074
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Players" type="VBoxContainer" parent="SettingsMenu/Settings/PlayerScores"]
 layout_mode = 2

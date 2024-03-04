@@ -34,11 +34,17 @@ func removePreview():
 		
 func loadCardsFromPlayers():
 	var gamePlayers = GameManager.gamePlayers
+	var currentPlayer = GameManager.currentPlayer
+	var outPlayers = GameManager.outPlayers
 	for player in gamePlayers.size():
 		var template = cardPreviewTemplate.instantiate();
 		var templateDisplay = template.get_node("HSplitContainer/ScrollContainer/PlayerCards")
 		var templateName = template.get_node("HSplitContainer/PlayerName")		
 		templateName.text = "Player " + str(player + 1)
+		if outPlayers.has(player):
+			templateName.set("theme_override_colors/font_color",Color(Color.WEB_GRAY))
+		if player == currentPlayer:
+			templateName.set("theme_override_colors/font_color",Color(Color.GOLD))								
 		var cardsToDisplay = gamePlayers[player].cardTextures;
 		if(templateDisplay.get_children().size() < cardsToDisplay.size()):
 			while (templateDisplay.get_children().size() < cardsToDisplay.size()):
@@ -51,7 +57,7 @@ func loadCardsFromPlayers():
 		for cardPreview in templateDisplay.get_children():		
 			cardPreview.set_texture(cardsToDisplay[i])
 			i+= 1
-		playersMenuLocation.add_child(template);		
+		playersMenuLocation.add_child(template);
 func _on_return_to_game_pressed():
 	pause();
 
