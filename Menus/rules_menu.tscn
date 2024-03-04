@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_ptkh5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
-[ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="5_8paeo"]
+[ext_resource type="Texture2D" uid="uid://dtfnemlxxny4m" path="res://assets/Images/rulesimage.png" id="5_75v6c"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_dj7v1"]
 
 [node name="RulesMenu" type="Panel"]
@@ -94,9 +94,10 @@ custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
 [node name="Texturedtexture" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="0"]
-texture = ExtResource("5_8paeo")
+texture = ExtResource("5_75v6c")
 
 [node name="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="1"]
+visible = false
 offset_top = -3.0
 offset_bottom = 3.0
 metadata/_edit_use_anchors_ = true

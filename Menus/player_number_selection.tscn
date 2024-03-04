@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkcjnca5vy83d"]
+[gd_scene load_steps=15 format=3 uid="uid://dkcjnca5vy83d"]
 
 [ext_resource type="Script" path="res://Menus/player_number_selection.gd" id="1_0y32y"]
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_gpqbf"]
@@ -7,11 +7,9 @@
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_u1d0b"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_by2kf"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7xfou"]
-size = Vector2(0, 0)
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cqvo7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ey3mi"]
-bg_color = Color(0.407843, 0.00784314, 0.2, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gpwuu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_puhaq"]
 
@@ -21,6 +19,10 @@ bg_color = Color(0.309804, 0.00392157, 0.145098, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pv0k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0vc4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dt22"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgy5p"]
 
 [node name="playerNumberSelection" type="Panel"]
 anchors_preset = 15
@@ -84,7 +86,7 @@ stretch_mode = 5
 [node name="PlayersHeading" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("2_pldgd")]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="mainLayoutCredits/Heading Seperator/PlayersHeading"]
+[node name="Label2" type="Label" parent="mainLayoutCredits/Heading Seperator/PlayersHeading"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,10 +107,6 @@ text = "Number Of Players
 [node name="playerButtons" parent="mainLayoutCredits" instance=ExtResource("2_pldgd")]
 layout_mode = 2
 
-[node name="TextureRect" parent="mainLayoutCredits/playerButtons" index="0"]
-offset_top = 1.0
-offset_bottom = -1.0
-
 [node name="totalPlayers" type="SpinBox" parent="mainLayoutCredits/playerButtons/TextureRect" index="0"]
 layout_mode = 1
 anchors_preset = 8
@@ -122,8 +120,9 @@ offset_right = 106.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_icons/updown = SubResource("PlaceholderTexture2D_7xfou")
+theme_override_icons/updown = SubResource("PlaceholderTexture2D_cqvo7")
 min_value = 2.0
+max_value = 1000.0
 value = 2.0
 rounded = true
 allow_greater = true
@@ -142,7 +141,7 @@ offset_right = 62.56
 offset_bottom = 37.0
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ey3mi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gpwuu")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_puhaq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qeg7c")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6pv0k")
@@ -177,7 +176,7 @@ offset_right = 62.48
 offset_bottom = 35.0
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_ey3mi")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7dt22")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_puhaq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qeg7c")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6pv0k")
@@ -195,6 +194,7 @@ offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 140
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rgy5p")
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 3

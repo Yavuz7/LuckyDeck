@@ -1,10 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkmq07x8ri8vp"]
+[gd_scene load_steps=18 format=3 uid="uid://dkmq07x8ri8vp"]
 
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_vqpnr"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_p5lnu"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_4hchn"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_ue3t1"]
 [ext_resource type="Script" path="res://assets/returnButton.gd" id="5_a7173"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tlymw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xd02a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_46ltj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1ef6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy45v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wy53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqywk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cqtio"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvd21"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gj2l6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r66h5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nbj70"]
 
 [node name="SettingsMenu" type="Panel"]
 anchors_preset = 15
@@ -103,7 +127,12 @@ theme_override_constants/margin_right = 80
 
 [node name="CheckButton" type="CheckButton" parent="mainLayoutSettings/SettingsSeperator/Music Toggle/MarginContainer"]
 layout_mode = 2
-theme = ExtResource("4_ue3t1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_tlymw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xd02a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_46ltj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_s1ef6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_iy45v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4wy53")
 text = "Music"
 icon_alignment = 2
 expand_icon = true
@@ -124,6 +153,12 @@ theme_override_constants/margin_right = 80
 [node name="CheckButton" type="CheckButton" parent="mainLayoutSettings/SettingsSeperator/VFX Toggle/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("4_ue3t1")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uqywk")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cqtio")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mvd21")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_gj2l6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_r66h5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nbj70")
 text = "VFX
 "
 icon_alignment = 2
