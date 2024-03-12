@@ -36,10 +36,13 @@ func loadCardsFromPlayers():
 	var gamePlayers = GameManager.gamePlayers
 	var currentPlayer = GameManager.currentPlayer
 	var outPlayers = GameManager.outPlayers
+
+	
 	for player in gamePlayers.size():
 		var template = cardPreviewTemplate.instantiate();
+		template.set_custom_minimum_size(Vector2(5,5))		
 		var templateDisplay = template.get_node("HSplitContainer/ScrollContainer/PlayerCards")
-		var templateName = template.get_node("HSplitContainer/PlayerName")		
+		var templateName = template.get_node("HSplitContainer/PlayerName")	
 		templateName.text = "Player " + str(player + 1)
 		if outPlayers.has(player):
 			templateName.set("theme_override_colors/font_color",Color(Color.WEB_GRAY))
@@ -58,6 +61,13 @@ func loadCardsFromPlayers():
 			cardPreview.set_texture(cardsToDisplay[i])
 			i+= 1
 		playersMenuLocation.add_child(template);
+		#Add a egg to the basket to keep all the chickens in
+	if(gamePlayers.size() >= 10):
+		var template = cardPreviewTemplate.instantiate();
+		var templateName = template.get_node("HSplitContainer/PlayerName")
+		templateName.text = "Egg"						
+		playersMenuLocation.add_child(template);
+		return
 func _on_return_to_game_pressed():
 	pause();
 

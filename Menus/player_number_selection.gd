@@ -13,8 +13,8 @@ func _on_minus_pressed():
 
 func _on_plus_pressed():
 	players.value += 1
-	if(players.value > 100):
-		players.value = 100
+	if(players.value > 500):
+		players.value = 500
 
 
 func _on_continue_pressed():
