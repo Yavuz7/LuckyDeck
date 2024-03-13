@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlpj0vqd7jg6e"]
 
+[ext_resource type="Script" path="res://Menus/rules_menu.gd" id="1_nl07u"]
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_wfdqy"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_ptkh5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
-[ext_resource type="Script" path="res://assets/returnButton.gd" id="5_dj7v1"]
 [ext_resource type="Texture2D" uid="uid://bojv4wt1n7yj0" path="res://assets/Images/rulesimage2.png" id="5_m3um4"]
 
 [node name="RulesMenu" type="Panel"]
@@ -13,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nl07u")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -111,7 +112,6 @@ anchor_top = 0.9
 anchor_bottom = 0.978
 offset_top = 0.0
 offset_bottom = 0.159912
-script = ExtResource("5_dj7v1")
 
 [node name="Label2" type="Label" parent="Return"]
 layout_mode = 1
@@ -130,6 +130,6 @@ theme = ExtResource("4_6e6fk")
 theme_override_font_sizes/font_size = 60
 text = "Return To Main Menu"
 
-[connection signal="pressed" from="Return" to="Return" method="_on_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
 
 [editable path="mainLayoutRules/RulesInfoBox/Rules Toggle"]

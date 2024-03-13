@@ -21,3 +21,8 @@ func _on_continue_pressed():
 	
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
+
+
+func _on_return_to_main_menu_pressed():
+	self.queue_free()
+	pass # Replace with function body.
