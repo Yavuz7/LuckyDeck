@@ -8,13 +8,12 @@ func _on_minus_pressed():
 	players.value -= 1
 	if(players.value < 2):
 		players.value = 2
-	pass # Replace with function body.
 
 
 func _on_plus_pressed():
 	players.value += 1
-	if(players.value > 500):
-		players.value = 500
+	if(players.value > 16):
+		players.value = 16
 
 
 func _on_continue_pressed():
