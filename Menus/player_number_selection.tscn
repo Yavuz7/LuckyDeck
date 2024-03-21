@@ -59,7 +59,7 @@ anchor_bottom = 1.0
 offset_top = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 40
 
 [node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutCredits"]
 layout_mode = 2
@@ -215,6 +215,86 @@ text = "+"
 horizontal_alignment = 1
 vertical_alignment = 3
 
+[node name="PlayerNameChange" parent="mainLayoutCredits" instance=ExtResource("2_pldgd")]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Texturedtexture" parent="mainLayoutCredits/PlayerNameChange" index="0"]
+anchors_preset = -1
+anchor_top = -0.15
+anchor_bottom = 4.0
+texture = ExtResource("6_1ikbo")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" parent="mainLayoutCredits/PlayerNameChange" index="1"]
+anchors_preset = -1
+anchor_top = -0.15
+anchor_bottom = 4.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" parent="mainLayoutCredits/PlayerNameChange" index="2"]
+anchors_preset = -1
+anchor_top = 3.98
+anchor_bottom = 4.23
+offset_bottom = -3.05176e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="mainLayoutCredits/PlayerNameChange" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="mainLayoutCredits/PlayerNameChange"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0611111
+anchor_top = 0.55
+anchor_right = 0.941667
+anchor_bottom = 3.6
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("6_1ur0o")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainLayoutCredits/PlayerNameChange/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.016858
+anchor_top = 0.0145971
+anchor_right = 0.984492
+anchor_bottom = 0.981986
+offset_left = 0.312
+offset_top = -0.0580003
+offset_right = -0.16803
+offset_bottom = 0.00799561
+follow_focus = true
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainLayoutCredits/PlayerNameChange/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerNameEdit" type="LineEdit" parent="mainLayoutCredits/PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Player 1"
+max_length = 20
+expand_to_text_length = true
+context_menu_enabled = false
+caret_blink = true
+
+[node name="Label2" type="Label" parent="mainLayoutCredits/PlayerNameChange"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.07
+anchor_right = 1.0
+anchor_bottom = -0.07
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Player Name Change"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Continue" parent="." instance=ExtResource("2_pldgd")]
 layout_mode = 1
 anchors_preset = -1
@@ -272,110 +352,10 @@ text = "Return To Main Menu
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerNameChange" parent="." instance=ExtResource("2_pldgd")]
-layout_mode = 2
-anchors_preset = 0
-anchor_top = 0.488969
-anchor_bottom = 0.567
-offset_top = 0.119995
-offset_bottom = 0.23999
-metadata/_edit_use_anchors_ = true
-
-[node name="Texturedtexture" parent="PlayerNameChange" index="0"]
-anchors_preset = -1
-anchor_top = -0.15
-anchor_bottom = 3.5
-texture = ExtResource("6_1ikbo")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" parent="PlayerNameChange" index="1"]
-anchors_preset = -1
-anchor_top = -0.15
-anchor_bottom = 3.5
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" parent="PlayerNameChange" index="2"]
-anchors_preset = -1
-anchor_top = 3.48
-anchor_bottom = 3.73
-offset_bottom = -3.05176e-05
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" parent="PlayerNameChange" index="3"]
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="PlayerNameChange"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.195833
-anchor_top = 0.55
-anchor_right = 0.804167
-anchor_bottom = 3.33
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("6_1ur0o")
-metadata/_edit_use_anchors_ = true
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PlayerNameChange/Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.009
-anchor_top = 0.011
-anchor_right = 0.992354
-anchor_bottom = 0.964
-offset_left = 0.312
-offset_top = -0.0580003
-offset_right = -0.16803
-offset_bottom = 0.00799561
-follow_focus = true
-horizontal_scroll_mode = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerNameChange/Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Player 1"
-
-[node name="Label2" type="Label" parent="PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Player 1"
-
-[node name="Label3" type="Label" parent="PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Player 1"
-
-[node name="Label4" type="Label" parent="PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Player 1"
-
-[node name="Label5" type="Label" parent="PlayerNameChange/Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 54
-text = "Player 1"
-
-[node name="Label2" type="Label" parent="PlayerNameChange"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.07
-anchor_right = 1.0
-anchor_bottom = -0.07
-offset_bottom = 61.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "Player Name Change"
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
 [connection signal="pressed" from="mainLayoutCredits/playerButtons/Minus" to="." method="_on_minus_pressed"]
 [connection signal="pressed" from="mainLayoutCredits/playerButtons/Plus" to="." method="_on_plus_pressed"]
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
 
 [editable path="mainLayoutCredits/playerButtons"]
-[editable path="PlayerNameChange"]
+[editable path="mainLayoutCredits/PlayerNameChange"]
