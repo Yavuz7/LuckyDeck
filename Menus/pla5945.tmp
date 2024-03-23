@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vdn2hi1faqs"]
+
+[ext_resource type="StyleBox" uid="uid://dqp3qfx2ubkah" path="res://assets/style/player_name_edit_style.tres" id="1_xvmct"]
+[ext_resource type="Script" path="res://Menus/player_name_edit.gd" id="2_qw4p1"]
+
+[node name="PlayerNameEdit" type="LineEdit"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = ExtResource("1_xvmct")
+text = "Player 1"
+max_length = 20
+expand_to_text_length = true
+context_menu_enabled = false
+select_all_on_focus = true
+caret_blink = true
+script = ExtResource("2_qw4p1")
+
+[connection signal="text_changed" from="." to="." method="_on_text_changed"]
