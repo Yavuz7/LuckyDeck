@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://pgbttetrhhp6"]
+[gd_scene load_steps=31 format=3 uid="uid://pgbttetrhhp6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerFavoriteCardMenu.gd" id="1_f3qfo"]
 [ext_resource type="ButtonGroup" uid="uid://beososyiu12nc" path="res://Scripts/suitSelection.tres" id="2_7fcjv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="6_8r48o"]
 [ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="7_eqpu7"]
 [ext_resource type="Texture2D" uid="uid://su1ywooxqt4b" path="res://assets/Images/cardIconsForSelection/icons20000.png" id="8_p3tyu"]
+[ext_resource type="Script" path="res://Scripts/SoundHookUpSuits.gd" id="8_ybqjk"]
 [ext_resource type="Texture2D" uid="uid://dbnq3ig2hsat3" path="res://assets/Images/cardIconsForSelection/icons2selected0000.png" id="9_moe36"]
 [ext_resource type="Texture2D" uid="uid://b8mqyx1grtyit" path="res://assets/Images/cardIconsForSelection/icons20013.png" id="10_wb6tl"]
 [ext_resource type="Texture2D" uid="uid://4s76dwwls6d7" path="res://assets/Images/cardIconsForSelection/icons2selected0013.png" id="11_lfx5p"]
@@ -19,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c8vd5n4mc2rxr" path="res://assets/Images/cardIconsForSelection/icons20039.png" id="14_ndv5r"]
 [ext_resource type="Texture2D" uid="uid://jve8pplv17wf" path="res://assets/Images/cardIconsForSelection/icons2selected0039.png" id="15_a0o1g"]
 [ext_resource type="Texture2D" uid="uid://bfv4r7hwpte2q" path="res://assets/Images/buttonpattern2.png" id="15_kwy4t"]
+[ext_resource type="Script" path="res://Menus/valuesSoundHookup.gd" id="17_qnxry"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oongi"]
 
@@ -199,6 +201,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 45
 alignment = 1
+script = ExtResource("8_ybqjk")
 
 [node name="Diamond" type="TextureButton" parent="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer"]
 layout_mode = 2
@@ -245,6 +248,7 @@ layout_mode = 2
 theme_override_constants/h_separation = -10
 theme_override_constants/v_separation = -10
 columns = 7
+script = ExtResource("17_qnxry")
 
 [node name="1" type="Button" parent="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values"]
 custom_minimum_size = Vector2(100, 90)
@@ -536,6 +540,23 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/ForwardButton" to="." method="_on_forward_button_pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer/Diamond" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer" method="_on_diamond_pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer/Heart" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer" method="_on_heart_pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer/Spade" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer" method="_on_spade_pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer/Club" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/Suit Selection/HBoxContainer" method="_on_club_pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/1" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/2" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/3" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/4" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/5" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/6" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/7" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/8" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/9" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/10" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/11" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/12" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
+[connection signal="pressed" from="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values/13" to="mainLayoutCredits/SelectionBox/cardSelection/VBoxContainer/MarginContainer/HBoxContainer/values" method="_on__pressed"]
 [connection signal="pressed" from="Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ReturnDoubleCheck" to="." method="_on_return_double_check_pressed"]
 

@@ -10,6 +10,7 @@ func _init():
 	set_texture_normal(back)
 	
 func _pressed():
+	SoundManager.play_preset(SoundManager.CARD_SELECT_SOUND)	
 	flip()
 # Called when the node enters the scene tree for the first time.
 

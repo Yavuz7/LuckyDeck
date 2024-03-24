@@ -1,17 +1,27 @@
 extends Node
 
 var continueSound = preload("res://assets/audio/soundEffects/buttondefault4.mp3")
-var returnSound = preload("res://assets/audio/soundEffects/returnbutton.wav")
+var returnSound = preload("res://assets/audio/soundEffects/returnbutton.mp3")
+var switchSound = preload("res://assets/audio/soundEffects/switchplayerbutton.mp3")
+var cardSelectSound = preload("res://assets/audio/soundEffects/cardSelect.mp3")
 
-var soundDictionary = [continueSound, returnSound]
+#	Here is the sounds With their Volume
+var soundDictionary = [[continueSound, 10], 
+[returnSound, -3], 
+[switchSound, -5], 
+[cardSelectSound, -1]]
 
+enum {CONTINUE_SOUND,RETURN_SOUND,SWITCH_SOUND,CARD_SELECT_SOUND}
+
+#Only One Song Will Play at a time
+var currentSong : AudioStreamPlayer
+var nextSong : AudioStreamPlayer
 #Sound Controller Derived from : https://youtu.be/mnm7uV4MOTk?si=Edpxw_AZpkCln1s_
 
-#[continueSound]
-func play_preset(soundKey: int, volume: int):
+func play_preset(soundKey: int):
 	var instance = AudioStreamPlayer.new()
-	instance.stream = soundDictionary[soundKey]
-	instance.volume_db = volume
+	instance.stream = soundDictionary[soundKey][0]
+	instance.volume_db = soundDictionary[soundKey][1]
 	instance.finished.connect(remove_node.bind(instance))
 	add_child(instance)
 	instance.play()

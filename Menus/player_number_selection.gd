@@ -27,6 +27,7 @@ func _on_minus_pressed():
 	if(players.value < 2):
 		players.value = 2
 		return;
+	SoundManager.play_preset(SoundManager.SWITCH_SOUND)
 	players.value -= 1
 
 
@@ -34,9 +35,12 @@ func _on_plus_pressed():
 	players.value += 1
 	if(players.value > 16):
 		players.value = 16
+		return
+	SoundManager.play_preset(SoundManager.SWITCH_SOUND)	
 
 
 func _on_continue_pressed():
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	GameManager.numOfPlayers = players.value
 	var arrayOfNamesToUse = arrayOfCustomNames.slice(0,players.value)
 	GameManager.playerNames = arrayOfNamesToUse
@@ -45,6 +49,7 @@ func _on_continue_pressed():
 
 
 func _on_return_to_main_menu_pressed():
+	SoundManager.play_preset(SoundManager.RETURN_SOUND)
 	self.queue_free()
 
 #This function Adds and removes children to match the number of players

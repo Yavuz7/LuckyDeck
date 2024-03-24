@@ -6,6 +6,7 @@ extends Panel
 @export var valueSelect: ButtonGroup
 
 var currentPlayers
+var playerNames = Array()
 var playerIndex = 0
 var playerFavoriteCards = {}
 var suitIndexes = Array()
@@ -15,8 +16,10 @@ enum suitValues{none,Diamond,Heart,Spade,Club}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentPlayers = GameManager.numOfPlayers
+	playerNames = GameManager.playerNames
 	suitIndexes = suitSelect.get_buttons()
 	valueIndexes = valueSelect.get_buttons()
+	playerDisplay.text = playerNames[playerIndex] + "'s"
 	var i = 0
 	while (i < currentPlayers):
 		playerFavoriteCards[i] = []
@@ -45,6 +48,7 @@ func loadSelection(i):
 func _on_start_game_pressed():
 	saveSelection(playerIndex)
 	sendToGameManager()
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
 	self.queue_free()
 	
@@ -54,17 +58,18 @@ func _on_back_button_pressed():
 	if((playerIndex - 1) >= 0):
 		saveSelection(playerIndex)
 		playerIndex-= 1
-		playerDisplay.text = "Player " + str(playerIndex + 1) + "\'s"
+		playerDisplay.text = playerNames[playerIndex] + "\'s"
 		loadSelection(playerIndex)
+		SoundManager.play_preset(SoundManager.SWITCH_SOUND)
 
 
 func _on_forward_button_pressed():
 	if((playerIndex + 1) < currentPlayers):
 		saveSelection(playerIndex)
 		playerIndex+= 1
-		playerDisplay.text = "Player " + str(playerIndex + 1) + "\'s"	
+		playerDisplay.text = playerNames[playerIndex] + "\'s"	
 		loadSelection(playerIndex)
-		
+		SoundManager.play_preset(SoundManager.SWITCH_SOUND)		
 
 
 func _on_return_double_check_pressed():
@@ -75,7 +80,7 @@ func _on_return_double_check_pressed():
 	elif(returnButton.text == "You really want to return?"):
 		returnButton.text = "Really really want to return??"
 	elif(returnButton.text == "Really really want to return??"):
-		
+		SoundManager.play_preset(SoundManager.RETURN_SOUND)
 		get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
 		self.queue_free()
 	
