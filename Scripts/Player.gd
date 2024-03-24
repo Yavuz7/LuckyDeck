@@ -13,9 +13,9 @@ var cardTexturesSortedValues = Array()
 var cardTexturesSortedSuits = Array()
 
 
-func _init(favCard,name):
+func _init(favCard,pname):
 	favoriteCard = load("res://assets/Images/CardFronts/cards"+str(favCard[0])+"-"+str(favCard[1])+".png")
-	playerName = name
+	playerName = pname
 	cards = []
 	cardTextures = []
 	

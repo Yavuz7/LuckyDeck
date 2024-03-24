@@ -11,21 +11,25 @@ func _ready():
 #Music Starts Here
 
 func _on_play_pressed():
+	SoundManager.play_preset(0, 10)
 	var instance = playerMenu.instantiate()
 	add_child(instance)
 
 
 func _on_rules_pressed():
+	SoundManager.play_preset(0, 10)
 	var instance = rulesMenu.instantiate()
 	add_child(instance)
 
 
 func _on_settings_pressed():
+	SoundManager.play_preset(0, 10)
 	var instance = settingsMenu.instantiate()
 	add_child(instance)
 
 
 func _on_credits_pressed():
+	SoundManager.play_preset(0, 10)
 	var instance = creditsMenu.instantiate()
 	add_child(instance)
 
