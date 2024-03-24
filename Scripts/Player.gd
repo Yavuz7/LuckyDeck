@@ -3,7 +3,7 @@ extends Node
 class_name Player
 
 var index
-#var playerName:Strin
+var playerName:String
 var favoriteCard;
 var cards = Array()
 var cardTextures = Array()
@@ -13,8 +13,9 @@ var cardTexturesSortedValues = Array()
 var cardTexturesSortedSuits = Array()
 
 
-func _init(favCard):
+func _init(favCard,name):
 	favoriteCard = load("res://assets/Images/CardFronts/cards"+str(favCard[0])+"-"+str(favCard[1])+".png")
+	playerName = name
 	cards = []
 	cardTextures = []
 	

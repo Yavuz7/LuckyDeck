@@ -38,7 +38,8 @@ func _on_plus_pressed():
 
 func _on_continue_pressed():
 	GameManager.numOfPlayers = players.value
-	
+	var arrayOfNamesToUse = arrayOfCustomNames.slice(0,players.value)
+	GameManager.playerNames = arrayOfNamesToUse
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
 

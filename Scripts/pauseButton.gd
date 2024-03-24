@@ -43,7 +43,7 @@ func loadCardsFromPlayers():
 		template.set_custom_minimum_size(Vector2(5,5))		
 		var templateDisplay = template.get_node("HSplitContainer/ScrollContainer/PlayerCards")
 		var templateName = template.get_node("HSplitContainer/PlayerName")	
-		templateName.text = "Player " + str(player + 1)
+		templateName.text = gamePlayers[player].playerName
 		if outPlayers.has(player):
 			templateName.set("theme_override_colors/font_color",Color(Color.WEB_GRAY))
 		if player == currentPlayer:

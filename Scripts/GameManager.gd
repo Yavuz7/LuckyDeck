@@ -7,6 +7,8 @@ var card_animator
 var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
+
+
 #Grid used for resizing after cards are picked
 var grid
 var victoryScreen
@@ -30,6 +32,7 @@ var playerFavoriteCards = {}
 
 var outPlayers = Array()
 
+var playerNames = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +41,7 @@ func _ready():
 func fillPlayerArray():
 	var i = 0
 	while (i < numOfPlayers):
-		gamePlayers.append(Player.new(playerFavoriteCards[i]))
+		gamePlayers.append(Player.new(playerFavoriteCards[i],playerNames[i]))
 		i+= 1
 
 #This Function Handles Stuff That Needs To Happen before player input
@@ -46,7 +49,7 @@ func fillPlayerArray():
 func setStart(startingPlayer):
 	currentPlayer = startingPlayer
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
-	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"	
+	playerDisplay.text = gamePlayers[currentPlayer].playerName	+ "'s turn"
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -86,14 +89,14 @@ func showCard(randomIndex):
 func addCardToPlayer(i):
 	var lastCard = Deck[i]
 	gamePlayers[currentPlayer].cards.append(lastCard)
-	print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
+	#print("Player " + str(currentPlayer + 1) + "\'s Current Hand: " + str(gamePlayers[currentPlayer].cards))
 	
 func changeCurrentPlayer():	
 
 	loopThroughPlayers()
 #		print("Current Player After OutPlayers Loop: " + str( currentPlayer + 1))	
 	
-	playerDisplay.text = "Player "+ str(currentPlayer +1) +"'s Turn"
+	playerDisplay.text = gamePlayers[currentPlayer].playerName	+ "'s turn"
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
 	displayCurrentPlayerCards(false)
 
@@ -212,7 +215,7 @@ func victoryHandler(victoryMessage, victoryCards):
 	
 #Initalize Stuff
 	victoryScreen.visible = true
-	victoryScreen.get_node("Winner/Label").text = "Player " + str(currentPlayer + 1) + " Wins!"
+	victoryScreen.get_node("Winner/Label").text = gamePlayers[currentPlayer].playerName	+ " Wins!"
 	victoryScreen.get_node("VictoryPopup/VBoxContainer/VictoryType").text = victoryMessage
 	var victoryScreenCardDisplay = victoryScreen.get_node("VictoryPopup/VBoxContainer/FlowContainer/PlayerCards");
 
