@@ -18,11 +18,13 @@ func setUpGame():
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
 func _on_button_scene_footer_pressed():
+	SoundManager.play_preset(SoundManager.SORT_CARDS_SOUND)
 	GameManager.displayCurrentPlayerCards(true)
 	pass # Replace with function body.
 
 
 func _on_restart_game_pressed():
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	$VictoryScreen.visible = false;
 
 #Reset GameManager Stuff
@@ -66,6 +68,7 @@ func _on_return_to_main_menu_pressed():
 	elif(buttonText.text == "You really want to return?"):
 		buttonText.text = "Really really want to return??"
 	elif(buttonText.text == "Really really want to return??"):
+		SoundManager.play_preset(SoundManager.RETURN_SOUND)
 		for player in GameManager.gamePlayers:
 			player.deleteSelf();
 	

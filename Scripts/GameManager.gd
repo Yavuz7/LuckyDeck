@@ -145,7 +145,8 @@ func checkDefeat(i):
 			loopThroughPlayers()
 			victoryHandler("Victory By Default!\n(Last Player Standing)",null)
 			return
-						
+		else:
+			SoundManager.play_preset(SoundManager.DEFEAT_SOUND)				
 func checkVictory():
 	var victoryMessage
 	if(gamePlayers[currentPlayer].cards.size() > 4):
@@ -212,7 +213,7 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
-	
+	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
 #Initalize Stuff
 	victoryScreen.visible = true
 	victoryScreen.get_node("Winner/Label").text = gamePlayers[currentPlayer].playerName	+ " Wins!"

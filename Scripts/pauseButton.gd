@@ -19,9 +19,11 @@ func _pressed():
 
 func pause(): 
 	if(!paused):
+		SoundManager.play_preset(SoundManager.PAUSE_OPEN_SOUND)
 		loadCardsFromPlayers()
 		set_texture_normal(closeButton)	
 	else:
+		SoundManager.play_preset(SoundManager.PAUSE_CLOSE_SOUND)		
 		removePreview()				
 		set_texture_normal(pauseButton)
 	settings.visible = !settings.visible
