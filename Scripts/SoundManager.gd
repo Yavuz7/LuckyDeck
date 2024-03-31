@@ -1,26 +1,26 @@
 extends Node
 
-var continueSound = preload("res://assets/audio/soundEffects/buttondefault4.mp3")
-var returnSound = preload("res://assets/audio/soundEffects/returnbutton.mp3")
-var switchSound = preload("res://assets/audio/soundEffects/switchplayerbutton.mp3")
+var continueSound = preload("res://assets/audio/soundEffects/selectsymbolsound3.mp3")
+var returnSound = preload("res://assets/audio/soundEffects/selectsymbolsound.mp3")
+var switchSound = preload("res://assets/audio/soundEffects/selectsymbolsound2.mp3")
 var cardSelectSound = preload("res://assets/audio/soundEffects/cardSelect.mp3")
 
 var sortCards = preload("res://assets/audio/soundEffects/sortcards2.mp3")
 var pauseMenuOpen = preload("res://assets/audio/soundEffects/pausemenuopen2.mp3")
 var pauseMenuClose = preload("res://assets/audio/soundEffects/pausemenuclose2.mp3")
-var defeatSound = preload("res://assets/audio/soundEffects/DefeatSound.mp3")
-var victorySound = preload("res://assets/audio/soundEffects/victorysound.mp3")
+var defeatSound = preload("res://assets/audio/soundEffects/luckydeckdefeat.mp3")
+var victorySound = preload("res://assets/audio/soundEffects/luckydeckvictory2.mp3")
 
 #	Here is the sounds With their Volume
-var soundDictionary = [[continueSound, 10], 
+var soundDictionary = [[continueSound, -4], 
 [returnSound, -3], 
 [switchSound, -5], 
 [cardSelectSound, 4],
 [sortCards,-6],
 [pauseMenuOpen,-6],
 [pauseMenuClose,-11],
-[defeatSound,-3],
-[victorySound,0]]
+[defeatSound,-6],
+[victorySound,-6]]
 
 enum {CONTINUE_SOUND,
 RETURN_SOUND,
