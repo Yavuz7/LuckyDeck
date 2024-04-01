@@ -72,7 +72,8 @@ func _on_return_to_main_menu_pressed():
 		SoundManager.play_preset(SoundManager.RETURN_SOUND)
 		for player in GameManager.gamePlayers:
 			player.deleteSelf();
-	
+		
+		GameManager.disabledAces.clear()
 		GameManager.gamePlayers.clear()
 		
 		GameManager.outPlayers = []

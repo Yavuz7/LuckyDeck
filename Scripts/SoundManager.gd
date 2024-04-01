@@ -5,7 +5,7 @@ var cardSelectionRandomizer
 var continueSound = preload("res://assets/audio/soundEffects/selectsymbolsound3.mp3")
 var returnSound = preload("res://assets/audio/soundEffects/selectsymbolsound.mp3")
 var switchSound = preload("res://assets/audio/soundEffects/selectsymbolsound2.mp3")
-var cardSelectSound = preload("res://assets/audio/soundEffects/cardSelectionSounds/cardselect2.mp3")
+var cardSelectSound = preload("res://assets/audio/soundEffects/cardselect2.mp3")
 
 var sortCards = preload("res://assets/audio/soundEffects/sortcards2.mp3")
 var pauseMenuOpen = preload("res://assets/audio/soundEffects/pauseOpen.mp3")

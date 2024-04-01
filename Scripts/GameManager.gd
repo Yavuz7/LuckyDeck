@@ -34,6 +34,8 @@ var outPlayers = Array()
 
 var playerNames = Array()
 
+var disabledAces = Array()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -42,8 +44,10 @@ func fillPlayerArray():
 	var i = 0
 	while (i < numOfPlayers):
 		gamePlayers.append(Player.new(playerFavoriteCards[i],playerNames[i]))
+		if playerFavoriteCards[i][1] == 1:
+			disabledAces.append(playerFavoriteCards[i][0])		
 		i+= 1
-
+	print(disabledAces)
 #This Function Handles Stuff That Needs To Happen before player input
 #But After Everything Is Created
 func setStart(startingPlayer):
@@ -138,6 +142,9 @@ func displayCurrentPlayerCards(toggle):
 func checkDefeat(i):
 #	return
 	if ((Deck[i][1] == 1) || Deck[i][0] == 5):
+		if disabledAces.has(Deck[i][0]):
+			print("This ace is disabled")
+			return
 		outPlayers.append(currentPlayer)
 		print("Player " +str(currentPlayer + 1) + " Is Out!")
 		if(outPlayers.size() == (numOfPlayers -1)):
