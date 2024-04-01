@@ -74,6 +74,7 @@ func cardHandler():
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
 		reSizeGrid()
+		SoundManager.songSetsChangeSong()
 	
 func showCard(randomIndex):
 	var randomCard = Deck[randomIndex]

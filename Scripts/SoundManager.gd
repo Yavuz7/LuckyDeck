@@ -1,6 +1,7 @@
 extends Node
 
 var cardSelectionRandomizer
+var songSets
 
 var continueSound = preload("res://assets/audio/soundEffects/selectsymbolsound3.mp3")
 var returnSound = preload("res://assets/audio/soundEffects/selectsymbolsound.mp3")
@@ -55,6 +56,35 @@ func play_sound(stream: AudioStream):
 	add_child(instance)
 	instance.play()
 
+
+var songPlaying = 0;
+var songSetPlaying = 0;
+func songSetsChangeSong():
+	songPlaying+= 1
+	if(songPlaying > 4):
+		return
+	songSets[songSetPlaying].play()
+
+func changeSongSet():
+#Stop Music
+	var previousVolume = songSets[songSetPlaying].volume_db
+	songSets[songSetPlaying].volume_db = -100
+#Cycle Back To Begining of Music without it playing noise
+	while(songPlaying < 4):
+		songSets[songSetPlaying].play()
+		songPlaying += 1
+	songPlaying = 0;
+	songSets[songSetPlaying].stop()
+	songSets[songSetPlaying].volume_db = previousVolume
+
+#Play next series of songs
+	songSetPlaying+= 1;
+	if(songSetPlaying > 3):
+		songSetPlaying = 0
+#This should be called when the game is restarted
+#	songSetsChangeSong()
+	
+		
 
 func remove_node(instance: AudioStreamPlayer):
 	instance.queue_free()

@@ -18,6 +18,9 @@ func setUpGame():
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
 	SoundManager.cardSelectionRandomizer = $GameSoundsSpecifically/cardSelection
+	SoundManager.songSets = [$GameSoundsSpecifically/SongSet1,$GameSoundsSpecifically/SongSet2,
+	$GameSoundsSpecifically/SongSet3,$GameSoundsSpecifically/SongSet4]
+	SoundManager.songSetsChangeSong()
 func _on_button_scene_footer_pressed():
 	SoundManager.play_preset(SoundManager.SORT_CARDS_SOUND)
 	GameManager.displayCurrentPlayerCards(true)

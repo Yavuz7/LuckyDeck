@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/style3early.mp3-d528ccf5ff4a9e85f612926cc2766
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

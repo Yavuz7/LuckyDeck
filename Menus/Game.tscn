@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ifsdtp307ptu"]
+[gd_scene load_steps=37 format=3 uid="uid://ifsdtp307ptu"]
 
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_52tlx"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="2_1h2br"]
@@ -13,6 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://dtbej557ikw1a" path="res://assets/Images/boxshadow.svg" id="9_imb1g"]
 [ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="12_eyvsg"]
 [ext_resource type="AudioStream" uid="uid://b3qcrwqx5wa2o" path="res://assets/audio/soundEffects/cardSelect.mp3" id="13_g632e"]
+[ext_resource type="AudioStream" uid="uid://cyjqqbvopbnij" path="res://assets/audio/music/style3early.mp3" id="14_bm65c"]
+[ext_resource type="AudioStream" uid="uid://xuwabra0hj7v" path="res://assets/audio/music/style2early.mp3" id="14_ipglr"]
+[ext_resource type="AudioStream" uid="uid://bri333s8a41w0" path="res://assets/audio/music/style1early.mp3" id="14_ntan3"]
+[ext_resource type="AudioStream" uid="uid://br5kn206tvp1v" path="res://assets/audio/music/style1halfway.mp3" id="15_3vyif"]
+[ext_resource type="AudioStream" uid="uid://d2lhfbnhnx0ch" path="res://assets/audio/music/style3halfway.mp3" id="15_7qh6r"]
+[ext_resource type="AudioStream" uid="uid://c0btii8jb5qp8" path="res://assets/audio/music/style2halfway.mp3" id="15_j1mpi"]
+[ext_resource type="AudioStream" uid="uid://bsnlwp4ukyvm1" path="res://assets/audio/music/style2late.mp3" id="16_a3npp"]
+[ext_resource type="AudioStream" uid="uid://c2iynt4n4y26r" path="res://assets/audio/music/style3late.mp3" id="16_cb4a0"]
+[ext_resource type="AudioStream" uid="uid://cwrwj4skc1gjx" path="res://assets/audio/music/style1late.mp3" id="16_xuxow"]
+[ext_resource type="AudioStream" uid="uid://5tkkcrerhiqt" path="res://assets/audio/music/style2super.mp3" id="17_3ama7"]
+[ext_resource type="AudioStream" uid="uid://dymhayhmajtni" path="res://assets/audio/music/style3super.mp3" id="17_5ixo8"]
+[ext_resource type="AudioStream" uid="uid://cgiboaw0cfjlq" path="res://assets/audio/music/style1super.mp3" id="17_gx2mp"]
+[ext_resource type="AudioStream" uid="uid://2l17ipuweios" path="res://assets/audio/music/style4early.mp3" id="26_kw7pg"]
+[ext_resource type="AudioStream" uid="uid://dqcxblp8vcvtl" path="res://assets/audio/music/style4halfway.mp3" id="27_x15vg"]
+[ext_resource type="AudioStream" uid="uid://bdirgs3gawlo0" path="res://assets/audio/music/style4late.mp3" id="28_mkxyj"]
+[ext_resource type="AudioStream" uid="uid://3sm8jjdhx22b" path="res://assets/audio/music/style4super.mp3" id="29_04tbd"]
 
 [sub_resource type="Animation" id="Animation_lbo3g"]
 resource_name = "make_card_disappear"
@@ -41,6 +57,62 @@ random_pitch = 2.06
 random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("13_g632e")
 stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_of1n8"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("14_ntan3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_3vyif")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_xuxow")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_gx2mp")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nqfh7"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("14_ipglr")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_j1mpi")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_a3npp")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_3ama7")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_iodiv"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("14_bm65c")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_7qh6r")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_cb4a0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("17_5ixo8")
+stream_3/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_o26kn"]
+streams_count = 4
+playback_mode = 2
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("26_kw7pg")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("27_x15vg")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("28_mkxyj")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("29_04tbd")
+stream_3/weight = 1.0
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -547,6 +619,22 @@ stream = SubResource("AudioStreamRandomizer_027q3")
 volume_db = 4.095
 pitch_scale = 0.59
 max_polyphony = 3
+
+[node name="SongSet1" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
+stream = SubResource("AudioStreamRandomizer_of1n8")
+volume_db = -7.0
+
+[node name="SongSet2" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
+stream = SubResource("AudioStreamRandomizer_nqfh7")
+volume_db = -9.0
+
+[node name="SongSet3" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
+stream = SubResource("AudioStreamRandomizer_iodiv")
+volume_db = -8.0
+
+[node name="SongSet4" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
+stream = SubResource("AudioStreamRandomizer_o26kn")
+volume_db = -8.0
 
 [connection signal="pressed" from="ButtonSceneFooter" to="." method="_on_button_scene_footer_pressed"]
 [connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
