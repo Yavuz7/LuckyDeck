@@ -44,10 +44,10 @@ func fillPlayerArray():
 	var i = 0
 	while (i < numOfPlayers):
 		gamePlayers.append(Player.new(playerFavoriteCards[i],playerNames[i]))
-		if playerFavoriteCards[i][1] == 1:
+		if playerFavoriteCards[i][1] == 1 && !disabledAces.has(playerFavoriteCards[i][0]):
 			disabledAces.append(playerFavoriteCards[i][0])		
 		i+= 1
-	print(disabledAces)
+	print("Disabled Aces:" ,disabledAces)
 #This Function Handles Stuff That Needs To Happen before player input
 #But After Everything Is Created
 func setStart(startingPlayer):
@@ -74,7 +74,8 @@ func cardHandler():
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
 		reSizeGrid()
-		SoundManager.songSetsChangeSong()
+		if(Deck.size()<49):
+			SoundManager.songSetsChangeSong()
 	
 func showCard(randomIndex):
 	var randomCard = Deck[randomIndex]
@@ -221,6 +222,8 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
+	SoundManager.songSets[SoundManager.songSetPlaying].stop()
+	SoundManager.changeSongSets()
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
 #Initalize Stuff
 	victoryScreen.visible = true

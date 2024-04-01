@@ -28,6 +28,7 @@ func _on_button_scene_footer_pressed():
 
 
 func _on_restart_game_pressed():
+	SoundManager.songSetsChangeSong()
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	$VictoryScreen.visible = false;
 
@@ -62,7 +63,6 @@ func _on_restart_game_pressed():
 
 
 func _on_return_to_main_menu_pressed():
-
 	
 	var buttonText = $VictoryScreen/ReturnToMainMenu/Label
 	if(buttonText.text == "Return To Main Menu"):
@@ -75,7 +75,7 @@ func _on_return_to_main_menu_pressed():
 		SoundManager.play_preset(SoundManager.RETURN_SOUND)
 		for player in GameManager.gamePlayers:
 			player.deleteSelf();
-		
+		SoundManager.mainMenuSong.play()
 		GameManager.disabledAces.clear()
 		GameManager.gamePlayers.clear()
 		

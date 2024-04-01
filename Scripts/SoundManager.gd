@@ -1,7 +1,6 @@
 extends Node
 
 var cardSelectionRandomizer
-var songSets
 
 var continueSound = preload("res://assets/audio/soundEffects/selectsymbolsound3.mp3")
 var returnSound = preload("res://assets/audio/soundEffects/selectsymbolsound.mp3")
@@ -56,16 +55,19 @@ func play_sound(stream: AudioStream):
 	add_child(instance)
 	instance.play()
 
+var mainMenuSong
 
 var songPlaying = 0;
 var songSetPlaying = 0;
+var songSets
 func songSetsChangeSong():
+	mainMenuSong.stop()
 	songPlaying+= 1
 	if(songPlaying > 4):
 		return
 	songSets[songSetPlaying].play()
 
-func changeSongSet():
+func changeSongSets():
 #Stop Music
 	var previousVolume = songSets[songSetPlaying].volume_db
 	songSets[songSetPlaying].volume_db = -100

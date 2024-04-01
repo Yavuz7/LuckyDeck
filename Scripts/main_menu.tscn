@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6xmhbbm5cx4n"]
+[gd_scene load_steps=10 format=3 uid="uid://c6xmhbbm5cx4n"]
 
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="1_xqq6a"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="1_ydy77"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bfv4r7hwpte2q" path="res://assets/Images/buttonpattern2.png" id="4_wwdqv"]
 [ext_resource type="Texture2D" uid="uid://dsyec6g04gdst" path="res://assets/Images/Buttons/buttonhighlights.svg" id="5_wgmo3"]
 [ext_resource type="Texture2D" uid="uid://dtbej557ikw1a" path="res://assets/Images/boxshadow.svg" id="6_hje4y"]
+[ext_resource type="AudioStream" uid="uid://dqoflpbf24mq5" path="res://assets/audio/music/luckydeckmenumusic.mp3" id="9_5se8b"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -189,6 +190,12 @@ grow_vertical = 2
 theme = ExtResource("1_ydy77")
 theme_override_font_sizes/font_size = 80
 text = "Credits"
+
+[node name="MainMenuNoises" type="Node" parent="."]
+
+[node name="mainMenuMusic" type="AudioStreamPlayer" parent="MainMenuNoises"]
+stream = ExtResource("9_5se8b")
+volume_db = -8.601
 
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Rules" to="." method="_on_rules_pressed"]
