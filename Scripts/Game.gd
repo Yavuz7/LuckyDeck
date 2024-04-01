@@ -17,6 +17,7 @@ func setUpGame():
 	GameManager.turnPlayerFavoriteCard = $gameHeader/TopGui/HSplitContainer/HBoxContainer/turnPlayerFavoriteCard
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
+	SoundManager.cardSelectionRandomizer = $GameSoundsSpecifically/cardSelection
 func _on_button_scene_footer_pressed():
 	SoundManager.play_preset(SoundManager.SORT_CARDS_SOUND)
 	GameManager.displayCurrentPlayerCards(true)

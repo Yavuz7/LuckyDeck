@@ -1,9 +1,11 @@
 extends Node
 
+var cardSelectionRandomizer
+
 var continueSound = preload("res://assets/audio/soundEffects/selectsymbolsound3.mp3")
 var returnSound = preload("res://assets/audio/soundEffects/selectsymbolsound.mp3")
 var switchSound = preload("res://assets/audio/soundEffects/selectsymbolsound2.mp3")
-var cardSelectSound = preload("res://assets/audio/soundEffects/cardSelectionSounds/cardselect4.mp3")
+var cardSelectSound = preload("res://assets/audio/soundEffects/cardSelectionSounds/cardselect2.mp3")
 
 var sortCards = preload("res://assets/audio/soundEffects/sortcards2.mp3")
 var pauseMenuOpen = preload("res://assets/audio/soundEffects/pauseOpen.mp3")
@@ -14,7 +16,7 @@ var victorySound = preload("res://assets/audio/soundEffects/luckydeckvictory2.mp
 var soundDictionary = [[continueSound, -4], 
 [returnSound, -3], 
 [switchSound, -5], 
-[cardSelectSound, 4],
+[cardSelectSound, -3],
 [sortCards,-6],
 [pauseMenuOpen,-6],
 [pauseMenuClose,-3],
