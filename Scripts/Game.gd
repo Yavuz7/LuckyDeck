@@ -74,7 +74,12 @@ func _on_return_to_main_menu_pressed():
 	elif(buttonText.text == "You really want to return?"):
 		buttonText.text = "Really really want to return??"
 	elif(buttonText.text == "Really really want to return??"):
+		#Reset Stuff For Music
 		SoundManager.play_preset(SoundManager.RETURN_SOUND)
+		SoundManager.songSets[SoundManager.songSetPlaying].stop()
+		GameManager.gameOver = false
+		SoundManager.changeSongSets()
+		#Clear Everything else
 		for player in GameManager.gamePlayers:
 			player.deleteSelf();
 		SoundManager.mainMenuSong.play()

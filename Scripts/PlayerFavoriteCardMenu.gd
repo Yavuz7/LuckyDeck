@@ -25,9 +25,12 @@ func _ready():
 	playerDisplay.text = playerNames[playerIndex] + "'s"
 	var i = 0
 	while (i < currentPlayers):
-		playerFavoriteCards[i] = []
+		if(loadedCards.size() > i):			
+			playerFavoriteCards[i] = loadedCards[i]
+		else:				
+			playerFavoriteCards[i] = []
 		i+= 1
-
+	loadSelection(0)
 #Get Button Values, Save to Game Manager Index
 func saveSelection(i):
 	if(!playerFavoriteCards[i]):
@@ -52,6 +55,8 @@ func _on_start_game_pressed():
 	saveSelection(playerIndex)
 	sendToGameManager()
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
+	SaveManager.save_game_settings({"favoriteCards": playerFavoriteCards})
+	SaveManager.update_data()
 	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
 	self.queue_free()
 	
@@ -76,7 +81,10 @@ func _on_forward_button_pressed():
 
 
 func _on_return_double_check_pressed():
+	saveSelection(playerIndex)	
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
+	SaveManager.save_game_settings({"favoriteCards": playerFavoriteCards})
+	SaveManager.update_data()
 	get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
 	self.queue_free()
 	
