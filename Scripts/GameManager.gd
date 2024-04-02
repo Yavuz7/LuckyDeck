@@ -96,6 +96,7 @@ func showCard(randomIndex):
 	gamePlayers[currentPlayer].addToArray(gamePlayers[currentPlayer].cardTexturesSortedValues,v,texture)
 	gamePlayers[currentPlayer].addToArray(gamePlayers[currentPlayer].cardTexturesSortedSuits,s,texture)
 
+	previewCard.visible = true
 	card_animator.seek(0,true)
 	card_animator.play("make_card_disappear")
 	
@@ -232,8 +233,14 @@ func victoryHandler(victoryMessage, victoryCards):
 	gameOver = true
 	SoundManager.songSets[SoundManager.songSetPlaying].stop()	
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
+	
+
 #Initalize Stuff
+	var victoryAnimator = victoryScreen.get_node("victoryAnimator")
 	victoryScreen.visible = true
+	victoryAnimator.seek(0,true)
+	victoryAnimator.play("victory_screen_appear")
+	
 	victoryScreen.get_node("Winner/Label").text = gamePlayers[currentPlayer].playerName	+ " Wins!"
 	victoryScreen.get_node("VictoryPopup/VBoxContainer/VictoryType").text = victoryMessage
 	var victoryScreenCardDisplay = victoryScreen.get_node("VictoryPopup/VBoxContainer/FlowContainer/PlayerCards");
