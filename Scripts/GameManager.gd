@@ -36,11 +36,16 @@ var playerNames = Array()
 
 var disabledAces = Array()
 
+#Variables For Music to work better
+var cardsDrawn:= 0
+var gameOver := false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 func fillPlayerArray():
+	cardsDrawn = 0
+	gameOver = false
 	var i = 0
 	while (i < numOfPlayers):
 		gamePlayers.append(Player.new(playerFavoriteCards[i],playerNames[i]))
@@ -74,9 +79,11 @@ func cardHandler():
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
 		reSizeGrid()
-		if(Deck.size()<49):
-			SoundManager.songSetsChangeSong()
-	
+	if(cardsDrawn > 9 && !gameOver):
+		SoundManager.songSetsChangeSong()
+		cardsDrawn = 0
+	else:
+		cardsDrawn+= 1
 func showCard(randomIndex):
 	var randomCard = Deck[randomIndex]
 	var s = randomCard[0]
@@ -222,8 +229,8 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
-	SoundManager.songSets[SoundManager.songSetPlaying].stop()
-	SoundManager.changeSongSets()
+	gameOver = true
+	SoundManager.songSets[SoundManager.songSetPlaying].stop()	
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
 #Initalize Stuff
 	victoryScreen.visible = true

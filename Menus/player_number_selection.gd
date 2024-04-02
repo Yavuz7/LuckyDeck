@@ -5,9 +5,12 @@ extends Panel
 @onready var player_line_edit = preload("res://Menus/player_name_edit.tscn")
 @onready var playerNames = $mainLayoutCredits/PlayerNameChange/Panel/ScrollContainer/PlayerNames
 
+
 var arrayOfCustomNames = []
 
 func _ready():
+	arrayOfCustomNames = SaveManager.loadedData["customNames"]
+	print(arrayOfCustomNames)
 #Replace players.value with previous value
 	for n in range(players.value):	
 		var instance = player_line_edit.instantiate()

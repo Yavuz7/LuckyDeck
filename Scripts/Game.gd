@@ -28,6 +28,8 @@ func _on_button_scene_footer_pressed():
 
 
 func _on_restart_game_pressed():
+	SoundManager.songSets[SoundManager.songSetPlaying].stop()
+	SoundManager.changeSongSets()
 	SoundManager.songSetsChangeSong()
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	$VictoryScreen.visible = false;
