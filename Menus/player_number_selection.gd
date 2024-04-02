@@ -6,21 +6,22 @@ extends Panel
 @onready var playerNames = $mainLayoutCredits/PlayerNameChange/Panel/ScrollContainer/PlayerNames
 
 
-var arrayOfCustomNames = []
+var arrayOfCustomNames = SaveManager.loadedData["customNames"]
+var previousNumOfPlayers = SaveManager.loadedData["numOfPlayers"].to_int()
 
 func _ready():
-	arrayOfCustomNames = SaveManager.loadedData["customNames"]
-	print(arrayOfCustomNames)
-#Replace players.value with previous value
-	for n in range(players.value):	
+	for n in range(previousNumOfPlayers):			
 		var instance = player_line_edit.instantiate()
-#Replace text with previous name
-		instance.set_text("Player " + str(n+ 1))
-		instance.place = n
-		arrayOfCustomNames.append(instance.text);
+		if(arrayOfCustomNames.size() > 0 && arrayOfCustomNames.size() > n):
+			instance.set_text(arrayOfCustomNames[n - 1])
+		else:
+			instance.set_text("Player " + str(n+ 1))
+			arrayOfCustomNames.append(instance.text);
+		instance.place = n		
 		instance.text_send.connect(_received_text_change)
 		playerNames.add_child(instance)
-		
+	
+	players.value = previousNumOfPlayers			
 	print(playerNames.get_child_count());
 
 func _received_text_change(text,place):
