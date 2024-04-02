@@ -12,8 +12,9 @@ var previousNumOfPlayers = SaveManager.loadedData["numOfPlayers"].to_int()
 func _ready():
 	for n in range(previousNumOfPlayers):			
 		var instance = player_line_edit.instantiate()
-		if(arrayOfCustomNames.size() > 0 && arrayOfCustomNames.size() > n):
-			instance.set_text(arrayOfCustomNames[n - 1])
+		var customName = get_custom_name(n)
+		if(customName):
+			instance.set_text(customName)
 		else:
 			instance.set_text("Player " + str(n+ 1))
 			arrayOfCustomNames.append(instance.text);
@@ -48,12 +49,16 @@ func _on_continue_pressed():
 	GameManager.numOfPlayers = players.value
 	var arrayOfNamesToUse = arrayOfCustomNames.slice(0,players.value)
 	GameManager.playerNames = arrayOfNamesToUse
+	SaveManager.save_game_settings({"numOfPlayers" : str(players.value), "customNames" : arrayOfCustomNames})
+	SaveManager.update_data()
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
 
 
 func _on_return_to_main_menu_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
+	SaveManager.save_game_settings({"numOfPlayers" : str(players.value), "customNames" : arrayOfCustomNames})
+	SaveManager.update_data()
 	self.queue_free()
 
 #This function Adds and removes children to match the number of players
@@ -65,7 +70,7 @@ func _on_total_players_value_changed(value):
 			var instance = player_line_edit.instantiate()
 			instance.place = playerNames.get_child_count()
 			instance.text_send.connect(_received_text_change)			
-#Replace text with previous name
+			#Replace text with previous name
 			var customName = get_custom_name(playerNames.get_child_count());
 			if(customName):
 				instance.set_text(customName)

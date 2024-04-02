@@ -5,10 +5,14 @@ var loadedData
 #
 #custonNames, numOfPlayers, favoriteCards, cardBacks
 func _ready():
-	loadedData = load_game_settings(["customNames","numOfPlayers","favoriteCards"])	
-#	save_game_settings({"customNames":["Joey Wheeler", "Kevin"],"numOfPlayers":2, "favoriteCards":{ 0: [2, 1], 1: [3, 11], 2: [4, 12] }})
-	save_game_settings({"numOfPlayers" : "3"})
+	loadedData = load_game_settings(["customNames","numOfPlayers","favoriteCards","cardBacks"])	
+#	save_game_settings({"customNames":["Joey Wheeler", "Kevin"],"numOfPlayers":2, "favoriteCards":{ 0: [2, 1], 1: [3, 11], 2: [4, 12], "cardBacks":[0,1,2] }})
+	print(loadedData)
 	
+func update_data():
+		loadedData = load_game_settings(["customNames","numOfPlayers","favoriteCards","cardBacks"])			
+		print(loadedData["favoriteCards"])
+		
 func save_game_settings(save_data_dict):	
 	var config = ConfigFile.new()
 	
@@ -20,8 +24,6 @@ func save_game_settings(save_data_dict):
 	
 	
 	for key in save_data_dict:
-		var temp = config.get_value("Settings", key)
-		print(temp)
 		config.set_value("Settings",key,save_data_dict[key])
 		
 	config.save("user://savedGameSettings.cfg")

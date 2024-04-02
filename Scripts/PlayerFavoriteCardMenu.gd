@@ -13,8 +13,11 @@ var suitIndexes = Array()
 var valueIndexes = Array()
 enum suitValues{none,Diamond,Heart,Spade,Club}
 
+var loadedCards = SaveManager.loadedData["favoriteCards"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(loadedCards)
 	currentPlayers = GameManager.numOfPlayers
 	playerNames = GameManager.playerNames
 	suitIndexes = suitSelect.get_buttons()
@@ -29,7 +32,7 @@ func _ready():
 func saveSelection(i):
 	if(!playerFavoriteCards[i]):
 		playerFavoriteCards[i].append(suitValues.get(suitSelect.get_pressed_button().name))
-		playerFavoriteCards[i].append(valueSelect.get_pressed_button().name.to_int())	
+		playerFavoriteCards[i].append(valueSelect.get_pressed_button().name.to_int())
 	else:
 		playerFavoriteCards[i].clear()
 		playerFavoriteCards[i].append(suitValues.get(suitSelect.get_pressed_button().name))
@@ -73,20 +76,13 @@ func _on_forward_button_pressed():
 
 
 func _on_return_double_check_pressed():
-	if(returnButton.text == "Return"):
-		returnButton.text = "You really want to return?"
-		await get_tree().create_timer(5).timeout
-		returnButton.text = "Return"
-	elif(returnButton.text == "You really want to return?"):
-		returnButton.text = "Really really want to return??"
-	elif(returnButton.text == "Really really want to return??"):
-		SoundManager.play_preset(SoundManager.RETURN_SOUND)
-		get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
-		self.queue_free()
+	SoundManager.play_preset(SoundManager.RETURN_SOUND)
+	get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
+	self.queue_free()
 	
 func sendToGameManager():
+	GameManager.playerFavoriteCards = playerFavoriteCards	
 	fillPlayerArray()
-	GameManager.playerFavoriteCards = playerFavoriteCards
 	print(playerFavoriteCards)
 	pass
 
