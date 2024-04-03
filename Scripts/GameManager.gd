@@ -8,7 +8,7 @@ var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
 var matchScoresVbox
-var matchScoresTotal
+var matchScoresTotalDisplay
 
 #Grid used for resizing after cards are picked
 var grid
@@ -235,13 +235,13 @@ func checkStraightVictory(targetArray):
 func victoryHandler(victoryMessage, victoryCards):
 	matchScores[currentPlayer] += 1
 	matchTotal += 1
+	SaveManager.save_game_settings({"matchTotal": SaveManager.loadedData["matchTotal"]+ 1})
+	SaveManager.update_data()
 	showMatchData()
 	gameOver = true
 	SoundManager.songSets[SoundManager.songSetPlaying].stop()	
-	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
-	
-
-#Initalize Stuff
+	SoundManager.play_preset(SoundManager.VICTORY_SOUND)	
+	#Initalize Stuff
 	var victoryAnimator = victoryScreen.get_node("victoryAnimator")
 	victoryScreen.visible = true
 	victoryAnimator.seek(0,true)
@@ -272,7 +272,7 @@ func victoryHandler(victoryMessage, victoryCards):
 	
 
 func showMatchData():
-	matchScoresTotal.text = "Matches: " + str(matchTotal)
+	matchScoresTotalDisplay.text = "Matches: " + str(matchTotal)
 	for score in matchScores.size():
 		var instance = Label.new()
 		instance.text = str(playerNames[score]) + ": " + str(matchScores[score])

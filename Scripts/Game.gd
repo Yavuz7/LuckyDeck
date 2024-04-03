@@ -18,7 +18,7 @@ func setUpGame():
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
 	GameManager.matchScoresVbox = $VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer
-	GameManager.matchScoresTotal = $VictoryScreen/VictoryPopup/VBoxContainer/MatchesTotal
+	GameManager.matchScoresTotalDisplay = $VictoryScreen/VictoryPopup/VBoxContainer/MatchesTotal
 	SoundManager.cardSelectionRandomizer = $GameSoundsSpecifically/cardSelection
 	SoundManager.songSets = [$GameSoundsSpecifically/SongSet1,$GameSoundsSpecifically/SongSet2,
 	$GameSoundsSpecifically/SongSet3,$GameSoundsSpecifically/SongSet4]
