@@ -303,7 +303,7 @@ scroll_deadzone = 4
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="SettingsMenu" type="Control" parent="."]
+[node name="MainSettings" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -313,7 +313,7 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="background" type="ColorRect" parent="SettingsMenu"]
+[node name="background" type="ColorRect" parent="MainSettings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -323,11 +323,11 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0941176, 0.411765, 0.0392157, 0.501961)
 
-[node name="ReturnToGame" parent="SettingsMenu" instance=ExtResource("4_pd6m8")]
+[node name="ReturnToGame" parent="MainSettings" instance=ExtResource("4_pd6m8")]
 custom_minimum_size = Vector2(0, 102)
 layout_mode = 1
 
-[node name="Label2" type="Label" parent="SettingsMenu/ReturnToGame"]
+[node name="Label2" type="Label" parent="MainSettings/ReturnToGame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -339,7 +339,7 @@ text = "Return To Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="Control" parent="SettingsMenu"]
+[node name="Settings" type="Control" parent="MainSettings"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -348,7 +348,7 @@ offset_bottom = -157.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PlayerScores" type="ScrollContainer" parent="SettingsMenu/Settings"]
+[node name="PlayerScores" type="ScrollContainer" parent="MainSettings/Settings"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0277778
@@ -360,16 +360,19 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 metadata/_edit_use_anchors_ = true
 
-[node name="Players" type="VBoxContainer" parent="SettingsMenu/Settings/PlayerScores"]
+[node name="Players" type="VBoxContainer" parent="MainSettings/Settings/PlayerScores"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 100
 
-[node name="Settings2" parent="SettingsMenu/Settings" instance=ExtResource("4_pd6m8")]
+[node name="Settings2" parent="MainSettings/Settings" instance=ExtResource("4_pd6m8")]
 layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.901
+offset_top = 97.594
 
-[node name="Label2" type="Label" parent="SettingsMenu/Settings/Settings2"]
+[node name="Label2" type="Label" parent="MainSettings/Settings/Settings2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -699,7 +702,8 @@ volume_db = -8.0
 bus = &"Music"
 
 [connection signal="pressed" from="ButtonSceneFooter" to="." method="_on_button_scene_footer_pressed"]
-[connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
+[connection signal="pressed" from="MainSettings/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
+[connection signal="pressed" from="MainSettings/Settings/Settings2" to="." method="_on_settings_2_pressed"]
 [connection signal="pressed" from="VictoryScreen/RestartGame" to="." method="_on_restart_game_pressed"]
 [connection signal="pressed" from="VictoryScreen/ReturnToMainMenu" to="." method="_on_return_to_main_menu_pressed"]
 

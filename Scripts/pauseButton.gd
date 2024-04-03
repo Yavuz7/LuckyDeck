@@ -1,7 +1,7 @@
 extends TextureButton
 
-@onready var settings = $"../../../../SettingsMenu"
-@onready var playersMenuLocation = $"../../../../SettingsMenu/Settings/PlayerScores/Players"
+@onready var settings = $"../../../../MainSettings"
+@onready var playersMenuLocation = $"../../../../MainSettings/Settings/PlayerScores/Players"
 
 
 var pauseButton = preload("res://assets/Images/Buttons/pauseButtonLarge.svg")

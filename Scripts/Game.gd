@@ -95,3 +95,11 @@ func _on_return_to_main_menu_pressed():
 		GameManager.outPlayers = []
 		self.queue_free()
 	pass # Replace with function body.
+
+@onready var settingsMenu = preload("res://Menus/settings_menu.tscn")
+
+func _on_settings_2_pressed():
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
+	var instance = settingsMenu.instantiate()
+	add_child(instance)
+	
