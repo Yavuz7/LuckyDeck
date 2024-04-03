@@ -582,10 +582,7 @@ layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Control" type="Control" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
+[node name="MatchesTotal" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer"]
 layout_mode = 2
 text = "Matches: 232"
 horizontal_alignment = 1
@@ -605,18 +602,6 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
-
-[node name="Label" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "Eggma : 2 Wins"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 6
-text = "Player 1 : 2 Wins"
-horizontal_alignment = 1
 
 [node name="ReturnToMainMenu" type="Button" parent="VictoryScreen"]
 custom_minimum_size = Vector2(0, 100)

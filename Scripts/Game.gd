@@ -17,6 +17,8 @@ func setUpGame():
 	GameManager.turnPlayerFavoriteCard = $gameHeader/TopGui/HSplitContainer/HBoxContainer/turnPlayerFavoriteCard
 	GameManager.footerDisplay = $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards
 	GameManager.victoryScreen = $VictoryScreen
+	GameManager.matchScoresVbox = $VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer
+	GameManager.matchScoresTotal = $VictoryScreen/VictoryPopup/VBoxContainer/MatchesTotal
 	SoundManager.cardSelectionRandomizer = $GameSoundsSpecifically/cardSelection
 	SoundManager.songSets = [$GameSoundsSpecifically/SongSet1,$GameSoundsSpecifically/SongSet2,
 	$GameSoundsSpecifically/SongSet3,$GameSoundsSpecifically/SongSet4]
@@ -42,6 +44,9 @@ func _on_restart_game_pressed():
 	
 	GameManager.gamePlayers.clear()
 	
+	for n in $VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer.get_children():
+		$VictoryScreen/VictoryPopup/VBoxContainer/MarginContainer2/playerScores/VBoxContainer.remove_child(n)
+		n.queue_free()
 #Clear Footer Array
 	for n in $ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards.get_children():
 		$ButtonSceneFooter/BottomGui/ScrollContainer/currentPlayerCards.remove_child(n)
@@ -65,7 +70,8 @@ func _on_restart_game_pressed():
 
 
 func _on_return_to_main_menu_pressed():
-	
+	GameManager.matchScores = []
+	GameManager.matchTotal = 0
 	var buttonText = $VictoryScreen/ReturnToMainMenu/Label
 	if(buttonText.text == "Return To Main Menu"):
 		buttonText.text = "You really want to return?"

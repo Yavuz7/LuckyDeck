@@ -10,8 +10,7 @@ func _ready():
 	print(loadedData)
 	
 func update_data():
-		loadedData = load_game_settings(["customNames","numOfPlayers","favoriteCards","cardBacks"])			
-		print(loadedData["favoriteCards"])
+		loadedData = load_game_settings(["customNames","numOfPlayers","favoriteCards","cardBacks"])
 		
 func save_game_settings(save_data_dict):	
 	var config = ConfigFile.new()

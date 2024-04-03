@@ -7,7 +7,8 @@ var card_animator
 var playerDisplay
 var footerDisplay
 var turnPlayerFavoriteCard
-
+var matchScoresVbox
+var matchScoresTotal
 
 #Grid used for resizing after cards are picked
 var grid
@@ -27,13 +28,11 @@ var numOfPlayers = 4
 var currentPlayer = 0
 
 var gamePlayers = Array()
-
 var playerFavoriteCards = {}
-
 var outPlayers = Array()
-
 var playerNames = Array()
-
+var matchScores = Array()
+var matchTotal = 0
 var disabledAces = Array()
 
 #Variables For Music to work better
@@ -48,17 +47,21 @@ func fillPlayerArray():
 	gameOver = false
 	var i = 0
 	while (i < numOfPlayers):
+		if(matchScores.size() < numOfPlayers):
+			matchScores.append(0)
 		gamePlayers.append(Player.new(playerFavoriteCards[i],playerNames[i]))
 		if playerFavoriteCards[i][1] == 1 && !disabledAces.has(playerFavoriteCards[i][0]):
 			disabledAces.append(playerFavoriteCards[i][0])		
 		i+= 1
 	print("Disabled Aces:" ,disabledAces)
+	print("Match Scores: ",matchScores)
 #This Function Handles Stuff That Needs To Happen before player input
 #But After Everything Is Created
 func setStart(startingPlayer):
 	currentPlayer = startingPlayer
 	turnPlayerFavoriteCard.set_texture(gamePlayers[currentPlayer].favoriteCard)
 	playerDisplay.text = gamePlayers[currentPlayer].playerName	+ "'s turn"
+	
 func setDeck(newDeck):
 	Deck = newDeck.duplicate()
 	pass
@@ -230,6 +233,9 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
+	matchScores[currentPlayer] += 1
+	matchTotal += 1
+	showMatchData()
 	gameOver = true
 	SoundManager.songSets[SoundManager.songSetPlaying].stop()	
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)
@@ -263,6 +269,15 @@ func victoryHandler(victoryMessage, victoryCards):
 		for cardPreview in victoryScreenCardDisplay.get_children():		
 			cardPreview.set_texture(cardTexturesToDisplay[i])
 			i+= 1
+	
+
+func showMatchData():
+	matchScoresTotal.text = "Matches: " + str(matchTotal)
+	for score in matchScores.size():
+		var instance = Label.new()
+		instance.text = str(playerNames[score]) + ": " + str(matchScores[score])
+		instance.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		matchScoresVbox.add_child(instance) 
 	
 
 func restart():

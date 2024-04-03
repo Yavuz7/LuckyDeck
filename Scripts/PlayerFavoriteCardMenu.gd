@@ -91,7 +91,6 @@ func _on_return_double_check_pressed():
 func sendToGameManager():
 	GameManager.playerFavoriteCards = playerFavoriteCards	
 	fillPlayerArray()
-	print(playerFavoriteCards)
 	pass
 
 #Different than the one found in Game Manager
