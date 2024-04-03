@@ -41,6 +41,7 @@ var nextSong : AudioStreamPlayer
 
 func play_preset(soundKey: int):
 	var instance = AudioStreamPlayer.new()
+	instance.bus = "Sounds"
 	instance.stream = soundDictionary[soundKey][0]
 	instance.volume_db = soundDictionary[soundKey][1]
 	instance.finished.connect(remove_node.bind(instance))
@@ -55,12 +56,14 @@ func play_sound(stream: AudioStream):
 	add_child(instance)
 	instance.play()
 
-var mainMenuSong
+var mainMenuSong : AudioStreamPlayer
 
 var songPlaying = 0;
 var songSetPlaying = 0;
 var songSets
+
 func songSetsChangeSong():
+	#This needs to transition
 	mainMenuSong.stop()
 	songPlaying+= 1
 	if(songPlaying > 4):

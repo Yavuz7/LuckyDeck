@@ -196,6 +196,7 @@ text = "Credits"
 [node name="mainMenuMusic" type="AudioStreamPlayer" parent="MainMenuNoises"]
 stream = ExtResource("9_5se8b")
 volume_db = -8.601
+bus = &"Music"
 
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Rules" to="." method="_on_rules_pressed"]

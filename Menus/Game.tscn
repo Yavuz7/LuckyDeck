@@ -676,22 +676,27 @@ stream = SubResource("AudioStreamRandomizer_027q3")
 volume_db = 4.095
 pitch_scale = 0.59
 max_polyphony = 3
+bus = &"Sounds"
 
 [node name="SongSet1" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
 stream = SubResource("AudioStreamRandomizer_of1n8")
 volume_db = -7.0
+bus = &"Music"
 
 [node name="SongSet2" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
 stream = SubResource("AudioStreamRandomizer_nqfh7")
 volume_db = -9.0
+bus = &"Music"
 
 [node name="SongSet3" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
 stream = SubResource("AudioStreamRandomizer_iodiv")
 volume_db = -8.0
+bus = &"Music"
 
 [node name="SongSet4" type="AudioStreamPlayer" parent="GameSoundsSpecifically"]
 stream = SubResource("AudioStreamRandomizer_o26kn")
 volume_db = -8.0
+bus = &"Music"
 
 [connection signal="pressed" from="ButtonSceneFooter" to="." method="_on_button_scene_footer_pressed"]
 [connection signal="pressed" from="SettingsMenu/ReturnToGame" to="gameHeader/TopGui/HSplitContainer/pauseButton" method="_on_return_to_game_pressed"]
