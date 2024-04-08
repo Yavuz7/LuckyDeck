@@ -2,6 +2,7 @@ extends Panel
 
 @onready var playerDisplay = $mainLayoutCredits/SelectionBox/PlayerHeading/PlayerChange/VBoxContainer/PlayerDisplay
 @onready var returnButton = $ReturnDoubleCheck/Label
+@onready var playerCardBacksSelection = preload("res://Menus/player_card_back_selection.tscn")
 @export var suitSelect: ButtonGroup
 @export var valueSelect: ButtonGroup
 
@@ -57,9 +58,10 @@ func _on_start_game_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	SaveManager.save_game_settings({"favoriteCards": playerFavoriteCards})
 	SaveManager.update_data()
-	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
+#	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
+#	self.queue_free()
+	get_parent().add_child(playerCardBacksSelection.instantiate())
 	self.queue_free()
-	
 
 
 func _on_back_button_pressed():
