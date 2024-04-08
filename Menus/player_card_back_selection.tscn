@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://lcievqvnw8xh"]
+[gd_scene load_steps=9 format=3 uid="uid://lcievqvnw8xh"]
 
+[ext_resource type="Script" path="res://Menus/player_card_back_selection.gd" id="1_4qlhi"]
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="4_whssx"]
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="5_pc7gh"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="6_r8u8g"]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4qlhi")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 1
