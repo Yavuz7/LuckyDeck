@@ -15,7 +15,7 @@ var grid
 var victoryScreen
 
 
-var cardBack = preload("res://assets/Images/cardback1.png")
+var cardBack = preload("res://assets/Images/cardBacks/cb0.png")
 var numberGenerator = RandomNumberGenerator.new()
 
 const numberNeededFor4OfAKind = 4
@@ -272,13 +272,16 @@ func victoryHandler(victoryMessage, victoryCards):
 	
 
 func showMatchData():
-	matchScoresTotalDisplay.text = "Matches: " + str(matchTotal)
-	for score in matchScores.size():
+	matchScoresTotalDisplay.text = "Matches: " + str(matchTotal)	
+	var scoresAndNames = Array()
+	for index in matchScores.size():
+		scoresAndNames.append([playerNames[index], matchScores[index]])
+	scoresAndNames.sort_custom(func(a,b): return a[1] > b[1])
+	for playerScore in scoresAndNames:
 		var instance = Label.new()
-		instance.text = str(playerNames[score]) + ": " + str(matchScores[score])
+		instance.text = str(playerScore[0]) + ": " + str(playerScore[1])
 		instance.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		matchScoresVbox.add_child(instance) 
-	
 
 func restart():
 	pass
