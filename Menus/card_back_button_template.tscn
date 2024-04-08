@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnwv2daq5yqkc"]
+
+[ext_resource type="Texture2D" uid="uid://d3ijyo2y0hsjr" path="res://assets/Images/cardBacks/cb000.png" id="1_34xc3"]
+[ext_resource type="Script" path="res://Menus/card_back_button_template.gd" id="1_e0qhv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rccx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8qa6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_666ny"]
+bg_color = Color(0, 0.717647, 0.384314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0196078, 0.505882, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tk8iw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kn2r"]
+
+[node name="cardBackButtonTemplate" type="Button"]
+custom_minimum_size = Vector2(110, 140)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6rccx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k8qa6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_666ny")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tk8iw")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4kn2r")
+toggle_mode = true
+script = ExtResource("1_e0qhv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_34xc3")

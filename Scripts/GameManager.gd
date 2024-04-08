@@ -16,6 +16,7 @@ var victoryScreen
 
 var cardBacks = []
 var cardBack = preload("res://assets/Images/cardBacks/cb005.png")
+var cardLocked = preload("res://assets/Images/lockedCard.png")
 var numberGenerator = RandomNumberGenerator.new()
 
 const numberNeededFor4OfAKind = 4
