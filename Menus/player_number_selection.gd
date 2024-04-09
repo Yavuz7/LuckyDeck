@@ -38,8 +38,8 @@ func _on_minus_pressed():
 
 func _on_plus_pressed():
 	players.value += 1
-	if(players.value > 16):
-		players.value = 16
+	if(players.value > 10):
+		players.value = 10
 		return
 	SoundManager.play_preset(SoundManager.SWITCH_SOUND)	
 

@@ -5,24 +5,21 @@ extends Control
 @onready var settingsMenu = preload("res://Menus/settings_menu.tscn")
 @onready var creditsMenu = preload("res://Menus/credits_menu.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	SoundManager.mainMenuSong = $MainMenuNoises/mainMenuMusic
-	SoundManager.mainMenuSong.play()
-	pass # Replace with function body.
-#Music Starts Here
+	SoundManager._anim_player = $MusicFader/AnimationPlayer
+	SoundManager._track_1 = $MusicFader/Track1
+	SoundManager._track_2 = $MusicFader/Track2
+	SoundManager.crossfade_to(SoundManager.menuMusic)
 
 func _on_play_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	var instance = playerMenu.instantiate()
 	add_child(instance)
-
-
+	
 func _on_rules_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	var instance = rulesMenu.instantiate()
 	add_child(instance)
-
 
 func _on_settings_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)

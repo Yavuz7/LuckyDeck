@@ -63,9 +63,7 @@ func _on_restart_game_pressed():
 	GameManager.fillPlayerArray()
 
 	
-	var randomPlayer = RandomNumberGenerator.new()
-	var randomIndex = randomPlayer.randi_range(0,GameManager.numOfPlayers - 1)
-	GameManager.setStart(randomIndex)
+	GameManager.setStart(GameManager.currentPlayer)
 	pass # Replace with function body.
 
 
@@ -84,13 +82,12 @@ func _on_return_to_main_menu_pressed():
 	elif(buttonText.text == "Really really want to return??"):
 		#Reset Stuff For Music
 		SoundManager.play_preset(SoundManager.RETURN_SOUND)
-		SoundManager.songSets[SoundManager.songSetPlaying].stop()
+		SoundManager.crossfade_to(SoundManager.menuMusic)
 		GameManager.gameOver = false
 		SoundManager.changeSongSets()
 		#Clear Everything else
 		for player in GameManager.gamePlayers:
 			player.deleteSelf();
-		SoundManager.mainMenuSong.play()
 		GameManager.disabledAces.clear()
 		GameManager.gamePlayers.clear()
 		

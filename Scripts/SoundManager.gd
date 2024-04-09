@@ -13,6 +13,12 @@ var pauseMenuClose = preload("res://assets/audio/soundEffects/pauseClose.mp3")
 var defeatSound = preload("res://assets/audio/soundEffects/luckydeckdefeat.mp3")
 var victorySound = preload("res://assets/audio/soundEffects/luckydeckvictory2.mp3")
 
+@onready var menuMusic = preload("res://assets/audio/music/luckydeckmenumusic.mp3")
+
+var _anim_player
+var _track_1 
+var _track_2 
+
 var soundDictionary = [[continueSound, -4], 
 [returnSound, -3], 
 [switchSound, -5], 
@@ -32,6 +38,33 @@ PAUSE_OPEN_SOUND,
 PAUSE_CLOSE_SOUND,
 DEFEAT_SOUND,
 VICTORY_SOUND}
+
+var songSets = Array()
+func _ready():	
+	for n in 4:
+		songSets.append([])
+		songSets[n].append(load("res://assets/audio/music/style" + str(n+1) + "early.mp3"))
+		songSets[n].append(load("res://assets/audio/music/style" + str(n+1) + "halfway.mp3"))
+		songSets[n].append(load("res://assets/audio/music/style" + str(n+1) + "late.mp3"))
+		songSets[n].append(load("res://assets/audio/music/style" + str(n+1) + "super.mp3"))
+
+#Code from Gdquest : https://www.gdquest.com/tutorial/godot/audio/background-music-transition/
+func crossfade_to(audio_stream: AudioStream) -> void:
+	# If both tracks are playing, we're calling the function in the middle of a fade.
+	# We return early to avoid jumps in the sound.
+	if _track_1.playing and _track_2.playing:
+		return
+
+	# The `playing` property of the stream players tells us which track is active. 
+	# If it's track two, we fade to track one, and vice-versa.
+	if _track_2.playing:
+		_track_1.stream = audio_stream
+		_track_1.play()
+		_anim_player.play("FadeToTrack1")
+	else:
+		_track_2.stream = audio_stream
+		_track_2.play()
+		_anim_player.play("FadeToTrack2")
 
 
 #Only One Song Will Play at a time
@@ -56,40 +89,27 @@ func play_sound(stream: AudioStream):
 	add_child(instance)
 	instance.play()
 
-var mainMenuSong : AudioStreamPlayer
-
 var songPlaying = 0;
 var songSetPlaying = 0;
-var songSets
 
 func songSetsChangeSong():
-	#This needs to transition
-	mainMenuSong.stop()
-	songPlaying+= 1
-	if(songPlaying > 4):
+	if(songPlaying > 3):
 		return
-	songSets[songSetPlaying].play()
-
+	crossfade_to(songSets[songSetPlaying].stream.get_stream(songPlaying))
+	songPlaying += 1
+	
 func changeSongSets():
-#Stop Music
-	var previousVolume = songSets[songSetPlaying].volume_db
-	songSets[songSetPlaying].volume_db = -100
-#Cycle Back To Begining of Music without it playing noise
-	while(songPlaying < 4):
-		songSets[songSetPlaying].play()
-		songPlaying += 1
 	songPlaying = 0;
-	songSets[songSetPlaying].stop()
-	songSets[songSetPlaying].volume_db = previousVolume
-
 #Play next series of songs
 	songSetPlaying+= 1;
 	if(songSetPlaying > 3):
 		songSetPlaying = 0
-#This should be called when the game is restarted
-#	songSetsChangeSong()
 	
-		
+func lowerSound():
+	if _track_2.playing:
+		_track_2.volume_db = -25
+	else:
+		_track_1.volume_db = -25		
 
 func remove_node(instance: AudioStreamPlayer):
 	instance.queue_free()

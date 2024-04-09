@@ -128,6 +128,8 @@ func changeCurrentPlayer():
 var toggleArray = true;
 
 func loopThroughPlayers():
+	if(gameOver):
+		return
 	currentPlayer += 1
 	if(currentPlayer == numOfPlayers):
 			currentPlayer = 0
@@ -241,6 +243,7 @@ func checkStraightVictory(targetArray):
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):
+	gameOver = true
 	matchScores[currentPlayer] += 1
 	matchTotal += 1
 	if(SaveManager.loadedData && SaveManager.loadedData.has("matchTotal") && SaveManager.loadedData["matchTotal"]):
@@ -248,9 +251,8 @@ func victoryHandler(victoryMessage, victoryCards):
 	else:
 		SaveManager.save_game_settings({"matchTotal": 1})
 	SaveManager.update_data()
-	showMatchData()
-	gameOver = true
-	SoundManager.songSets[SoundManager.songSetPlaying].stop()	
+	showMatchData()	
+	SoundManager.lowerSound()
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)	
 	#Initalize Stuff
 	var victoryAnimator = victoryScreen.get_node("victoryAnimator")
