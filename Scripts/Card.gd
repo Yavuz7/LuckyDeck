@@ -5,8 +5,8 @@ class_name Card
 var face
 var back
 
-func _init():
-	back = GameManager.cardBack
+func _init(cardBack):
+	back = cardBack
 	set_texture_normal(back)
 	
 func _pressed():

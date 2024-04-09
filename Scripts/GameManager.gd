@@ -14,7 +14,8 @@ var matchScoresTotalDisplay
 var grid
 var victoryScreen
 
-var cardBacks = []
+var cardBacks = Array()
+var usedCardBacks = Array()
 var cardBack = preload("res://assets/Images/cardBacks/cb005.png")
 var numberGenerator = RandomNumberGenerator.new()
 
@@ -38,10 +39,17 @@ var disabledAces = Array()
 #Variables For Music to work better
 var cardsDrawn:= 0
 var gameOver := false
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
+func getCardBack():
+	if(cardBacks.size() == 0):
+		cardBacks = usedCardBacks.duplicate()
+		usedCardBacks.clear()
+	var randomIndex = numberGenerator.randi_range(0,cardBacks.size() - 1)
+	var cardBackToReturn = cardBacks[randomIndex]
+	usedCardBacks.append(cardBackToReturn)
+	cardBacks.erase(cardBackToReturn)
+	return cardBackToReturn
+	
 func fillPlayerArray():
 	cardsDrawn = 0
 	gameOver = false

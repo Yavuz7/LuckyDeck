@@ -24,26 +24,27 @@ func _init(players):
 	pass
 
 func generateDeck():
+	var cardBack = GameManager.getCardBack()
 	var s = 1
 	var v = 1
 	while s <= 4:
 		v = 1
 		while v <= 13:
 			Deck.append([s,v])
-			gridCards.append(Card.new())
+			gridCards.append(Card.new(cardBack))
 			v+= 1
 		s+= 1
 	if (numOfPlayers > 4):
 		var additionalPlayers = numOfPlayers - 4
 		while(additionalPlayers > 0):
 			Deck.append([5,1])
-			gridCards.append(Card.new())
+			gridCards.append(Card.new(cardBack))
 			additionalPlayers-= 1
 	for card in favoriteCards:
 		if (favoriteCards[card][1] == 1 && favoriteCardsSuitsUsed.find(favoriteCards[card]) == -1):
 			favoriteCardsSuitsUsed.append(favoriteCards[card])
 			Deck.append([5,1])
-			gridCards.append(Card.new())
+			gridCards.append(Card.new(cardBack))
 			print(favoriteCardsSuitsUsed)
 
 #Needs to be tested later, but should be dynamic row size

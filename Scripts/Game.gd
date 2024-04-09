@@ -72,6 +72,8 @@ func _on_restart_game_pressed():
 func _on_return_to_main_menu_pressed():
 	GameManager.matchScores = []
 	GameManager.matchTotal = 0
+	GameManager.usedCardBacks.clear()
+	GameManager.cardBacks.clear()
 	var buttonText = $VictoryScreen/ReturnToMainMenu/Label
 	if(buttonText.text == "Return To Main Menu"):
 		buttonText.text = "You really want to return?"

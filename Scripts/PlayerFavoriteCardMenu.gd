@@ -19,7 +19,6 @@ var loadedCards = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(SaveManager.loadedData && SaveManager.loadedData.has("favoriteCards") && SaveManager.loadedData["favoriteCards"]):
-		print("Save had favorite cards")
 		loadedCards = SaveManager.loadedData["favoriteCards"]
 	currentPlayers = GameManager.numOfPlayers
 	playerNames = GameManager.playerNames
