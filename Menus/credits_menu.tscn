@@ -95,11 +95,26 @@ custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
 [node name="Texturedtexture" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
+anchors_preset = -1
+anchor_top = -0.09
+anchor_bottom = 1.04
 texture = ExtResource("5_85oia")
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="1"]
+anchors_preset = -1
+anchor_top = -0.0866667
+anchor_bottom = 1.035
 offset_top = -3.0
 offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="2"]
+anchors_preset = -1
+anchor_top = 1.023
+anchor_bottom = 1.065
+offset_top = 0.200012
+offset_bottom = -6.10352e-05
 
 [node name="Label2" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
 layout_mode = 1
@@ -111,20 +126,26 @@ anchor_bottom = 0.88
 offset_left = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 45
-text = "Idea Developed By Edwin Romano and Yavuz Yurtseven.
+theme_override_font_sizes/font_size = 40
+text = "Idea Developed By Edwin Villages and Yavuz Bavuz.
 
-Programming, Art, and Music By Yavuz Yurtseven"
+Programming, Art, and Music By Yavuz Bavuz.
+
+Special Thanks to C Dawg for helping with the card backs!
+
+Contact email : yavuzyavuzbavuz@gmail.com
+Youtube: /@yavuzbavuz"
 autowrap_mode = 2
 
 [node name="Return" parent="." instance=ExtResource("2_sxkhi")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00138889
-anchor_top = 0.825906
+anchor_left = 0.001
+anchor_top = 0.9
 anchor_right = 1.00139
 anchor_bottom = 0.977344
-offset_top = 94.84
+offset_left = 0.280001
+offset_top = -0.000366211
 offset_bottom = 1.0
 metadata/_edit_use_anchors_ = true
 

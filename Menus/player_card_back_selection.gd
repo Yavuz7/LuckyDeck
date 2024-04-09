@@ -8,7 +8,7 @@ extends Panel
 var cardLocked = preload("res://assets/Images/lockedCard.png")
 var numberOfCardsExpected = 33
 var matchesTotal = SaveManager.loadedData["matchTotal"]
-var matchesLeft = 25 + matchesTotal
+var matchesLeft = 30 + matchesTotal
 var arrayOfLoadedBacks = SaveManager.loadedData["cardBacks"]
 
 var cardBackTextures
@@ -61,7 +61,6 @@ func _on_return_button_pressed():
 	self.queue_free()
 	pass # Replace with function body.
 
-
 func _on_start_game_pressed():
 	saveSelection()
 	SaveManager.save_game_settings({"cardBacks": cardBackIndexes})
@@ -70,3 +69,10 @@ func _on_start_game_pressed():
 	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
 	self.queue_free()
 
+func _on_clear_all_button_pressed():
+	cardBacksContainer.get_children().map(func(button): button.unPressButton())
+
+
+func _on_select_all_pressed():
+	cardBacksContainer.get_children().map(func(button): button.pressButton())
+	

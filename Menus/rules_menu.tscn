@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlpj0vqd7jg6e"]
+[gd_scene load_steps=12 format=3 uid="uid://dlpj0vqd7jg6e"]
 
 [ext_resource type="Script" path="res://Menus/rules_menu.gd" id="1_nl07u"]
 [ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="1_wfdqy"]
@@ -6,6 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
 [ext_resource type="Texture2D" uid="uid://bojv4wt1n7yj0" path="res://assets/Images/rulesimage2.png" id="5_m3um4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r7bm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu0cp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4g7n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ymxhn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u7mxm"]
 
 [node name="RulesMenu" type="Panel"]
 anchors_preset = 15
@@ -41,7 +51,7 @@ anchor_bottom = 1.0
 offset_top = 76.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 50
 
 [node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutRules"]
 layout_mode = 2
@@ -88,21 +98,30 @@ text = "Rules"
 
 [node name="RulesInfoBox" type="VBoxContainer" parent="mainLayoutRules"]
 layout_mode = 2
-theme_override_constants/separation = 40
 
-[node name="Rules Toggle" parent="mainLayoutRules/RulesInfoBox" instance=ExtResource("2_ptkh5")]
+[node name="Rules Toggle" type="Button" parent="mainLayoutRules/RulesInfoBox"]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
+theme = ExtResource("4_6e6fk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5r7bm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uu0cp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_y4g7n")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ymxhn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u7mxm")
+icon_alignment = 1
+expand_icon = true
 
-[node name="Texturedtexture" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="0"]
+[node name="Texturedtexture" type="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.015
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_m3um4")
-expand_mode = 0
+expand_mode = 1
 stretch_mode = 5
-
-[node name="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle" index="1"]
-visible = false
-offset_top = -3.0
-offset_bottom = 3.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Return" parent="." instance=ExtResource("2_ptkh5")]
@@ -131,5 +150,3 @@ theme_override_font_sizes/font_size = 60
 text = "Return To Main Menu"
 
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
-
-[editable path="mainLayoutRules/RulesInfoBox/Rules Toggle"]
