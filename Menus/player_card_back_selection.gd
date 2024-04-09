@@ -54,6 +54,7 @@ func saveSelection():
 	print(cardBackTextures)
 	
 func _on_return_button_pressed():
+	SoundManager.play_preset(SoundManager.RETURN_SOUND)
 	saveSelection()
 	SaveManager.save_game_settings({"cardBacks": cardBackIndexes})
 	SaveManager.update_data()
@@ -62,6 +63,7 @@ func _on_return_button_pressed():
 	pass # Replace with function body.
 
 func _on_start_game_pressed():
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	saveSelection()
 	SaveManager.save_game_settings({"cardBacks": cardBackIndexes})
 	SaveManager.update_data()
@@ -70,9 +72,27 @@ func _on_start_game_pressed():
 	self.queue_free()
 
 func _on_clear_all_button_pressed():
-	cardBacksContainer.get_children().map(func(button): button.unPressButton())
-
+	var buttonText = $mainLayout/SelectionBox/HBoxContainer/clearAllButton/Label
+	if(buttonText.text == "Clear All"):
+		buttonText.text = "Are you sure?"
+		await get_tree().create_timer(5).timeout
+		buttonText.text = "Clear All"
+		return;
+	elif(buttonText.text == "Are you sure?"):
+		#Reset Stuff For Music
+		SoundManager.play_preset(SoundManager.SWITCH_SOUND)		
+		cardBacksContainer.get_children().map(func(button): button.unPressButton())
+		buttonText.text = "Clear All"
 
 func _on_select_all_pressed():
-	cardBacksContainer.get_children().map(func(button): button.pressButton())
-	
+	var buttonText = $mainLayout/SelectionBox/HBoxContainer/SelectAll/Label
+	if(buttonText.text == "Select All"):
+		buttonText.text = "Are you sure?"
+		await get_tree().create_timer(5).timeout
+		buttonText.text = "Select All"
+		return;
+	elif(buttonText.text == "Are you sure?"):
+		#Reset Stuff For Music
+		SoundManager.play_preset(SoundManager.SWITCH_SOUND)		
+		cardBacksContainer.get_children().map(func(button): button.pressButton())
+		buttonText.text = "Select All"

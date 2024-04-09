@@ -105,11 +105,11 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "Clear All"
 
-[node name="Select All" parent="mainLayout/SelectionBox/HBoxContainer" instance=ExtResource("5_pc7gh")]
+[node name="SelectAll" parent="mainLayout/SelectionBox/HBoxContainer" instance=ExtResource("5_pc7gh")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" parent="mainLayout/SelectionBox/HBoxContainer/Select All" index="3"]
+[node name="Label" parent="mainLayout/SelectionBox/HBoxContainer/SelectAll" index="3"]
 theme_override_font_sizes/font_size = 50
 text = "Select All"
 
@@ -265,10 +265,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="mainLayout/SelectionBox/HBoxContainer/clearAllButton" to="." method="_on_clear_all_button_pressed"]
-[connection signal="pressed" from="mainLayout/SelectionBox/HBoxContainer/Select All" to="." method="_on_select_all_pressed"]
+[connection signal="pressed" from="mainLayout/SelectionBox/HBoxContainer/SelectAll" to="." method="_on_select_all_pressed"]
 [connection signal="pressed" from="Start Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 
 [editable path="mainLayout/SelectionBox/HBoxContainer/clearAllButton"]
-[editable path="mainLayout/SelectionBox/HBoxContainer/Select All"]
+[editable path="mainLayout/SelectionBox/HBoxContainer/SelectAll"]
 [editable path="mainLayout/SelectionBox/cardSelection"]

@@ -31,4 +31,5 @@ func _ready():
 
 
 func _on_pressed():
+	SoundManager.play_preset(SoundManager.CARD_SELECT_SOUND)
 	buttonState = !buttonState
