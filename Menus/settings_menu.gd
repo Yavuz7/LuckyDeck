@@ -8,8 +8,10 @@ var sounds_bus = AudioServer.get_bus_index("Sounds")
 @onready var soundsCheck = $"mainLayoutSettings/SettingsSeperator/VFX Toggle/MarginContainer/SoundsCheck"
 
 func _ready():
-	musicCheck.button_pressed = SaveManager.loadedData["AudioSettings"][0]
-	soundsCheck.button_pressed = SaveManager.loadedData["AudioSettings"][1]
+	if(SaveManager.loadedData && SaveManager.loadedData.has("AudioSettings")):
+		print("Save had audio Settings")
+		musicCheck.button_pressed = SaveManager.loadedData["AudioSettings"][0]
+		soundsCheck.button_pressed = SaveManager.loadedData["AudioSettings"][1]
 
 func _on_return_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)

@@ -7,7 +7,7 @@ extends Panel
 
 
 var arrayOfCustomNames = SaveManager.loadedData["customNames"]
-var previousNumOfPlayers = SaveManager.loadedData["numOfPlayers"].to_int()
+var previousNumOfPlayers = SaveManager.loadedData["numOfPlayers"]
 
 func _ready():
 	for n in range(previousNumOfPlayers):			
@@ -49,15 +49,16 @@ func _on_continue_pressed():
 	GameManager.numOfPlayers = players.value
 	var arrayOfNamesToUse = arrayOfCustomNames.slice(0,players.value)
 	GameManager.playerNames = arrayOfNamesToUse
-	SaveManager.save_game_settings({"numOfPlayers" : str(players.value), "customNames" : arrayOfCustomNames})
-	SaveManager.update_data()
+	await SaveManager.save_game_settings({"numOfPlayers" : players.value, "customNames" : arrayOfCustomNames})
+	await SaveManager.update_data()
+	print(SaveManager.loadedData)
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
 
 
 func _on_return_to_main_menu_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
-	SaveManager.save_game_settings({"numOfPlayers" : str(players.value), "customNames" : arrayOfCustomNames})
+	SaveManager.save_game_settings({"numOfPlayers" : players.value, "customNames" : arrayOfCustomNames})
 	SaveManager.update_data()
 	self.queue_free()
 

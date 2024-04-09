@@ -2,13 +2,38 @@ extends Panel
 
 
 
-@onready var cardBacks = $mainLayoutCredits/SelectionBox/cardSelection/MarginContainer/CardBacks
+@onready var cardBacksContainer = $mainLayoutCredits/SelectionBox/cardSelection/MarginContainer/ScrollContainer/CardBacks
 @onready var cardSelectTemplate = load("res://Menus/card_back_button_template.tscn")
+@onready var matchesTotalDisplay = $mainLayoutCredits/SelectionBox/TitleHeading/textBoxes/VBoxContainer/TotalMatchesText
+var cardLocked = preload("res://assets/Images/lockedCard.png")
+var numberOfCardsExpected = 34
+var matchesTotal = SaveManager.loadedData["matchTotal"]
+var matchesLeft = 25 + matchesTotal
+var arrayOfLoadedBacks = SaveManager.loadedData["cardBacks"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var instance = cardSelectTemplate.instantiate()
-	instance.init(false,GameManager.cardBack,false);
-	cardBacks.add_child(instance)
+	matchesTotalDisplay.text = str(matchesTotal) + " Total Matches"	
+	var i = 0
+	while i < numberOfCardsExpected:
+		matchesLeft -= 5
+		if(matchesLeft >= 0):
+			var indexString = str(i)
+			while indexString.length() < 3:
+				indexString = "0" + indexString
+			var imageInstance = load("res://assets/Images/cardBacks/cb" + indexString +".png")
+			if(imageInstance):
+				var instance = cardSelectTemplate.instantiate()
+				if(arrayOfLoadedBacks && arrayOfLoadedBacks.size() > 0):
+					instance.init(false,imageInstance,arrayOfLoadedBacks.has(i));
+				else:
+					instance.init(false,imageInstance,false);					
+				cardBacksContainer.add_child(instance)
+		else:
+			#Locked Cards
+			var instance = cardSelectTemplate.instantiate()
+			instance.init(true,cardLocked,false);	
+			cardBacksContainer.add_child(instance)
+		i+= 1
 	pass # Replace with function body.
 
 

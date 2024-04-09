@@ -14,11 +14,13 @@ var suitIndexes = Array()
 var valueIndexes = Array()
 enum suitValues{none,Diamond,Heart,Spade,Club}
 
-var loadedCards = SaveManager.loadedData["favoriteCards"]
+var loadedCards = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(loadedCards)
+	if(SaveManager.loadedData && SaveManager.loadedData.has("favoriteCards") && SaveManager.loadedData["favoriteCards"]):
+		print("Save had favorite cards")
+		loadedCards = SaveManager.loadedData["favoriteCards"]
 	currentPlayers = GameManager.numOfPlayers
 	playerNames = GameManager.playerNames
 	suitIndexes = suitSelect.get_buttons()
@@ -26,7 +28,7 @@ func _ready():
 	playerDisplay.text = playerNames[playerIndex] + "'s"
 	var i = 0
 	while (i < currentPlayers):
-		if(loadedCards.size() > i):			
+		if(loadedCards && loadedCards.size() > i):			
 			playerFavoriteCards[i] = loadedCards[i]
 		else:				
 			playerFavoriteCards[i] = []

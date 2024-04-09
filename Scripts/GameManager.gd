@@ -16,7 +16,6 @@ var victoryScreen
 
 var cardBacks = []
 var cardBack = preload("res://assets/Images/cardBacks/cb005.png")
-var cardLocked = preload("res://assets/Images/lockedCard.png")
 var numberGenerator = RandomNumberGenerator.new()
 
 const numberNeededFor4OfAKind = 4
@@ -236,7 +235,10 @@ func checkStraightVictory(targetArray):
 func victoryHandler(victoryMessage, victoryCards):
 	matchScores[currentPlayer] += 1
 	matchTotal += 1
-	SaveManager.save_game_settings({"matchTotal": SaveManager.loadedData["matchTotal"]+ 1})
+	if(SaveManager.loadedData && SaveManager.loadedData.has("matchTotal") && SaveManager.loadedData["matchTotal"]):
+		SaveManager.save_game_settings({"matchTotal": SaveManager.loadedData["matchTotal"]+ 1})
+	else:
+		SaveManager.save_game_settings({"matchTotal": 1})
 	SaveManager.update_data()
 	showMatchData()
 	gameOver = true
