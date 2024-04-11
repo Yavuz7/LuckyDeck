@@ -50,7 +50,6 @@ func _on_continue_pressed():
 	var arrayOfNamesToUse = arrayOfCustomNames.slice(0,players.value)
 	GameManager.playerNames = arrayOfNamesToUse
 	await SaveManager.save_game_settings({"numOfPlayers" : players.value, "customNames" : arrayOfCustomNames})
-	await SaveManager.update_data()
 	print(SaveManager.loadedData)
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
@@ -59,7 +58,6 @@ func _on_continue_pressed():
 func _on_return_to_main_menu_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
 	SaveManager.save_game_settings({"numOfPlayers" : players.value, "customNames" : arrayOfCustomNames})
-	SaveManager.update_data()
 	self.queue_free()
 
 #This function Adds and removes children to match the number of players

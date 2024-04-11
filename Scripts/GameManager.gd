@@ -250,7 +250,6 @@ func victoryHandler(victoryMessage, victoryCards):
 		SaveManager.save_game_settings({"matchTotal": SaveManager.loadedData["matchTotal"]+ 1})
 	else:
 		SaveManager.save_game_settings({"matchTotal": 1})
-	SaveManager.update_data()
 	showMatchData()	
 	SoundManager.lowerSound()
 	SoundManager.play_preset(SoundManager.VICTORY_SOUND)	

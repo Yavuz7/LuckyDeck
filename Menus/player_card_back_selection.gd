@@ -57,7 +57,6 @@ func _on_return_button_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
 	saveSelection()
 	SaveManager.save_game_settings({"cardBacks": cardBackIndexes})
-	SaveManager.update_data()
 	get_parent().call_deferred("add_child",load("res://Menus/player_favorite_card_menu.tscn").instantiate())
 	self.queue_free()
 	pass # Replace with function body.
@@ -66,7 +65,6 @@ func _on_start_game_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	saveSelection()
 	SaveManager.save_game_settings({"cardBacks": cardBackIndexes})
-	SaveManager.update_data()
 	GameManager.cardBacks = cardBackTextures	
 	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
 	self.queue_free()

@@ -58,7 +58,6 @@ func _on_start_game_pressed():
 	sendToGameManager()
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
 	SaveManager.save_game_settings({"favoriteCards": playerFavoriteCards})
-	SaveManager.update_data()
 #	get_parent().call_deferred("add_child",load("res://Menus/Game.tscn").instantiate())
 #	self.queue_free()
 	get_parent().add_child(playerCardBacksSelection.instantiate())
@@ -87,7 +86,6 @@ func _on_return_double_check_pressed():
 	saveSelection(playerIndex)	
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
 	SaveManager.save_game_settings({"favoriteCards": playerFavoriteCards})
-	SaveManager.update_data()
 	get_parent().call_deferred("add_child",load("res://Menus/player_number_selection.tscn").instantiate())
 	self.queue_free()
 	

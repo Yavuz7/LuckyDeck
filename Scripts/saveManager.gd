@@ -30,7 +30,7 @@ func save_game_settings(save_data_dict):
 	
 	
 	config.save("user://savedGameSettings.cfg")
-
+	update_data()
 
 func load_game_settings(load_data_array):
 	var config = ConfigFile.new()
