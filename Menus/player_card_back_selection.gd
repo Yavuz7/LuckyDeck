@@ -5,8 +5,8 @@ extends Panel
 @onready var cardBacksContainer = $mainLayout/SelectionBox/cardSelection/MarginContainer/ScrollContainer/CardBacks
 @onready var cardSelectTemplate = load("res://Menus/card_back_button_template.tscn")
 @onready var matchesTotalDisplay = $mainLayout/SelectionBox/TitleHeading/textBoxes/VBoxContainer/TotalMatchesText
-var cardLocked = preload("res://assets/Images/lockedCard.png")
-var numberOfCardsExpected = 33
+var cardLocked = preload("res://assets/Images/cardBacks/cb050.png")
+var numberOfCardsExpected = 52
 var matchesTotal = SaveManager.loadedData["matchTotal"]
 var matchesLeft = 30 + matchesTotal
 var arrayOfLoadedBacks = SaveManager.loadedData["cardBacks"]
