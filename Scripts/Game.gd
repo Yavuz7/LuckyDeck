@@ -68,18 +68,19 @@ func _on_restart_game_pressed():
 
 
 func _on_return_to_main_menu_pressed():
-	GameManager.matchScores = []
-	GameManager.matchTotal = 0
-	GameManager.usedCardBacks.clear()
-	GameManager.cardBacks.clear()
-	var buttonText = $VictoryScreen/ReturnToMainMenu/Label
+	var buttonText = $VictoryScreen/ReturnToMainMenu/Label	
 	if(buttonText.text == "Return To Main Menu"):
 		buttonText.text = "You really want to return?"
 		await get_tree().create_timer(5).timeout
 		buttonText.text = "Return To Main Menu"
+		return;
 	elif(buttonText.text == "You really want to return?"):
 		buttonText.text = "Really really want to return??"
 	elif(buttonText.text == "Really really want to return??"):
+		GameManager.matchScores = []
+		GameManager.matchTotal = 0
+		GameManager.usedCardBacks.clear()
+		GameManager.cardBacks.clear()
 		#Reset Stuff For Music
 		SoundManager.play_preset(SoundManager.RETURN_SOUND)
 		SoundManager.crossfade_to(SoundManager.menuMusic)
@@ -93,7 +94,7 @@ func _on_return_to_main_menu_pressed():
 		
 		GameManager.outPlayers = []
 		self.queue_free()
-	pass # Replace with function body.
+		pass # Replace with function body.
 
 @onready var settingsMenu = preload("res://Menus/settings_menu.tscn")
 
