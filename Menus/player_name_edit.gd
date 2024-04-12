@@ -11,12 +11,13 @@ func _on_text_changed(new_text):
 
 	
 func _on_focus_entered():
+	self.focus_next = get_parent().get_child(1).get_path()
 	focus_text.emit(self,true)
 
 
 func _on_focus_exited():
 	focus_text.emit(self,false)
-
+	await get_tree().create_timer(1).timeout
 
 func _on_text_submitted(new_text):
-	finished_typing.emit()
+	finished_typing.emit(self)
