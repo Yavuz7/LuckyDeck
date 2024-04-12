@@ -90,13 +90,11 @@ func cardHandler():
 	Deck.remove_at(randomIndex)
 	if(Deck.size() % 9 == 0):
 		reSizeGrid()
-#	if(cardsDrawn > 9 && !gameOver):
-#		SoundManager.songSetsChangeSong()
-#		cardsDrawn = 0
-#	else:
-#		cardsDrawn+= 1
+	changeSongsWithScene()		
+		
 
 func changeSongsWithScene():
+	print("cardsDrawn")
 	if(cardsDrawn > 9 && !gameOver):
 		SoundManager.songSetsChangeSong()
 		cardsDrawn = 0
@@ -248,7 +246,6 @@ func checkStraightVictory(targetArray):
 			var winningCards = gamePlayers[currentPlayer].getStraight(slicedArray)
 			victoryHandler("Victory By " + str(numberNeededForStraight) + " cards in a row!", winningCards)
 			return "Victory By Straight!"
-	changeSongsWithScene()	
 	return null
 			
 func victoryHandler(victoryMessage, victoryCards):

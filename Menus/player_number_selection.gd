@@ -20,10 +20,23 @@ func _ready():
 			arrayOfCustomNames.append(instance.text);
 		instance.place = n		
 		instance.text_send.connect(_received_text_change)
+		instance.focus_text.connect(_changeNodePosition)
+		instance.finished_typing.connect(_getNextFocus)
 		playerNames.add_child(instance)
 	
 	players.value = previousNumOfPlayers			
 	print(playerNames.get_child_count());
+
+func _getNextFocus():
+	playerNames.get_child(1).grab_focus()
+
+func _changeNodePosition(nodeToMove,moveToBottom):
+	var position
+	if(!moveToBottom):
+		position = playerNames.get_child_count()
+	else:
+		position = 0
+	playerNames.move_child(nodeToMove,position)
 
 func _received_text_change(text,place):
 	arrayOfCustomNames[place] = text;
