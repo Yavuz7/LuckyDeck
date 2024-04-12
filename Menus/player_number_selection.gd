@@ -28,17 +28,18 @@ func _ready():
 
 func _changeFocus(nodeToMove):
 	var newNodeFocused = playerNames.get_node(nodeToMove.focus_next)
-	newNodeFocused.grab_focus()
+	if(newNodeFocused == nodeToMove):
+		newNodeFocused = playerNames.get_child(1)
+	newNodeFocused.call_deferred("grab_focus")
 
 func _changeNodePosition(nodeToMove,moveToBottom):
-	var position
+	var positionToMove
 	if(!moveToBottom):
-		position = playerNames.get_child_count()
+		positionToMove = playerNames.get_child_count()
 	else:
-		position = 0
-	playerNames.move_child(nodeToMove,position)
-	playerNames.get_child(0).grab_focus()
-	
+		positionToMove = 0
+	playerNames.move_child(nodeToMove,positionToMove)
+
 func _received_text_change(text,place):
 	arrayOfCustomNames[place] = text;
 	
@@ -49,14 +50,12 @@ func _on_minus_pressed():
 	SoundManager.play_preset(SoundManager.SWITCH_SOUND)
 	players.value -= 1
 
-
 func _on_plus_pressed():
 	players.value += 1
 	if(players.value > 10):
 		players.value = 10
 		return
 	SoundManager.play_preset(SoundManager.SWITCH_SOUND)	
-
 
 func _on_continue_pressed():
 	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
@@ -67,7 +66,6 @@ func _on_continue_pressed():
 	print(SaveManager.loadedData)
 	get_parent().add_child(playerFavoriteCardSelection.instantiate())
 	self.queue_free()
-
 
 func _on_return_to_main_menu_pressed():
 	SoundManager.play_preset(SoundManager.RETURN_SOUND)
@@ -82,7 +80,9 @@ func _on_total_players_value_changed(value):
 		while playerNames.get_child_count() < players.value:
 			var instance = player_line_edit.instantiate()
 			instance.place = playerNames.get_child_count()
-			instance.text_send.connect(_received_text_change)			
+			instance.text_send.connect(_received_text_change)
+			instance.focus_text.connect(_changeNodePosition)
+			instance.finished_typing.connect(_changeFocus)				
 			#Replace text with previous name
 			var customName = get_custom_name(playerNames.get_child_count());
 			if(customName):
