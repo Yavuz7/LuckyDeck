@@ -116,6 +116,7 @@ text = "Select All"
 [node name="cardSelection" parent="mainLayout/SelectionBox" instance=ExtResource("5_pc7gh")]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+size_flags_vertical = 3
 mouse_filter = 1
 
 [node name="Texturedtexture" parent="mainLayout/SelectionBox/cardSelection" index="0"]

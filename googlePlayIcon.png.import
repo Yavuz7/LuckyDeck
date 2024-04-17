@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bojv4wt1n7yj0"
-path="res://.godot/imported/rulesimage2.png-e9cbcbe05968a3b64f21b875c70cd0d5.ctex"
+uid="uid://0yh2xmviomt1"
+path="res://.godot/imported/googlePlayIcon.png-42f3bafb8daf6c120645675cd8b60cd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Images/rulesimage2.png"
-dest_files=["res://.godot/imported/rulesimage2.png-e9cbcbe05968a3b64f21b875c70cd0d5.ctex"]
+source_file="res://googlePlayIcon.png"
+dest_files=["res://.godot/imported/googlePlayIcon.png-42f3bafb8daf6c120645675cd8b60cd0.ctex"]
 
 [params]
 

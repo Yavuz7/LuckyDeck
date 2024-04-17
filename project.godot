@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Lucky Deck"
+config/name="LuckyDeck"
 run/main_scene="res://Scripts/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://Scripts/icon.svg"
+config/icon="res://googlePlayIcon.png"
 
 [autoload]
 

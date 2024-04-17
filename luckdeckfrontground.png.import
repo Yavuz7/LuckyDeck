@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcrd5dyw373v6"
-path="res://.godot/imported/luckydeckicon.png-ba9975322e94ff5a494c8820bcf38451.ctex"
+uid="uid://blcqoordthxu3"
+path="res://.godot/imported/luckdeckfrontground.png-5bfdd5c158ec55b20dca8a2bad6e088b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luckydeckicon.png"
-dest_files=["res://.godot/imported/luckydeckicon.png-ba9975322e94ff5a494c8820bcf38451.ctex"]
+source_file="res://luckdeckfrontground.png"
+dest_files=["res://.godot/imported/luckdeckfrontground.png-5bfdd5c158ec55b20dca8a2bad6e088b.ctex"]
 
 [params]
 

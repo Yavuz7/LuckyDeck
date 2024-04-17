@@ -45,7 +45,7 @@ func generateDeck():
 			favoriteCardsSuitsUsed.append(favoriteCards[card])
 			Deck.append([5,1])
 			gridCards.append(Card.new(cardBack))
-			print(favoriteCardsSuitsUsed)
+#			print("Favorite Card Used",favoriteCardsSuitsUsed)
 
 #Needs to be tested later, but should be dynamic row size
 func figureOutSize():

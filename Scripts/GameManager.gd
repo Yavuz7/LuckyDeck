@@ -61,6 +61,16 @@ func fillPlayerArray():
 		if playerFavoriteCards[i][1] == 1 && !disabledAces.has(playerFavoriteCards[i][0]):
 			disabledAces.append(playerFavoriteCards[i][0])		
 		i+= 1
+	#Hopefully removes two aces from the deck 
+	#	Deck.size - 52 = Num of Jokers
+	#	4 - numOfPlayers = Num of Aces To Disabled 
+	var deckOverflow = Deck.size() - 52 + (4 - numOfPlayers)
+	if(disabledAces.size() < deckOverflow && numOfPlayers < 4):
+		var aceToCheck = 1
+		while disabledAces.size() < deckOverflow && aceToCheck < 5:
+			if !disabledAces.has(aceToCheck):
+				disabledAces.append(aceToCheck)
+			aceToCheck += 1
 	print("Disabled Aces:" ,disabledAces)
 	print("Match Scores: ",matchScores)
 #This Function Handles Stuff That Needs To Happen before player input
@@ -94,7 +104,6 @@ func cardHandler():
 		
 
 func changeSongsWithScene():
-	print("cardsDrawn")
 	if(cardsDrawn > 9 && !gameOver):
 		SoundManager.songSetsChangeSong()
 		cardsDrawn = 0
@@ -194,11 +203,11 @@ func checkVictory():
 		return true
 		
 func checkFavoriteCardVictory():
-	if(gamePlayers[currentPlayer].cards.back() == playerFavoriteCards[currentPlayer]):
+	var lastDrawnCard = gamePlayers[currentPlayer].cards.back()
+	if(lastDrawnCard == playerFavoriteCards[currentPlayer]):
 		var winningCard = [[0,gamePlayers[currentPlayer].favoriteCard]]
 		victoryHandler("Victory By Favorite Card Drawn!", winningCard)
 		return "Favorite Card Drawn!"
-		
 func checkVictoryHands():
 	var arrayOfValues = gamePlayers[currentPlayer].cardTexturesSortedValues.map(func(pair): return pair[0]);
 	var arrayOfSuits = gamePlayers[currentPlayer].cardTexturesSortedSuits.map(func(pair): return pair[0]);

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh2fr0y5xw6fy"
-path="res://.godot/imported/luckydecktopicon.png-f52253a7f0343a08f4038c0789e09558.ctex"
+uid="uid://yhow080jldbo"
+path="res://.godot/imported/luckdeckbackground.png-70a47b36bd2dc607511f8a4070243860.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://luckydecktopicon.png"
-dest_files=["res://.godot/imported/luckydecktopicon.png-f52253a7f0343a08f4038c0789e09558.ctex"]
+source_file="res://luckdeckbackground.png"
+dest_files=["res://.godot/imported/luckdeckbackground.png-70a47b36bd2dc607511f8a4070243860.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_ptkh5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
-[ext_resource type="Texture2D" uid="uid://bojv4wt1n7yj0" path="res://assets/Images/rulesimage2.png" id="5_m3um4"]
+[ext_resource type="Texture2D" uid="uid://bqnacncuylnkt" path="res://assets/Images/rulesimage4.png" id="6_ekm46"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r7bm"]
 
@@ -98,6 +98,7 @@ text = "Rules"
 
 [node name="RulesInfoBox" type="VBoxContainer" parent="mainLayoutRules"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Rules Toggle" type="Button" parent="mainLayoutRules/RulesInfoBox"]
 custom_minimum_size = Vector2(0, 600)
@@ -119,7 +120,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_m3um4")
+texture = ExtResource("6_ekm46")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true

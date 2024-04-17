@@ -26,8 +26,8 @@ var soundDictionary = [[continueSound, -4],
 [sortCards,-6],
 [pauseMenuOpen,-6],
 [pauseMenuClose,-3],
-[defeatSound,-6],
-[victorySound,-6]]
+[defeatSound,0],
+[victorySound,-4]]
 
 enum {CONTINUE_SOUND,
 RETURN_SOUND,
