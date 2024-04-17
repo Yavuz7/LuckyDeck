@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://85axywj4mg23"]
+
+[ext_resource type="Script" path="res://Menus/buyMeABanana.gd" id="1_6wpqm"]
+[ext_resource type="Texture2D" uid="uid://bd3eeolp5h22g" path="res://assets/Images/rectangleborderyellow.svg" id="2_oleew"]
+[ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="3_hfrhq"]
+[ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="5_u7112"]
+[ext_resource type="Texture2D" uid="uid://dpqbxplhq7uc" path="res://assets/Images/bigArea.png" id="6_fgood"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ueyg1"]
+font_size = 35
+outline_size = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ttxef"]
+font_size = 30
+
+[node name="CreditsMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6wpqm")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.411765, 0.0352941, 1)
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_oleew")
+
+[node name="mainLayoutCredits" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.00390625
+anchor_right = 1.0
+anchor_bottom = 1.00469
+offset_top = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+metadata/_edit_use_anchors_ = true
+
+[node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutCredits"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="RulesHeading" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("3_hfrhq")]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="mainLayoutCredits/Heading Seperator/RulesHeading"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -37.5
+offset_right = 53.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_u7112")
+theme_override_font_sizes/font_size = 80
+text = "Buy Me A  Banana"
+
+[node name="CreditsInfoBox" type="VBoxContainer" parent="mainLayoutCredits"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Credits Toggle" parent="mainLayoutCredits/CreditsInfoBox" instance=ExtResource("3_hfrhq")]
+custom_minimum_size = Vector2(0, 650)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Texturedtexture" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
+anchors_preset = -1
+anchor_top = -0.09
+anchor_bottom = 1.04
+texture = ExtResource("6_fgood")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="1"]
+anchors_preset = -1
+anchor_top = -0.0866667
+anchor_bottom = 1.035
+offset_top = -3.0
+offset_bottom = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="2"]
+anchors_preset = -1
+anchor_top = 1.023
+anchor_bottom = 1.065
+offset_top = 0.200012
+offset_bottom = -6.10352e-05
+
+[node name="ScrollContainer" type="ScrollContainer" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.07
+anchor_right = 1.0
+anchor_bottom = 1.02167
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title Label" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Please Read Before Making Any Payments!
+(You can also find this info on the site)"
+label_settings = SubResource("LabelSettings_ueyg1")
+autowrap_mode = 2
+
+[node name="Title Label2" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "For refunds contact me at: yavuzyavuzbavuz@gmail.com (Checked weekly)
+
+If you liked the game, consider sending money my way but... Please don't send money that's not yours to give, or if you think you might need the money in a few months. Also the money you send is NOT for goods or services! 
+
+It's a tip for good work as one would give a server in a restaurant and NOT for work, commissions, requests, etc. 
+
+Lastly don't send more than one tip in a short period of time, if you want to send multiple tips, just use a subscription. 
+
+If You Happen To Be In A Position where you can get me a job (Coding/Game Dev/User Exp) somewhere, or something similar, email me your company at yavuzyavuzbavuz@gmail.com, and I'll find your website and apply."
+label_settings = SubResource("LabelSettings_ttxef")
+autowrap_mode = 2
+
+[node name="webButton" parent="mainLayoutCredits" instance=ExtResource("3_hfrhq")]
+layout_mode = 2
+
+[node name="Label" parent="mainLayoutCredits/webButton" index="3"]
+text = "Go To buymeacoffee.com"
+
+[node name="Return" parent="." instance=ExtResource("3_hfrhq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.001
+anchor_top = 0.9
+anchor_right = 1.00139
+anchor_bottom = 0.977344
+offset_left = 0.280001
+offset_top = -0.000366211
+offset_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Return"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -37.5
+offset_right = 266.0
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_u7112")
+theme_override_font_sizes/font_size = 60
+text = "Return To Main Menu"
+
+[connection signal="pressed" from="mainLayoutCredits/webButton" to="." method="_on_web_button_pressed"]
+[connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+
+[editable path="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
+[editable path="mainLayoutCredits/webButton"]

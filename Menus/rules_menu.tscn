@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgijvugy7wxe" path="res://assets/button_scene.tscn" id="2_ptkh5"]
 [ext_resource type="Texture2D" uid="uid://bgmppv2cfhcf6" path="res://assets/Images/luckydecklogo.png" id="3_rvoj6"]
 [ext_resource type="Theme" uid="uid://brkyelj36ne10" path="res://Scripts/maintheme.tres" id="4_6e6fk"]
-[ext_resource type="Texture2D" uid="uid://bqnacncuylnkt" path="res://assets/Images/rulesimage4.png" id="6_ekm46"]
+[ext_resource type="Texture2D" uid="uid://c1ltmqvl66bxx" path="res://assets/Images/rulesimage5.png" id="6_2vstb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5r7bm"]
 
@@ -98,7 +98,6 @@ text = "Rules"
 
 [node name="RulesInfoBox" type="VBoxContainer" parent="mainLayoutRules"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="Rules Toggle" type="Button" parent="mainLayoutRules/RulesInfoBox"]
 custom_minimum_size = Vector2(0, 600)
@@ -114,13 +113,12 @@ expand_icon = true
 
 [node name="Texturedtexture" type="TextureRect" parent="mainLayoutRules/RulesInfoBox/Rules Toggle"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.015
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_ekm46")
+texture = ExtResource("6_2vstb")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true

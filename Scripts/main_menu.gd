@@ -4,6 +4,7 @@ extends Control
 @onready var rulesMenu = preload("res://Menus/rules_menu.tscn")
 @onready var settingsMenu = preload("res://Menus/settings_menu.tscn")
 @onready var creditsMenu = preload("res://Menus/credits_menu.tscn")
+@onready var buyMeABananaMenu = preload("res://Menus/buyMeABanana.tscn")
 
 func _ready():
 	SoundManager._anim_player = $MusicFader/AnimationPlayer
@@ -33,3 +34,9 @@ func _on_credits_pressed():
 	add_child(instance)
 
 
+
+
+func _on_buy_me_a_banana_pressed():
+	SoundManager.play_preset(SoundManager.CONTINUE_SOUND)
+	var instance = buyMeABananaMenu.instantiate()
+	add_child(instance)

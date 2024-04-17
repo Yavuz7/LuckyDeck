@@ -194,7 +194,7 @@ stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="mainMenuButtons"]
 layout_mode = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 70
 
 [node name="Play" parent="mainMenuButtons/VBoxContainer" instance=ExtResource("1_xqq6a")]
 layout_mode = 2
@@ -276,6 +276,26 @@ theme = ExtResource("1_ydy77")
 theme_override_font_sizes/font_size = 80
 text = "Credits"
 
+[node name="BuyMeABanana" parent="mainMenuButtons/VBoxContainer" instance=ExtResource("1_xqq6a")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="mainMenuButtons/VBoxContainer/BuyMeABanana"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -49.5
+offset_right = 71.5
+offset_bottom = 49.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ydy77")
+theme_override_font_sizes/font_size = 80
+text = "Buy Me A Banana"
+
 [node name="MusicFader" type="Node" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MusicFader"]
@@ -295,3 +315,4 @@ bus = &"Music"
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Rules" to="." method="_on_rules_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="mainMenuButtons/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="mainMenuButtons/VBoxContainer/BuyMeABanana" to="." method="_on_buy_me_a_banana_pressed"]
