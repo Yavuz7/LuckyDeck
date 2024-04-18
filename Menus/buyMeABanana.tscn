@@ -11,7 +11,7 @@ font_size = 35
 outline_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ttxef"]
-font_size = 30
+font_size = 32
 
 [node name="CreditsMenu" type="Panel"]
 anchors_preset = 15
@@ -42,22 +42,23 @@ texture = ExtResource("2_oleew")
 [node name="mainLayoutCredits" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.00390625
+anchor_top = 0.034
 anchor_right = 1.0
-anchor_bottom = 1.00469
-offset_top = 76.0
+anchor_bottom = 0.885938
+offset_top = -0.520004
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 50
 metadata/_edit_use_anchors_ = true
 
 [node name="Heading Seperator" type="VBoxContainer" parent="mainLayoutCredits"]
 layout_mode = 2
-theme_override_constants/separation = 35
+theme_override_constants/separation = 50
 
 [node name="RulesHeading" parent="mainLayoutCredits/Heading Seperator" instance=ExtResource("3_hfrhq")]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Label2" type="Label" parent="mainLayoutCredits/Heading Seperator/RulesHeading"]
 layout_mode = 1
@@ -74,28 +75,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_u7112")
 theme_override_font_sizes/font_size = 80
-text = "Buy Me A  Banana"
+text = "Buy Me A Banana"
 
 [node name="CreditsInfoBox" type="VBoxContainer" parent="mainLayoutCredits"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
 [node name="Credits Toggle" parent="mainLayoutCredits/CreditsInfoBox" instance=ExtResource("3_hfrhq")]
-custom_minimum_size = Vector2(0, 650)
+custom_minimum_size = Vector2(0, 670)
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 3
 
 [node name="Texturedtexture" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="0"]
 anchors_preset = -1
-anchor_top = -0.09
-anchor_bottom = 1.04
+anchor_top = -0.00404858
+anchor_bottom = 1.04049
 texture = ExtResource("6_fgood")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle" index="1"]
 anchors_preset = -1
-anchor_top = -0.0866667
-anchor_bottom = 1.035
+anchor_top = 0.00269906
+anchor_bottom = 1.03509
 offset_top = -3.0
 offset_bottom = 3.0
 metadata/_edit_use_anchors_ = true
@@ -110,9 +111,10 @@ offset_bottom = -6.10352e-05
 [node name="ScrollContainer" type="ScrollContainer" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.07
+anchor_left = 0.0152778
+anchor_top = 0.0128571
 anchor_right = 1.0
-anchor_bottom = 1.02167
+anchor_bottom = 1.03286
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -125,8 +127,7 @@ size_flags_vertical = 3
 
 [node name="Title Label" type="Label" parent="mainLayoutCredits/CreditsInfoBox/Credits Toggle/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-text = "Please Read Before Making Any Payments!
-(You can also find this info on the site)"
+text = "Please Scroll And Read Before Making Any Payments! (You can also find this info on the site)"
 label_settings = SubResource("LabelSettings_ueyg1")
 autowrap_mode = 2
 
@@ -143,12 +144,6 @@ Lastly don't send more than one tip in a short period of time, if you want to se
 If You Happen To Be In A Position where you can get me a job (Coding/Game Dev/User Exp) somewhere, or something similar, email me your company at yavuzyavuzbavuz@gmail.com, and I'll find your website and apply."
 label_settings = SubResource("LabelSettings_ttxef")
 autowrap_mode = 2
-
-[node name="webButton" parent="mainLayoutCredits" instance=ExtResource("3_hfrhq")]
-layout_mode = 2
-
-[node name="Label" parent="mainLayoutCredits/webButton" index="3"]
-text = "Go To buymeacoffee.com"
 
 [node name="Return" parent="." instance=ExtResource("3_hfrhq")]
 layout_mode = 1
@@ -179,8 +174,20 @@ theme = ExtResource("5_u7112")
 theme_override_font_sizes/font_size = 60
 text = "Return To Main Menu"
 
-[connection signal="pressed" from="mainLayoutCredits/webButton" to="." method="_on_web_button_pressed"]
+[node name="webButton" parent="." instance=ExtResource("3_hfrhq")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.801
+anchor_bottom = 0.879
+offset_top = -0.280029
+offset_bottom = -0.120117
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" parent="webButton" index="3"]
+text = "Go To buymeacoffee.com"
+
 [connection signal="pressed" from="Return" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="webButton" to="." method="_on_web_button_pressed"]
 
 [editable path="mainLayoutCredits/CreditsInfoBox/Credits Toggle"]
-[editable path="mainLayoutCredits/webButton"]
+[editable path="webButton"]

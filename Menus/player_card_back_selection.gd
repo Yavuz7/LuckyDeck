@@ -6,7 +6,7 @@ extends Panel
 @onready var cardSelectTemplate = load("res://Menus/card_back_button_template.tscn")
 @onready var matchesTotalDisplay = $mainLayout/SelectionBox/TitleHeading/textBoxes/VBoxContainer/TotalMatchesText
 var cardLocked = preload("res://assets/Images/cardBacks/cb050.png")
-var numberOfCardsExpected = 52
+var numberOfCardsExpected = 53
 var matchesTotal = SaveManager.loadedData["matchTotal"]
 var matchesLeft = 30 + matchesTotal
 var arrayOfLoadedBacks = SaveManager.loadedData["cardBacks"]
